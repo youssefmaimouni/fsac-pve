@@ -25,7 +25,7 @@ class EditModuleRequest extends FormRequest
     {
         return [
             'intitule_module'=>'required',
-            'id_filiere'=>'required'
+            'id_filiere'=>'required | integer | exists:filieres,id_filiere'
         ];
     }
 
@@ -42,8 +42,10 @@ class EditModuleRequest extends FormRequest
     {
         return[
             'intitule_module.required'=>'une intitule de module doit etre fourni',
-            'id_filiere.required'=>'le id de filiére doit etre fourni'
-
+            'id_filiere.required'=>'le id de filiére doit etre fourni',
+            'id_filiere.integer'=>'le id de filiére doit etre entier',
+            'id_filiere.exists:filieres,id_filiere'=>'le id de filiére doit etre existe'
+            
         ];
     }
 }
