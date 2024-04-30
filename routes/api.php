@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\etudiantController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\ModuleController;
 use Illuminate\Http\Request;
