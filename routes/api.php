@@ -28,7 +28,6 @@ Route::get('module',[ModuleController::class,'index']);
 Route::post('module/create',[ModuleController::class,'store']);
 Route::put('module/edit/{module}',[ModuleController::class,'update']);
 Route::delete('module/{module}',[ModuleController::class,'delete']);
-Route::delete('module/{module}',[ModuleController::class,'delete']);
 
 Route::get('etudiant',[etudiantController::class,'index']);
 
