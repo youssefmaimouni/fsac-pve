@@ -29,6 +29,15 @@ Route::post('module/create',[ModuleController::class,'store']);
 Route::put('module/edit/{module}',[ModuleController::class,'update']);
 Route::delete('module/{nodule}',[ModuleController::class,'delete']);
 
+Route::delete('module/{module}',[ModuleController::class,'delete']);
+
+Route::get('etudiant',[etudiantController::class,'index']);
+
+Route::post('etudiant/create',[etudiantController::class,'store']);
+Route::put('etudiant/edit/{etudiant}',[etudiantController::class,'update']);
+Route::delete('etudiant/{etudiant}',[etudiantController::class,'delete']);
+ 
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
