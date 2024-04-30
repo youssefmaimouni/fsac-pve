@@ -24,12 +24,12 @@ class FiliereController extends Controller
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'le post a été ajouté',
+            'status_message'=>'la filiere a été ajouté',
             'data'=>$filiere
         ]);
         
-        }catch(Exception $exeption){
-            return response()->json($exeption);
+        }catch(Exception $exception){
+            return response()->json($exception);
         }
         
     }
@@ -50,8 +50,8 @@ class FiliereController extends Controller
             'data'=>$filiere
         ]);
 
-        }catch(Exception $exeption){
-            return response()->json($exeption);
+        }catch(Exception $exception){
+            return response()->json($exception);
         }
        
     }
@@ -67,8 +67,8 @@ class FiliereController extends Controller
             ]);
             
             
-         }catch(Exception $exeption){
-            return response()->json($exeption);
+         }catch(Exception $exception){
+            return response()->json($exception);
         }
     }
 }

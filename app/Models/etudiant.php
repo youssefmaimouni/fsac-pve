@@ -17,7 +17,7 @@ class etudiant extends Model
         'CNE',
         'photo'
     ];
-    public function filiere()
+    public function rapport()
     {
         return $this->belongsTo(rapport::class, 'id_rapport');
     }
