@@ -26,8 +26,8 @@ Route::delete('filiere/{filiere}',[FiliereController::class,'delete']);
 Route::get('module',[ModuleController::class,'index']);
 
 Route::post('module/create',[ModuleController::class,'store']);
-Route::put('module/edit/{filiere}',[ModuleController::class,'update']);
-Route::delete('module/{filiere}',[ModuleController::class,'delete']);
+Route::put('module/edit/{module}',[ModuleController::class,'update']);
+Route::delete('module/{nodule}',[ModuleController::class,'delete']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
