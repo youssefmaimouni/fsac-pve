@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\etudiantController;
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +37,11 @@ Route::post('etudiant/create',[etudiantController::class,'store']);
 Route::put('etudiant/edit/{etudiant}',[etudiantController::class,'update']);
 Route::delete('etudiant/{etudiant}',[etudiantController::class,'delete']);
  
+Route::get('local',[localController::class,'index']);
 
+Route::post('local/create',[localController::class,'store']);
+Route::put('local/edit/{local}',[localController::class,'update']);
+Route::delete('local/{local}',[localController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
