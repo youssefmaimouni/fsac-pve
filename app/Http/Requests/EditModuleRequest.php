@@ -24,7 +24,7 @@ class EditModuleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'intitule_module'=>'required',
+            'intitule_module'=>'required | unique_module_in_filiere:'.$this->input('id_filiere'),
             'id_filiere'=>'required | integer | exists:filieres,id_filiere'
         ];
     }
@@ -42,6 +42,7 @@ class EditModuleRequest extends FormRequest
     {
         return[
             'intitule_module.required'=>'une intitule de module doit etre fourni',
+            'intitule_module.unique_module_in_filiere' => 'Le nom du module doit être unique dans la filière spécifiée.',
             'id_filiere.required'=>'le id de filiére doit etre fourni',
             'id_filiere.integer'=>'le id de filiére doit etre entier',
             'id_filiere.exists:filieres,id_filiere'=>'le id de filiére doit etre existe'

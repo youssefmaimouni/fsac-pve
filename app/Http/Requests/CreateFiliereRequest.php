@@ -24,7 +24,7 @@ class CreateFiliereRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom_filiere'=>'required'
+            'nom_filiere'=>'required | unique:filieres'
         ];
     }
 
@@ -40,7 +40,9 @@ class CreateFiliereRequest extends FormRequest
     public function messages()
     {
         return[
-            'nom_filiere.required'=>'un nom de filiére doit etre fourni'
+            'nom_filiere.required'=>'un nom de filiére doit etre fourni',
+            'nom_filiere.unique'=>'un nom de filiére doit etre unique'
+
         ];
     }
 }
