@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PVRequest extends FormRequest
+class signerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class PVRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_tablette'=>'required | integer | exists:tablettes,id_tablette'
+            'id_surveillant'=>'required | integer | exists:surveillant,id_surveillant',
+            'id_pv'=>'required | integer | exists:pvs,id_pv'
         ];
     }
 
@@ -40,10 +41,14 @@ class PVRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_tablette.required'=>'le id de tablette est obligatoire',
-            'id_tablette.integer'=>'le id de tablette doit etre entier',
-            'id_tablette.exists:tablettes,id_tablette'=>'le id de tablette doit etre existe',
+            'id_surveillant.required'=>'le id de surveillant est obligatoire',
+            'id_surveillant.integer'=>'le id de surveillant dois étre entier ',
+            'id_surveillant.exists:surveillant,id_surveillant'=>'le id de surveillant n\'existe pas',
+            'id_pv.required'=>'le id de pv est obligatoire',
+            'id_pv.integer'=>'le id de pv dois étre entier ',
+            'id_pv.exists:pvs,id_pv'=>'le id de pv n\'existe pas',
 
+            
         ];
     }
 }

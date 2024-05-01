@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class etudiant extends Model
 {
-    use HasFactory;
     protected $primaryKey = 'codeApogee';
 
     protected $fillable =[

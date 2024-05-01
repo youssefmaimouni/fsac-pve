@@ -9,6 +9,7 @@ use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PVController;
 use App\Http\Controllers\RapportController;
+use App\Http\Controllers\signerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +78,12 @@ Route::get('examen',[examenController::class,'index']);
 Route::post('examen/create',[examenController::class,'store']);
 Route::put('examen/edit/{examen}',[examenController::class,'update']);
 Route::delete('examen/{examen}',[examenController::class,'delete']);
+
+Route::get('signer',[examenController::class,'index']);
+
+Route::post('signer/create',[signerController::class,'store']);
+Route::put('signer/edit/{signer}',[signerController::class,'update']);
+Route::delete('signer/{signer}',[signerController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

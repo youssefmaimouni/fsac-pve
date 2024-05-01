@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class surveillant extends Model
 {
-    use HasFactory;
     protected $primaryKey = 'id_surveillant';
 
     protected $fillable =[
