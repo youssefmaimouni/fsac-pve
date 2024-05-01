@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\etudiantController;
+use App\Http\Controllers\surveillantController;
+use App\Http\Controllers\departementController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\PVController;
+use App\Http\Controllers\RapportController;
+use App\Models\departement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +32,39 @@ Route::delete('filiere/{filiere}',[FiliereController::class,'delete']);
 Route::get('module',[ModuleController::class,'index']);
 
 Route::post('module/create',[ModuleController::class,'store']);
-Route::put('module/edit/{filiere}',[ModuleController::class,'update']);
-Route::delete('module/{filiere}',[ModuleController::class,'delete']);
+Route::put('module/edit/{module}',[ModuleController::class,'update']);
+Route::delete('module/{module}',[ModuleController::class,'delete']);
+
+Route::get('etudiant',[etudiantController::class,'index']);
+
+Route::post('etudiant/create',[etudiantController::class,'store']);
+Route::put('etudiant/edit/{etudiant}',[etudiantController::class,'update']);
+Route::delete('etudiant/{etudiant}',[etudiantController::class,'delete']);
+
+
+Route::get('surveillant',[surveillantController::class,'index']);
+
+Route::post('surveillant/create',[surveillantController::class,'store']);
+Route::put('surveillant/edit/{surveillant}',[surveillantController::class,'update']);
+Route::delete('surveillant/{surveillant}',[surveillantController::class,'delete']);
+
+
+Route::post('pv/create',[PVController::class,'store']);
+Route::put('pv/edit/{pv}',[PVController::class,'update']);
+Route::delete('pv/{pv}',[PVController::class,'delete']);
+
+Route::post('rapport/create',[RapportController::class,'store']);
+Route::put('rapport/edit/{rapport}',[RapportController::class,'update']);
+Route::delete('rapport/{rapport}',[RapportController::class,'delete']);
+
+
+
+Route::get('departement',[departementController::class,'index']);
+
+Route::post('departement/create',[departementController::class,'store']);
+Route::put('departement/edit/{departement}',[departementController::class,'update']);
+Route::delete('departement/{departement}',[departementController::class,'delete']);
+ 
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

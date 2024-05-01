@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class filiere extends Model
+class departement extends Model
 {
-    protected $primaryKey = 'id_filiere';
+    use HasFactory;
+    protected $primaryKey = 'id_departement';
 
     protected $fillable =[
-        'nom_filiere'
+        'nom_departement',
+        'code_departement',
     ];
+
 }
