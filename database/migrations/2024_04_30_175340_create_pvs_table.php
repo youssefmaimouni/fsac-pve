@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pvs', function (Blueprint $table) {
             $table->bigIncrements('id_pv');
-            $table->unsignedBigInteger('id_tablette');
-            $table->foreign('id_tablette')->references('id_tablette')->on('tablettes');
+            $table->unsignedBigInteger('id_tablette')->nullable();
+            $table->foreign('id_tablette')->references('id_tablette')->on('tablettes')->nullOnDelete();
             $table->timestamps();
         });
     }

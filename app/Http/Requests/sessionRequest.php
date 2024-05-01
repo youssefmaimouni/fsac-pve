@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PVRequest extends FormRequest
+class sessionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,12 @@ class PVRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_tablette'=>'required | integer | exists:tablettes,id_tablette'
+            'id_session'=>'integer ',
+            'nom_session'=>' string | max:20 ',
+            'type_session'=>' string | max:20 '
+            
         ];
     }
-
     public function failedValidation(Validator $validator){
         throw new HttpResponseException(response()->json([
             'success'=>false,
@@ -40,10 +42,11 @@ class PVRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_tablette.required'=>'le id de tablette est obligatoire',
-            'id_tablette.integer'=>'le id de tablette doit etre entier',
-            'id_tablette.exists:tablettes,id_tablette'=>'le id de tablette doit etre existe',
-
+            'id_session.integer'=>'le id du session doit etre entier',
+            'nom_session.string'=>"le nom de la session  doit être un string",
+            'nom_session.max:20'=>"le nom ne doit pas depasser 20 characteres",
+            'type_session.string'=>"le type de la session  doit être un string",
+            'type_session.max:20'=>"le type ne doit pas depasser 20 characteres",
         ];
     }
 }
