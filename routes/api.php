@@ -10,7 +10,7 @@ use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PVController;
 use App\Http\Controllers\RapportController;
-use App\Models\departement;
+use App\Http\Controllers\signerController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdministrateurController;
 use App\Http\Controllers\controlercontroller;
@@ -74,7 +74,50 @@ Route::post('departement/create',[departementController::class,'store']);
 Route::put('departement/edit/{departement}',[departementController::class,'update']);
 Route::delete('departement/{departement}',[departementController::class,'delete']);
  
+Route::get('administrateur',[AdministrateurController::class,'index']);
+Route::post('administrateur/create',[AdministrateurController::class,'store']);
+Route::put('administateur/edit/{administrateur}',[AdministrateurController::class,'update']);
+Route::delete('administrateur/{administrateur}',[AdministrateurController::class,'delete']);
 
+Route::get('tablette',[tabletteController::class,'index']);
+Route::post('tablette/create',[tabletteController::class,'store']);
+Route::put('tablette/edit/{administrateur}',[tabletteController::class,'update']);
+Route::delete('tablette/{administrateur}',[tabletteController::class,'delete']) ;
+
+Route::get('gerer',[gererController::class,'index']);
+Route::post('gerer/create',[gererController::class,'store']);
+Route::put('gerer/edit/{administrateur}',[gererController::class,'update']);
+Route::delete('gerer/{administrateur}',[gererController::class,'delete']);
+
+
+Route::get('controler',[controlercontroller::class,'index']);
+Route::post('controler/create',[controlerController::class,'store']);
+Route::put('controler/edit/{controler}',[controlerController::class,'update']);
+Route::delete('controler/{controler}',[controlerController::class,'delete']);
+
+Route::get('affectation',[affectationController::class,'index']);
+
+Route::post('affectation/create',[affectationController::class,'store']);
+Route::put('affectation/edit/{affectation}',[affectationController::class,'update']);
+Route::delete('affectation/{affectation}',[affectationController::class,'delete']);
+ 
+Route::get('local',[localController::class,'index']);
+
+Route::post('local/create',[localController::class,'store']);
+Route::put('local/edit/{local}',[localController::class,'update']);
+Route::delete('local/{local}',[localController::class,'delete']);
+
+Route::get('examen',[examenController::class,'index']);
+
+Route::post('examen/create',[examenController::class,'store']);
+Route::put('examen/edit/{examen}',[examenController::class,'update']);
+Route::delete('examen/{examen}',[examenController::class,'delete']);
+
+Route::get('signer',[examenController::class,'index']);
+
+Route::post('signer/create',[signerController::class,'store']);
+Route::put('signer/edit/{signer}',[signerController::class,'update']);
+Route::delete('signer/{signer}',[signerController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
