@@ -7,8 +7,14 @@ use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PVController;
 use App\Http\Controllers\RapportController;
+use App\Models\Administrateur;
 use App\Models\departement;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AdministrateurController;
+use App\Http\Controllers\tabletteController;
+use App\Http\Controllers\sessionController;
+use App\Http\Controllers\ControllerController;
+use App\Http\Controllers\gererController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,8 +71,27 @@ Route::post('departement/create',[departementController::class,'store']);
 Route::put('departement/edit/{departement}',[departementController::class,'update']);
 Route::delete('departement/{departement}',[departementController::class,'delete']);
  
+Route::get('administrateur',[AdministrateurController::class,'index']);
+Route::post('administrateur/create',[AdministrateurController::class,'store']);
+Route::put('administateur/edit/{administrateur}',[AdministrateurController::class,'update']);
+Route::delete('administrateur/{administrateur}',[AdministrateurController::class,'delete']);
+
+Route::get('tablette',[tabletteController::class,'index']);
+Route::post('tablette/create',[tabletteController::class,'store']);
+Route::put('tablette/edit/{administrateur}',[tabletteController::class,'update']);
+Route::delete('tablette/{administrateur}',[tabletteController::class,'delete'])
+
+Route::get('gerer',[gererController::class,'index']);
+Route::post('gerer/create',[gererController::class,'store']);
+Route::put('gerer/edit/{administrateur}',[gererController::class,'update']);
+Route::delete('gerer/{administrateur}',[gererController::class,'delete']);
 
 
+Route::get('controller',[gererController::class,'index']);
+Route::post('controller/create',[controllerController::class,'store']);
+Route::put('controller/edit/{controller}',[controllerController::class,'update']);
+Route::delete('controller/{controller}',[gcontrollerController::class,'delete']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
     return $request->user();
 });
