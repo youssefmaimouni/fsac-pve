@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\etudiantController;
+use App\Http\Controllers\examenController;
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PVController;
 use App\Http\Controllers\RapportController;
@@ -47,7 +49,17 @@ Route::post('rapport/create',[RapportController::class,'store']);
 Route::put('rapport/edit/{rapport}',[RapportController::class,'update']);
 Route::delete('rapport/{rapport}',[RapportController::class,'delete']);
  
+Route::get('local',[localController::class,'index']);
 
+Route::post('local/create',[localController::class,'store']);
+Route::put('local/edit/{local}',[localController::class,'update']);
+Route::delete('local/{local}',[localController::class,'delete']);
+
+Route::get('examen',[examenController::class,'index']);
+
+Route::post('examen/create',[examenController::class,'store']);
+Route::put('examen/edit/{examen}',[examenController::class,'update']);
+Route::delete('examen/{examen}',[examenController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
