@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class examen extends Model
 {
+    
     protected $primaryKey = 'id_examen';
     protected $fillable =[
         'id_session',

@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('passers', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_examen');
-            $table->foreign('id_examen')->references('id_examen')->on('examens')->onDelete('cascade');
+        Schema::table('etudiants' ,function (Blueprint $table) {
+            $table->unsignedBigInteger('id_rapport')->nullable();
+            $table->foreign('id_rapport')->references('id_rapport')->on('rapports')->nullOnDelete();
+        });
+    
+        Schema::table('rapports' ,function (Blueprint $table) {
             $table->unsignedBigInteger('codeApogee');
             $table->foreign('codeApogee')->references('codeApogee')->on('etudiants')->onDelete('cascade');
-            $table->unsignedBigInteger('id_local');
-            $table->foreign('id_local')->references('id_local')->on('locals')->onDelete('cascade');
-            $table->bigInteger('num exam');
-            $table->timestamps();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('passers');
+        //
     }
 };

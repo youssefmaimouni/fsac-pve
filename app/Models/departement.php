@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class departement extends Model
 {
-    use HasFactory;
+   
     protected $primaryKey = 'id_departement';
 
     protected $fillable =[

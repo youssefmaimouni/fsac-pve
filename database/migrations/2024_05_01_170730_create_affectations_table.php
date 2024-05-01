@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('affectations', function (Blueprint $table) {
             $table->bigIncrements('id_affectation');
             $table->unsignedBigInteger('id_tablette');
-            $table->foreign('id_tablette')->references('id_tablette')->on('tablette')->onDelete('cascade');
+            $table->foreign('id_tablette')->references('id_tablette')->on('tablettes')->onDelete('cascade');
             $table->unsignedBigInteger('id_local');
-            $table->foreign('id_local')->references('id_local')->on('local')->onDelete('cascade');
+            $table->foreign('id_local')->references('id_local')->on('locals')->onDelete('cascade');
             $table->date('date_affectation');
             $table->char('demi_journee_affectation',3);
             $table->timestamps();

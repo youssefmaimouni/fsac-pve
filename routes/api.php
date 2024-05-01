@@ -15,8 +15,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AdministrateurController;
 use App\Http\Controllers\controlercontroller;
 use App\Http\Controllers\tabletteController;
-use App\Http\Controllers\sessionController;
-use App\Http\Controllers\ControllerController;
 use App\Http\Controllers\gererController;
 use Illuminate\Support\Facades\Route;
 
