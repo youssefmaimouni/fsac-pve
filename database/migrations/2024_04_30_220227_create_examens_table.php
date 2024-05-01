@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('examens', function (Blueprint $table) {
             $table->bigIncrements('id_examen');
-            $table->unsignedBigInteger('id_session')->default(1);
+            $table->unsignedBigInteger('id_session');
             $table->foreign('id_session')->references('id_session')->on('sessions')->onDelete('cascade');
-            $table->unsignedBigInteger('code_module')->default(1);
+            $table->unsignedBigInteger('code_module');
             $table->foreign('code_module')->references('code_module')->on('modules')->onDelete('cascade');
-            $table->unsignedBigInteger('id_pv')->default(1);
+            $table->unsignedBigInteger('id_pv');
             $table->foreign('id_pv')->references('id_pv')->on('pvs')->onDelete('cascade');
             $table->date( 'date_examen') ;
             $table->string('demi_journee_examen',10);
