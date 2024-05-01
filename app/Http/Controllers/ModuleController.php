@@ -26,7 +26,7 @@ class ModuleController extends Controller
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'le post a été ajouté',
+            'status_message'=>'le module a été ajouté',
             'data'=>$module
         ]);
         
@@ -64,13 +64,13 @@ class ModuleController extends Controller
 
             return response()->json([
                 'status_code'=>200,
-                'status_message'=>'la module  a été supprimer',
+                'status_message'=>'le module  a été supprimer',
                 'data'=>$module
             ]);
             
             
-         }catch(Exception $exeption){
-            return response()->json($exeption);
+         }catch(Exception $exception){
+            return response()->json($exception);
         }
     }
 }

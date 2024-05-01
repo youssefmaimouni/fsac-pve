@@ -44,7 +44,7 @@ class ExamenRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_session.required'=>"le code apogee de l'id_session doit etre fourni",
+            'id_session.required'=>" l'id_session doit etre fourni",
             'id_session.exists:sessions,id_session' =>"le id session doit etre existe",
             'id_session.integer' =>"le id session doit être un  nombre entier",
             'id_pv.required'=>'le id de pv doit etre fourni',

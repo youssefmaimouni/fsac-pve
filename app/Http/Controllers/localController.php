@@ -47,7 +47,7 @@ class localController extends Controller
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'la local  a été modifié',
+            'status_message'=>'le local  a été modifié',
             'data'=>$local
         ]);
 
@@ -63,7 +63,7 @@ class localController extends Controller
 
             return response()->json([
                 'status_code'=>200,
-                'status_message'=>'la local  a été supprimer',
+                'status_message'=>'le local  a été supprimer',
                 'data'=>$local
             ]);
             
