@@ -16,7 +16,7 @@ class sessionController extends Controller
         try{
         $session = new session();
         $session->nom_session=$request->nom_session;
-       
+        $session->type_session=$request->type_session;
         $session->save();
 
 
@@ -38,7 +38,6 @@ class sessionController extends Controller
 
         try{
         
-        $session->id_session=$request->id_session;
         $session->nom_session=$request->nom_session;
         $session->type_session=$request->type_session;
         $session->save();
