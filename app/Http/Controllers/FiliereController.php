@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class FiliereController extends Controller
 {
     public function index(){
-        return 'Liste des article';
+        return 'Liste des filiéres';
     }
     public function store(CreateFiliereRequest $request){
 
@@ -24,12 +24,12 @@ class FiliereController extends Controller
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'le post a été ajouté',
+            'status_message'=>'la filiére a été ajouté',
             'data'=>$filiere
         ]);
         
-        }catch(Exception $exeption){
-            return response()->json($exeption);
+        }catch(Exception $exception){
+            return response()->json($exception);
         }
         
     }
