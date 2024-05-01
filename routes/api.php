@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Controllers\etudiantController;
-<<<<<<< HEAD
 use App\Http\Controllers\examenController;
-=======
 use App\Http\Controllers\surveillantController;
 use App\Http\Controllers\departementController;
->>>>>>> e4e802f22d65e52bb3f3343288e627ef79ea7399
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
