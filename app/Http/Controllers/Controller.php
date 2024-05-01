@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\passerRequest;
-use App\Models\passer;
+use App\Http\Requests\controllerRequest;
+use App\Models\Controller;
 use Exception;
 use Illuminate\Http\Request;
 
-class passerController extends Controller
+class ControllerrController extends Controller
 {
     public function index(){
         return 'Liste des tablettes controlees';
@@ -27,8 +27,8 @@ class passerController extends Controller
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'passer a été ajouté',
-            'data'=>$passer
+            'status_message'=>'Controller a été ajouté',
+            'data'=>$Controller
         ]);
         
         }catch(Exception $exeption){
@@ -50,7 +50,7 @@ class passerController extends Controller
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'passer  a été modifié',
+            'status_message'=>'Controller a été modifié',
             'data'=>$passer
         ]);
 

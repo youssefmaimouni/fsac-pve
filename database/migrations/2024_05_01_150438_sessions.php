@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->unsignedBigInteger('id_session');
-            
             $table->string('nom_session',20);
             $table->string('type_session',20);
             $table->timestamps();
