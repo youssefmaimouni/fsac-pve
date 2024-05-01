@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\etudiantController;
 use App\Http\Controllers\surveillantController;
+use App\Http\Controllers\affectationController;
 use App\Http\Controllers\departementController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\ModuleController;
@@ -64,6 +65,13 @@ Route::get('departement',[departementController::class,'index']);
 Route::post('departement/create',[departementController::class,'store']);
 Route::put('departement/edit/{departement}',[departementController::class,'update']);
 Route::delete('departement/{departement}',[departementController::class,'delete']);
+
+
+Route::get('affectation',[affectationController::class,'index']);
+
+Route::post('affectation/create',[affectationController::class,'store']);
+Route::put('affectation/edit/{affectation}',[affectationController::class,'update']);
+Route::delete('affectation/{affectation}',[affectationController::class,'delete']);
  
 
 
