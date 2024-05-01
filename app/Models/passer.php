@@ -21,7 +21,7 @@ class passer extends Model
     {
         return $this->belongsTo(examen::class, 'id_examen');
     }
-    public function codeApogee()
+    public function etudiant()
     {
         return $this->belongsTo(etudiant::class, 'codeApogee');
     }
