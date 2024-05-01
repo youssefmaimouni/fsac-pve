@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class gerer2 extends Model
+class controler extends Model
 {
     use HasFactory;
         protected $primaryKey = [
