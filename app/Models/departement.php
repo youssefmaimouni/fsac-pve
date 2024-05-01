@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class local extends Model
+class departement extends Model
 {
-    protected $primaryKey = 'id_local';
+   
+    protected $primaryKey = 'id_departement';
+
     protected $fillable =[
-        'num_local',
-        'type_local',
+        'nom_departement',
+        'code_departement',
     ];
-    
+
 }

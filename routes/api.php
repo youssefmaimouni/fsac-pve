@@ -1,12 +1,18 @@
 <?php
 
 use App\Http\Controllers\etudiantController;
+<<<<<<< HEAD
 use App\Http\Controllers\examenController;
+=======
+use App\Http\Controllers\surveillantController;
+use App\Http\Controllers\departementController;
+>>>>>>> e4e802f22d65e52bb3f3343288e627ef79ea7399
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PVController;
 use App\Http\Controllers\RapportController;
+use App\Models\departement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +47,13 @@ Route::put('etudiant/edit/{etudiant}',[etudiantController::class,'update']);
 Route::delete('etudiant/{etudiant}',[etudiantController::class,'delete']);
 
 
+Route::get('surveillant',[surveillantController::class,'index']);
+
+Route::post('surveillant/create',[surveillantController::class,'store']);
+Route::put('surveillant/edit/{surveillant}',[surveillantController::class,'update']);
+Route::delete('surveillant/{surveillant}',[surveillantController::class,'delete']);
+
+
 Route::post('pv/create',[PVController::class,'store']);
 Route::put('pv/edit/{pv}',[PVController::class,'update']);
 Route::delete('pv/{pv}',[PVController::class,'delete']);
@@ -48,6 +61,14 @@ Route::delete('pv/{pv}',[PVController::class,'delete']);
 Route::post('rapport/create',[RapportController::class,'store']);
 Route::put('rapport/edit/{rapport}',[RapportController::class,'update']);
 Route::delete('rapport/{rapport}',[RapportController::class,'delete']);
+
+
+
+Route::get('departement',[departementController::class,'index']);
+
+Route::post('departement/create',[departementController::class,'store']);
+Route::put('departement/edit/{departement}',[departementController::class,'update']);
+Route::delete('departement/{departement}',[departementController::class,'delete']);
  
 Route::get('local',[localController::class,'index']);
 

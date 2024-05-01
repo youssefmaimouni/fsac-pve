@@ -24,7 +24,12 @@ class FiliereController extends Controller
 
         return response()->json([
             'status_code'=>201,
+<<<<<<< HEAD
             'status_message'=>'le post a été ajouté',
+=======
+            'status_message'=>'la filiére a été ajouté',
+            'status_message'=>'la filiere a été ajouté',
+>>>>>>> e4e802f22d65e52bb3f3343288e627ef79ea7399
             'data'=>$filiere
         ]);
         
