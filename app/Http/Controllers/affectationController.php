@@ -17,7 +17,6 @@ class affectationController extends Controller
 
         try{
         $affectation = new affectation();
-        $affectation->id_affectation=$request->id_affectation;
         $affectation->id_tablette=$request->id_tablette;
         $affectation->id_local=$request->id_local;
         $affectation->date_affectation=$request->date_affectation;
@@ -41,7 +40,6 @@ class affectationController extends Controller
 
         try{
         
-            $affectation->id_affectation=$request->id_affectation;
             $affectation->id_tablette=$request->id_tablette;
             $affectation->id_local=$request->id_local;
             $affectation->date_affectation=$request->date_affectation;

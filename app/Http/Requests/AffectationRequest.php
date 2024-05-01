@@ -25,7 +25,6 @@ class AffectationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_affectation'=>'required | unique|integer',
             'id_tablette'=>'required | integer | exists:tablettes,id_tablette',
             'id_local'=>'required | integer | exists:locals,id_local',
             'date_affectation'=>'required | date ',
@@ -44,8 +43,10 @@ class AffectationRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_affectation.required'=>"l\'affectation doit etre fourni",
-            'id_affectation.unique' =>"l\'affectation doit être unique",
+            'id_tablette.required'=>"le id du tablette doit être fourni",
+            'id_local.required'=>"le id du local doit être fourni",
+            'id_tablette.integer'=>"le id du tablette doit être un entier",
+            'id_local.integer'=>"le id du local doit être un entier",
             'id_local.exists:locals,id_local'=>'le id du local doit exister',
             'id_tablette.exists:tablettes,id_tablette'=>'le id du tablette doit exister',
             'date_affectation.required'=>"la date d\'affectation doit être fourni",
