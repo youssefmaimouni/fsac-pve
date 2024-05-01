@@ -10,8 +10,14 @@ use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PVController;
 use App\Http\Controllers\RapportController;
-use App\Http\Controllers\signerController;
+use App\Models\departement;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AdministrateurController;
+use App\Http\Controllers\controlercontroller;
+use App\Http\Controllers\tabletteController;
+use App\Http\Controllers\sessionController;
+use App\Http\Controllers\ControllerController;
+use App\Http\Controllers\gererController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,32 +73,10 @@ Route::get('departement',[departementController::class,'index']);
 Route::post('departement/create',[departementController::class,'store']);
 Route::put('departement/edit/{departement}',[departementController::class,'update']);
 Route::delete('departement/{departement}',[departementController::class,'delete']);
-
-
-Route::get('affectation',[affectationController::class,'index']);
-
-Route::post('affectation/create',[affectationController::class,'store']);
-Route::put('affectation/edit/{affectation}',[affectationController::class,'update']);
-Route::delete('affectation/{affectation}',[affectationController::class,'delete']);
  
-Route::get('local',[localController::class,'index']);
 
-Route::post('local/create',[localController::class,'store']);
-Route::put('local/edit/{local}',[localController::class,'update']);
-Route::delete('local/{local}',[localController::class,'delete']);
-
-Route::get('examen',[examenController::class,'index']);
-
-Route::post('examen/create',[examenController::class,'store']);
-Route::put('examen/edit/{examen}',[examenController::class,'update']);
-Route::delete('examen/{examen}',[examenController::class,'delete']);
-
-Route::get('signer',[examenController::class,'index']);
-
-Route::post('signer/create',[signerController::class,'store']);
-Route::put('signer/edit/{signer}',[signerController::class,'update']);
-Route::delete('signer/{signer}',[signerController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
     return $request->user();
 });

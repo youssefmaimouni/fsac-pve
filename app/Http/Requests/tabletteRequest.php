@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Contracts\Validation\Validator ;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class sessionRequest extends FormRequest
+class tabletteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class sessionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_session'=>'integer ',
-            'nom_session'=>' string | max:20 ',
-            'type_session'=>' string | max:20 '
+            'id_tablette'=>'integer ',
+            'adresse_mac'=>' string | max:12 ',
             
         ];
     }
@@ -42,11 +41,9 @@ class sessionRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_session.integer'=>'le id du session doit etre entier',
-            'nom_session.string'=>"le nom de la session  doit être un string",
-            'nom_session.max:20'=>"le nom ne doit pas depasser 20 characteres",
-            'type_session.string'=>"le type de la session  doit être un string",
-            'type_session.max:20'=>"le type ne doit pas depasser 20 characteres",
+            'id_tablette.integer'=>'le id de tablette doit etre entier',
+            'adresse_mac.string'=>"ladresse  doit être un string",
+            'adresse_mac.max:12'=>"ladresse ne doit pas depasser 12 characteres",
         ];
     }
 }

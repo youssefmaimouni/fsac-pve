@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class sessionRequest extends FormRequest
+class controlerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class sessionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_session'=>'integer ',
-            'nom_session'=>' string | max:20 ',
-            'type_session'=>' string | max:20 '
+            'id_administrateur'=>'required | integer | exists:administrateurs,id_administrateur',
+           
+            'id_tablette'=>'required | integer | exists:sessions,id_session',
             
         ];
     }
@@ -42,11 +42,18 @@ class sessionRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_session.integer'=>'le id du session doit etre entier',
-            'nom_session.string'=>"le nom de la session  doit être un string",
-            'nom_session.max:20'=>"le nom ne doit pas depasser 20 characteres",
-            'type_session.string'=>"le type de la session  doit être un string",
-            'type_session.max:20'=>"le type ne doit pas depasser 20 characteres",
+            'id_administrateur.required'=>" l'id de ladministrateur doit etre fourni",
+            'id_administrateur.exists:examens,id_administrateurs' =>"le id de ladministrateur doit etre existe",
+            'id_administrateur.integer' =>"l id de ladministrateur doit être un  nombre entier",
+        
+            'id_tablette.required'=>"l'id de la tablette doit etre fourni",
+            'id_tablette.integer'=>"l'id la tablette doit etre un entier",
+            'id_tablette.exists:tablettes,id_tablettes'=>"l 'id la tablette doit etre existe",
+            
+
+
         ];
     }
 }
+
+
