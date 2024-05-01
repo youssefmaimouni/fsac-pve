@@ -15,11 +15,11 @@ return new class extends Migration
             $table->bigIncrements('id_examen');
             $table->unsignedBigInteger('id_session')->default(1);
             $table->foreign('id_session')->references('id_session')->on('sessions')->onDelete('cascade');
-            $table->unsignedBigInteger('id_module')->default(1);
-            $table->foreign('id_module')->references('id_module')->on('modules')->onDelete('cascade');
+            $table->unsignedBigInteger('code_module')->default(1);
+            $table->foreign('code_module')->references('code_module')->on('modules')->onDelete('cascade');
             $table->unsignedBigInteger('id_pv')->default(1);
             $table->foreign('id_pv')->references('id_pv')->on('pvs')->onDelete('cascade');
-            $table->date( 'dte_examen') ;
+            $table->date( 'date_examen') ;
             $table->string('demi_journee_examen',10);
             $table->string('seance_examen',10);
             $table->timestamps();

@@ -25,7 +25,7 @@ class ExamenRequest extends FormRequest
     {
         return [
             'id_session'=>'required | integer | exists:sessions,id_session',
-            'code_module'=>'required | integer | exists:modules,id_module',
+            'code_module'=>'required | integer | exists:modules,code_module',
             'id_pv'=>'required | integer | exists:pvs,id_pv',
             'date_examen'=>'required | date',
             'demi_journee_examen'=>'required | string',
