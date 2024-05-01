@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator ;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
-class gerer2 extends FormRequest
+class tabletteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +24,8 @@ class gerer2 extends FormRequest
     public function rules(): array
     {
         return [
-            'id_administrateur'=>'required | integer | exists:administrateurs,id_administrateur',
-           
-            'id_tablette'=>'required | integer | exists:sessions,id_session',
+            'id_tablette'=>'integer ',
+            'adresse_mac'=>' string | max:12 ',
             
         ];
     }
@@ -40,18 +41,9 @@ class gerer2 extends FormRequest
     public function messages()
     {
         return[
-            'id_administrateur.required'=>" l'id de ladministrateur doit etre fourni",
-            'id_administrateur.exists:examens,id_administrateurs' =>"le id de ladministrateur doit etre existe",
-            'id_administrateur.integer' =>"l id de ladministrateur doit être un  nombre entier",
-        
-            'id_tablette.required'=>"l'id de la tablette doit etre fourni",
-            'id_tablette.integer'=>"l'id la tablette doit etre un entier",
-            'id_tablette.exists:tablettes,id_tablettes'=>"l 'id la tablette doit etre existe",
-            
-
-
+            'id_tablette.integer'=>'le id de tablette doit etre entier',
+            'adresse_mac.string'=>"ladresse  doit être un string",
+            'adresse_mac.max:12'=>"ladresse ne doit pas depasser 12 characteres",
         ];
     }
 }
-}
-

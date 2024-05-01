@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+
+use App\Http\Requests\gererRequest;
+use App\Models\gerer;
+use App\Models\gerer1;
+use Exception;
 use Illuminate\Http\Request;
 
-class gerercontroller extends Controller
+
+class gererController extends Controller
 {
     
         public function index(){
@@ -13,19 +20,18 @@ class gerercontroller extends Controller
         public function store(gererRequest $request){
     
             try{
-            $gerer1 = new gerer();
-            $gerer1->id_administrateur=$request->id_administrateur;
-            $gerer1->id_session=$request->id_session;
+            $gerer = new gerer();
+            $gerer->id_administrateur=$request->id_administrateur;
+            $gerer->id_session=$request->id_session;
             
     
-    
-            $gerer1->save();
+            $gerer->save();
     
     
             return response()->json([
                 'status_code'=>201,
                 'status_message'=>'la gestion est ajoutee',
-                'data'=>$gerer1
+                'data'=>$gerer
             ]);
     
             }catch(Exception $exeption){
@@ -34,27 +40,20 @@ class gerercontroller extends Controller
     
         }
     
-        public function update(gererRequest $request,gerer $gerer) {
-    
-    
-            try{
-    
-            $gerer->id_administrateur=$request->id_administrateur;
-           
-            $gerer->id_sessions=$request->id_sessions;
-            
-    
-            $gerer->save();
-    
-            return response()->json([
-                'status_code'=>201,
-                'status_message'=>'gerer est modifie',
-                'data'=>$gerer1
-            ]);
-    
-            }catch(Exception $exeption){
-                return response()->json($exeption);
+        public function update(gererRequest $request, gerer $gerer) {
+            try {
+                $gerer->id_administrateur = $request->id_administrateur;
+                $gerer->id_session = $request->id_session;
+                $gerer->save();
+        
+                return response()->json([
+                    'status_code' => 201,
+                    'status_message' => 'La gestion a été modifiée',
+                    'data' => $gerer
+                ]);
+        
+            } catch(Exception $exception) {
+                return response()->json($exception);
             }
-    
         }
 }

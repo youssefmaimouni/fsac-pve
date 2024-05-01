@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Http\Requests\administrateur;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class gerer1 extends Model
+class gerer extends Model
 {
 
         use HasFactory;

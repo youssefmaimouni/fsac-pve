@@ -11,6 +11,7 @@ use App\Models\Administrateur;
 use App\Models\departement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdministrateurController;
+use App\Http\Controllers\controlercontroller;
 use App\Http\Controllers\tabletteController;
 use App\Http\Controllers\sessionController;
 use App\Http\Controllers\ControllerController;
@@ -79,7 +80,7 @@ Route::delete('administrateur/{administrateur}',[AdministrateurController::class
 Route::get('tablette',[tabletteController::class,'index']);
 Route::post('tablette/create',[tabletteController::class,'store']);
 Route::put('tablette/edit/{administrateur}',[tabletteController::class,'update']);
-Route::delete('tablette/{administrateur}',[tabletteController::class,'delete'])
+Route::delete('tablette/{administrateur}',[tabletteController::class,'delete']) ;
 
 Route::get('gerer',[gererController::class,'index']);
 Route::post('gerer/create',[gererController::class,'store']);
@@ -87,10 +88,11 @@ Route::put('gerer/edit/{administrateur}',[gererController::class,'update']);
 Route::delete('gerer/{administrateur}',[gererController::class,'delete']);
 
 
-Route::get('controller',[gererController::class,'index']);
-Route::post('controller/create',[controllerController::class,'store']);
-Route::put('controller/edit/{controller}',[controllerController::class,'update']);
-Route::delete('controller/{controller}',[gcontrollerController::class,'delete']);
+Route::get('controler',[controlercontroller::class,'index']);
+Route::post('controler/create',[controlerController::class,'store']);
+Route::put('controler/edit/{controler}',[controlerController::class,'update']);
+Route::delete('controler/{controler}',[controlerController::class,'delete']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     return $request->user();

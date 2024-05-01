@@ -2,16 +2,18 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
-class administrateur extends FormRequest
+class administrateurRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -35,14 +37,14 @@ class administrateur extends FormRequest
             'message'=> 'Erreur de validation',
             'errorList'=>$validator->errors(),
 
-        ]))
+        ])) ;
 }
 
 
 public function messages()
     {
         return[
-            'mail.required '=>'mail non fourni'
+            'mail.required '=>'mail non fourni',
             'mail.max:40'=>'votre mail ne doit pas depasser 40 characters',
             'nom.required '=>'le nom doit etre fourni',
             'nom.max:20'=>'votre nom ne doit pas depasser 20 characters',

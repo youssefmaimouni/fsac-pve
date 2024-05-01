@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class controler extends Model
 {
-    use HasFactory;
+    
         protected $primaryKey = [
-           ' id_administrateur',
-           
-           'id_tablette'
+           ' id_administrateur', 'id_tablette' 
         ];
         
         public function administrateur()

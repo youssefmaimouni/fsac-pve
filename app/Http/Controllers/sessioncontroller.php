@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\sessionRequest;
 use App\Models\session;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class sessionController extends Controller
 {
     public function index(){
         return 'Liste des sessions';
     }
-    public function store(CreateSessionRequest $request){
-
+    public function store(sessionRequest $request){
         try{
         $session = new session();
         $session->nom_session=$request->nom_session;
@@ -31,7 +32,7 @@ class sessionController extends Controller
         
     }
 
-    public function update(EditSessionRequest $request,session $session) {
+    public function update(sessionRequest $request,session $session) {
         
         
 
@@ -54,7 +55,7 @@ class sessionController extends Controller
        
     }
 
-    public function delete(filiere $filiere) {
+    public function delete(session $session) {
          try{
                 $session->delete();
 

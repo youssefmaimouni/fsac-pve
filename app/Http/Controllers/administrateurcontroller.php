@@ -1,16 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Administrateur;
+use App\Http\Requests\administrateurRequest;
+use App\Models\administrateur;
+use Exception;
 use Illuminate\Http\Request;
 
-class AdministrateurController extends Controller
+class administrateurController extends Controller
 {
     public function index(){
         return 'Liste des Administrateurs';
     }
-    public function store(CreateAdministrateurRequest $request){
+    public function store(administrateurRequest $request){
 
         try{
         $administrateur = new Administrateur();
@@ -41,14 +42,15 @@ class AdministrateurController extends Controller
             $administrateur->mot_de_passe = $request->mot_de_passe;
         
     
-            $administrateur->email = $request->email;
+            $administrateur->mail = $request->mail;
+            $administrateur->save();
         }
 
     
-        $administrateur->save();
+        
 
 
-    public function delete($administrateur $administrateur) {
+    public function delete(administrateur  $administrateur) {
          try{
                 $administrateur->delete();
 
@@ -65,4 +67,3 @@ class AdministrateurController extends Controller
     }
 }
 
-}

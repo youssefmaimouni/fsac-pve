@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\tabletteRequest;
+use App\Models\tablette;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as RoutingController;
 
-class tabletteController extends Controller
+class tabletteController extends RoutingController
 {
     public function index(){
         return 'Liste des tablettes';
@@ -15,12 +20,12 @@ class tabletteController extends Controller
         
     }
 
-    public function update(EditTabletteRequest $request, $tablette) {
+    public function update(tabletteRequest $request,tablette $tablette) {
         
       // ask le prof;
     }
 
-    public function delete(filiere $filiere) {
+    public function delete(tablette $tablette) {
          try{
                 $tablette->delete();
 
@@ -31,9 +36,9 @@ class tabletteController extends Controller
             ]);
             
             
-         }catch(Exception $exeption){
-            return response()->json($exeption);
+         }catch(Exception $exception){
+            return response()->json($exception);
         }
     }
 }  
-}
+
