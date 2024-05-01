@@ -10,8 +10,16 @@ use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PVController;
 use App\Http\Controllers\RapportController;
-use App\Http\Controllers\signerController;
+use App\Models\Administrateur;
+use App\Models\departement;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AdministrateurController;
+use App\Http\Controllers\controlercontroller;
+use App\Http\Controllers\tabletteController;
+use App\Http\Controllers\sessionController;
+use App\Http\Controllers\ControllerController;
+use App\Http\Controllers\gererController;
+use App\Http\Controllers\signerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,7 +75,27 @@ Route::get('departement',[departementController::class,'index']);
 Route::post('departement/create',[departementController::class,'store']);
 Route::put('departement/edit/{departement}',[departementController::class,'update']);
 Route::delete('departement/{departement}',[departementController::class,'delete']);
+ 
+Route::get('administrateur',[AdministrateurController::class,'index']);
+Route::post('administrateur/create',[AdministrateurController::class,'store']);
+Route::put('administateur/edit/{administrateur}',[AdministrateurController::class,'update']);
+Route::delete('administrateur/{administrateur}',[AdministrateurController::class,'delete']);
 
+Route::get('tablette',[tabletteController::class,'index']);
+Route::post('tablette/create',[tabletteController::class,'store']);
+Route::put('tablette/edit/{administrateur}',[tabletteController::class,'update']);
+Route::delete('tablette/{administrateur}',[tabletteController::class,'delete']) ;
+
+Route::get('gerer',[gererController::class,'index']);
+Route::post('gerer/create',[gererController::class,'store']);
+Route::put('gerer/edit/{administrateur}',[gererController::class,'update']);
+Route::delete('gerer/{administrateur}',[gererController::class,'delete']);
+
+
+Route::get('controler',[controlercontroller::class,'index']);
+Route::post('controler/create',[controlerController::class,'store']);
+Route::put('controler/edit/{controler}',[controlerController::class,'update']);
+Route::delete('controler/{controler}',[controlerController::class,'delete']);
 
 Route::get('affectation',[affectationController::class,'index']);
 
@@ -94,5 +122,6 @@ Route::put('signer/edit/{signer}',[signerController::class,'update']);
 Route::delete('signer/{signer}',[signerController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
     return $request->user();
 });
