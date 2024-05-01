@@ -9,7 +9,6 @@ use App\Http\Controllers\localController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PVController;
 use App\Http\Controllers\RapportController;
-use App\Models\departement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

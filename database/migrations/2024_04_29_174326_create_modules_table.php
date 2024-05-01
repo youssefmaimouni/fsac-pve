@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('modules', function (Blueprint $table) {
             $table->bigIncrements('code_module');
             $table->string('intitule_module', 50);
-            $table->unsignedBigInteger('id_filiere')->default(1);
+            $table->unsignedBigInteger('id_filiere');
             $table->foreign('id_filiere')->references('id_filiere')->on('filieres')->onDelete('cascade');
             $table->timestamps();
         });
