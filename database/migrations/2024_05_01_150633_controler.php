@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreign('id_administrateur')->references('id_administrateur')->on('administrateurs')->onDelete('cascade');
             $table->unsignedBigInteger('id_tablette');
             $table->foreign('id_tablette')->references('id_tablette')->on('tablettes')->onDelete('cascade');
+            $table->primary(['id_administrateur', 'id_tablette']);
             $table->timestamps();
         });
     }
