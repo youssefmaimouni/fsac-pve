@@ -17,10 +17,6 @@ class sessionController extends Controller
         $session = new session();
         $session->nom_session=$request->nom_session;
         $session->type_session=$request->type_session;
-<<<<<<< HEAD
-       
-=======
->>>>>>> ca9396872d51a711314a61de43bf9fd1cb77c48c
         $session->save();
 
 
