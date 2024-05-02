@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('codeApogee');
             $table->foreign('codeApogee')->references('codeApogee')->on('etudiants')->onDelete('cascade');
             $table->bigInteger('num exam');
+            $table->primary(['id_examen','id_local','codeApogee']);
             $table->timestamps();
         });
     }

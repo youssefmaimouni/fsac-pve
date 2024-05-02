@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreign('id_affectation')->references('id_affectation')->on('affectations')->onDelete('cascade');
             $table->unsignedBigInteger('id_surveillant');
             $table->foreign('id_surveillant')->references('id_surveillant')->on('surveillants')->onDelete('cascade');
+            $table->primary(['id_affectation', 'id_surveillant']);
             $table->timestamps();
         });
     }
