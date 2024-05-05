@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\etudiantController;
-use App\Http\Controllers\associerController;
 use App\Http\Controllers\examenController;
 use App\Http\Controllers\surveillantController;
 use App\Http\Controllers\affectationController;
