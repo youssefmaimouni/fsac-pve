@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('passers', function (Blueprint $table) {
+            $table->primary(['id_examen','id_local','codeApogee']);
+
             $table->unsignedBigInteger('id_examen');
             $table->foreign('id_examen')->references('id_examen')->on('examens')->onDelete('cascade');
             $table->unsignedBigInteger('id_local');
             $table->foreign('id_local')->references('id_local')->on('locals')->onDelete('cascade');
             $table->unsignedBigInteger('codeApogee');
             $table->foreign('codeApogee')->references('codeApogee')->on('etudiants')->onDelete('cascade');
-            $table->bigInteger('num exam');
-            $table->primary(['id_examen','id_local','codeApogee']);
+            
+            $table->bigInteger('num_exam');
+            
             $table->timestamps();
         });
     }
