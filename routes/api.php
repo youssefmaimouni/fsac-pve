@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\etudiantController;
+use App\Http\Controllers\associerController;
 use App\Http\Controllers\examenController;
 use App\Http\Controllers\surveillantController;
 use App\Http\Controllers\affectationController;
@@ -110,6 +111,13 @@ Route::get('local',[localController::class,'index']);
 Route::post('local/create',[localController::class,'store']);
 Route::put('local/edit/{local}',[localController::class,'update']);
 Route::delete('local/{local}',[localController::class,'delete']);
+
+
+Route::get('associer',[associerController::class,'index']);
+
+Route::post('associer/create',[associerController::class,'store']);
+Route::put('associer/edit/{associer}',[associerController::class,'update']);
+Route::delete('associer/{associer}',[associerController::class,'delete']);
 
 Route::get('examen',[examenController::class,'index']);
 
