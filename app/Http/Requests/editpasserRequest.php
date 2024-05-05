@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AssocierRequest extends FormRequest
+class editpasserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class AssocierRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_surveillant'=>'required | integer | exists:surveillants,id_surveillant',
-            'id_affectation'=>'required | integer | exists:affectations,id_affectation',
+            'num_exam'=>'required | integer',
         ];
     }
     public function failedValidation(Validator $validator){
@@ -40,12 +39,8 @@ class AssocierRequest extends FormRequest
     public function messages()
     {
         return[
-            'id_surveillant.required'=>" l'id_surveillant doit etre fourni",
-            'id_surveillant.exists:surveillants,id_surveillant' =>"le id surveillant doit etre existe",
-            'id_surveillant.integer' =>"le id surveillant doit être un  nombre entier",
-            'id_affectation.required'=>'le code de affectation doit etre fourni',
-            'id_affectation.integer'=>'le code du affectation doit etre entier',
-            'id_affectation.exists:locals,id_local'=>'le code du affectation doit exister',
-        ];
+            'num_exam.required'=>"le num_exam doit être fourni",
+            'num_exam.string'=>"num_exam doit être un string",
+            ];
     }
 }

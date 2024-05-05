@@ -7,13 +7,14 @@ use App\Http\Requests\AssocierRequest;
 use App\Models\associer;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class passerController extends Controller
+class associerController extends Controller
 {
     public function index(){
         return 'Liste des surveillants affectes';
     }
-    public function store(associerRequest $request){
+    public function store(AssocierRequest $request){
 
         try{
         $associer = new associer();
@@ -36,24 +37,43 @@ class passerController extends Controller
         
     }
 
-    public function update(AssocierRequest $request,associer $associer) {
+    public function update(AssocierRequest $request,$surveillant,$affectation) {
         
 
         try{
-         $associer->id_surveillant=$request->id_surveillant;
-         $associer->id_affectation=$request->id_affectation;
-      
-        $associer->save();
+            $associer=DB::table('associers')->where('id_surveillant',$surveillant)->where('id_affectation',$affectation)
+            ->update([
+                "id_surveillant"=>$request->id_surveillant,
+                "id_affectation"=>$request->id_affectation
+            ]);
+           
+ 
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'passer  a été modifié',
+            'status_message'=>'associer  a été modifié',
             'data'=>$associer
         ]);
 
-        }catch(Exception $exeption){
-            return response()->json($exeption);
+        }catch(Exception $exception){
+            return response()->json($exception);
         }
        
+    }
+    public function delete($surveillant,$affectation) {
+        try{  
+            
+            $associer=DB::table('associers')->where('id_surveillant',$surveillant)->where('id_affectation',$affectation)->delete();
+    
+           return response()->json([
+               'status_code'=>200,
+               'status_message'=>'la associer  a été supprimer',
+               'data'=>$associer
+           ]);
+           
+           
+        }catch(Exception $exception){
+           return response()->json($exception);
+       }
     }
 }

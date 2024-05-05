@@ -13,9 +13,11 @@ use App\Http\Controllers\RapportController;
 use App\Http\Controllers\signerController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdministrateurController;
+use App\Http\Controllers\associerController;
 use App\Http\Controllers\controlercontroller;
 use App\Http\Controllers\tabletteController;
 use App\Http\Controllers\gererController;
+use App\Http\Controllers\passerController;
 use App\Http\Controllers\sessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,8 +87,8 @@ Route::delete('tablette/{tablette}',[tabletteController::class,'delete']) ;
 
 Route::get('session',[sessionController::class,'index']);
 Route::post('session/create',[sessionController::class,'store']);
-Route::put('session/edit/{tablette}',[sessionController::class,'update']);
-Route::delete('session/{tablette}',[sessionController::class,'delete']) ;
+Route::put('session/edit/{session}',[sessionController::class,'update']);
+Route::delete('session/{session}',[sessionController::class,'delete']) ;
 
 Route::get('gerer',[gererController::class,'index']);
 Route::post('gerer/create',[gererController::class,'store']);
@@ -122,6 +124,18 @@ Route::get('signer',[examenController::class,'index']);
 Route::post('signer/create',[signerController::class,'store']);
 Route::put('signer/edit/{signer}',[signerController::class,'update']);
 Route::delete('signer/{signer}',[signerController::class,'delete']);
+
+Route::get('passer',[examenController::class,'index']);
+
+Route::post('passer/create',[passerController::class,'store']);
+Route::put('passer/edit/{exam}/{local}/{code}',[passerController::class,'update']);
+Route::delete('passer/{exam}/{local}/{code}',[passerController::class,'delete']);
+
+Route::get('associer',[examenController::class,'index']);
+
+Route::post('associer/create',[associerController::class,'store']);
+Route::put('associer/edit/{surveillant}/{affectation}',[associerController::class,'update']);
+Route::delete('associer/{surveillant}/{affectation}',[associerController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
