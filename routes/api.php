@@ -92,14 +92,14 @@ Route::delete('session/{session}',[sessionController::class,'delete']) ;
 
 Route::get('gerer',[gererController::class,'index']);
 Route::post('gerer/create',[gererController::class,'store']);
-Route::put('gerer/edit/{gerer}',[gererController::class,'update']);
-Route::delete('gerer/{gerer}',[gererController::class,'delete']);
+Route::put('gerer/edit/{id_administrateur}/{id_session}',[gererController::class,'update']);
+Route::delete('gerer/{id_administrateur}/{id_session}',[gererController::class,'delete']);
 
 
 Route::get('controler',[controlercontroller::class,'index']);
 Route::post('controler/create',[controlerController::class,'store']);
-Route::put('controler/edit/{controler}',[controlerController::class,'update']);
-Route::delete('controler/{controler}',[controlerController::class,'delete']);
+Route::put('controler/edit/{id_administrateur}/{id_tablette}',[controlercontroller::class,'update']);
+Route::delete('controler/{id_administrateur}/{id_tablette}',[controlerController::class,'delete']);
 
 Route::get('affectation',[affectationController::class,'index']);
 
@@ -119,11 +119,24 @@ Route::post('examen/create',[examenController::class,'store']);
 Route::put('examen/edit/{examen}',[examenController::class,'update']);
 Route::delete('examen/{examen}',[examenController::class,'delete']);
 
-Route::get('signer',[examenController::class,'index']);
+Route::get('signer',[signerController::class,'index']);
 
 Route::post('signer/create',[signerController::class,'store']);
-Route::put('signer/edit/{signer}',[signerController::class,'update']);
-Route::delete('signer/{signer}',[signerController::class,'delete']);
+Route::put('signer/edit/{id_surveillant}/{id_pv}',[signerController::class,'update']);
+Route::delete('signer/{id_surveillant}/{id_pv}',[signerController::class,'delete']);
+
+Route::get('passer',[passerController::class,'index']);
+
+Route::post('passer/create',[passerController::class,'store']);
+Route::put('passer/edit/{passer}',[passerController::class,'update']);
+Route::delete('passer/{passer}',[passerController::class,'delete']);
+
+
+Route::get('associer',[associerController::class,'index']);
+
+Route::post('associer/create',[associerController::class,'store']);
+Route::put('associer/edit/{associer}',[associerController::class,'update']);
+Route::delete('associer/{associer}',[associerController::class,'delete']);
 
 Route::get('passer',[examenController::class,'index']);
 
