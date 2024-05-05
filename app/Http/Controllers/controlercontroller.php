@@ -7,6 +7,7 @@ use App\Http\Requests\controlerRequest ;
 use App\Models\Controler ;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ControlerController extends Controller
 {
@@ -34,14 +35,14 @@ class ControlerController extends Controller
         
     } 
 
-    public function update(ControlerRequest $request, controler $controler) {
+    public function update(ControlerRequest $request,$id_administrateur ,$id_tablette ) {
         
 
         try{
         
-            $controler->id_administrateur=$request->id_administrateur;
-            $controler->id_tablette=$request->id_tablette; 
-            $controler->save();
+            $controler=DB::table('gerers')->where('id_administrateur',$id_administrateur)
+                ->where('id_tablette',$id_tablette)
+                ->update(['id_administrateur'=>$request->id_administrateur,'id_tablette'=>$request->id_tablette]);
 
         return response()->json([
             'status_code'=>201,
@@ -54,4 +55,19 @@ class ControlerController extends Controller
         }
        
     }
+    public function delete(  $id_administrateur,$id_tablette) {
+        try{
+            $controler = DB::table('gerers')->where('id_administrateur',$id_administrateur)->where('id_tablette',$id_tablette)->delete();
+
+           return response()->json([
+               'status_code'=>200,
+               'status_message'=>'la gestion  a été supprimer',
+               'data'=>$controler
+           ]);
+           
+           
+        }catch(Exception $exception){
+           return response()->json($exception);
+       }
+   }
 } 
