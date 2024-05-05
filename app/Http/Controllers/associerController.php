@@ -60,10 +60,10 @@ class associerController extends Controller
         }
        
     }
-    public function delete($surveillant,$affectation) {
+    public function delete($id_surveillant,$id_affectation) {
         try{  
             
-            $associer=DB::table('associers')->where('id_surveillant',$surveillant)->where('id_affectation',$affectation)->delete();
+            $associer=DB::table('associers')->where('id_surveillant',$id_surveillant)->where('id_affectation',$id_affectation)->delete();
     
            return response()->json([
                'status_code'=>200,

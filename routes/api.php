@@ -147,8 +147,8 @@ Route::delete('passer/{exam}/{local}/{code}',[passerController::class,'delete'])
 Route::get('associer',[examenController::class,'index']);
 
 Route::post('associer/create',[associerController::class,'store']);
-Route::put('associer/edit/{surveillant}/{affectation}',[associerController::class,'update']);
-Route::delete('associer/{surveillant}/{affectation}',[associerController::class,'delete']);
+Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController::class,'update']);
+Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
