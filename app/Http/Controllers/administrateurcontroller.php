@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\administrateurRequest;
 use App\Models\administrateur;
 use Exception;
-use Illuminate\Http\Request;
+
 
 class administrateurController extends Controller
 {
@@ -18,7 +18,7 @@ class administrateurController extends Controller
         $administrateur->mail=$request->mail;
         $administrateur->nom=$request->nom;
         $administrateur->prenom=$request->prenom;
-        $administrateur->mot_de_passe =$request->mot_de_passe;
+        $administrateur->mot_de_passe =bcrypt( $request->mot_de_passe);
         $administrateur->save();
 
 

@@ -14,6 +14,8 @@ class gerer extends Model
         //    ' id_session',
         //    'id_administrateur'
         // ];
+
+        
         
         public function administrateur()
         {

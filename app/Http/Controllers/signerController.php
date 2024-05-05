@@ -7,6 +7,7 @@ use App\Http\Requests\signerRaquest;
 use App\Models\signer;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class signerController extends Controller
 {
@@ -35,15 +36,14 @@ class signerController extends Controller
         
     }
 
-    public function update(signerRaquest $request,signer $signer) {
+    public function update(signerRaquest $request,$id_surveillant,$id_pv) {
         
         // $pv=$pv::find($id);
 
         try{
-            $signer->id_surveillant=$request->id_surveillant;
-            $signer->id_pv=$request->id_pv;
-            $signer->signature= $request->signature;
-        $signer->save();
+            $signer=DB::table('signers')->where('id_surveillant',$id_surveillant)
+            ->where('id_pv',$id_pv)
+            ->update(['id_surveillant'=>$request->id_surveillant,'id_pv'=>$request->id_pv]);
 
         return response()->json([
             'status_code'=>201,
@@ -57,9 +57,10 @@ class signerController extends Controller
        
     }
 
-    public function delete(signer $signer) {
+    public function delete(signer $signer,$id_surveillant,$id_pv) {
          try{
-                $signer->delete();
+            $signer=DB::table('signers')->where('id_surveillant',$id_surveillant)
+            ->where('id_pv',$id_pv)->delete();
 
             return response()->json([
                 'status_code'=>200,

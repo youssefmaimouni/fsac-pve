@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Requests\gererRequest;
 use App\Models\gerer;
 use Exception;
-use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class gererController extends Controller
 {
@@ -36,12 +34,13 @@ class gererController extends Controller
     
         }
     
-        public function update(gererRequest $request, gerer $gerer) {
+        public function update(gererRequest $request,  $id_administrateur,$id_session) {
             try {
-                $gerer->id_administrateur = $request->id_administrateur;
-                $gerer->id_session = $request->id_session;
-                $gerer->save();
-        
+                
+                $gerer=DB::table('gerers')->where('id_administrateur',$id_administrateur)
+                ->where('id_session',$id_session)
+                ->update(['id_administrateur'=>$request->id_administrateur,'id_session'=>$request->id_session]);
+                
                 return response()->json([
                     'status_code' => 201,
                     'status_message' => 'La gestion a été modifiée',
@@ -52,4 +51,20 @@ class gererController extends Controller
                 return response()->json($exception);
             }
         }
+            public function delete(  $id_administrateur,$id_session) {
+                try{
+                    $gerer = DB::table('gerers')->where('id_administrateur',$id_administrateur)->where('id_session',$id_session)->delete();
+       
+                   return response()->json([
+                       'status_code'=>200,
+                       'status_message'=>'la gestion  a été supprimer',
+                       'data'=>$gerer
+                   ]);
+                   
+                   
+                }catch(Exception $exception){
+                   return response()->json($exception);
+               }
+           }
+        
 }

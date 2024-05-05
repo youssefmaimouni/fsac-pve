@@ -65,8 +65,8 @@ class sessionController extends Controller
             ]);
             
             
-         }catch(Exception $exeption){
-            return response()->json($exeption);
+         }catch(Exception $exception){
+            return response()->json($exception);
         }
     }
 }
