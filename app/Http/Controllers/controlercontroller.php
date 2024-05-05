@@ -40,7 +40,7 @@ class ControlerController extends Controller
 
         try{
         
-            $controler=DB::table('gerers')->where('id_administrateur',$id_administrateur)
+            $controler=DB::table('controlers')->where('id_administrateur',$id_administrateur)
                 ->where('id_tablette',$id_tablette)
                 ->update(['id_administrateur'=>$request->id_administrateur,'id_tablette'=>$request->id_tablette]);
 
@@ -57,7 +57,7 @@ class ControlerController extends Controller
     }
     public function delete(  $id_administrateur,$id_tablette) {
         try{
-            $controler = DB::table('gerers')->where('id_administrateur',$id_administrateur)->where('id_tablette',$id_tablette)->delete();
+            $controler = DB::table('controlers')->where('id_administrateur',$id_administrateur)->where('id_tablette',$id_tablette)->delete();
 
            return response()->json([
                'status_code'=>200,
