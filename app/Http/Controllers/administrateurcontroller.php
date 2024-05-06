@@ -40,6 +40,35 @@ class administrateurController extends Controller
     public function index(){
         return 'Liste des Administrateurs';
     }
+    /**
+     * @OA\Post(
+     *     path="/api/administrateur/create",
+     *     tags={"Admin"},
+     *     summary="create all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="store",
+     *     @OA\Parameter(
+     *         name="status",
+     *         in="query",
+     *         description="Status values that needed to be considered for filter",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             default="available",
+     *             type="string",
+     *             enum={"available", "pending", "sold"},
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
     public function store(administrateurRequest $request){
 
         try{
@@ -62,7 +91,35 @@ class administrateurController extends Controller
         }
         
     }
-
+    /**
+     * @OA\Put(
+     *     path="/api/administateur/edit/{id_administateur}",
+     *     tags={"Admin"},
+     *     summary="update all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="update",
+     *     @OA\Parameter(
+     *         name="status",
+     *         in="query",
+     *         description="Status values that needed to be considered for filter",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             default="available",
+     *             type="string",
+     *             enum={"available", "pending", "sold"},
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
     public function update(administrateurRequest $request,administrateur $administrateur )
     {
         try{
@@ -81,7 +138,35 @@ class administrateurController extends Controller
         }
         
     }
-
+/**
+     * @OA\Delete(
+     *     path="/api/administrateur/{administrateur}",
+     *     tags={"Admin"},
+     *     summary="delete all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="delete",
+     *     @OA\Parameter(
+     *         name="status",
+     *         in="query",
+     *         description="Status values that needed to be considered for filter",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             default="available",
+     *             type="string",
+     *             enum={"available", "pending", "sold"},
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
 public function delete(administrateur  $administrateur) {
          try{
                 $administrateur->delete();

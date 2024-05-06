@@ -4,7 +4,7 @@ return [
     'default' => 'default',
     'documentations' => [
         'default' => [
-            'api' => [
+            'api' => [ 
                 'title' => 'L5 Swagger UI',
             ],
 
