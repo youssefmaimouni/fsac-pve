@@ -38,7 +38,8 @@ class administrateurController extends Controller
      * )
      */
     public function index(){
-        return 'Liste des Administrateurs';
+        $administrateurs = Administrateur::all();
+        return $administrateurs;
     }
     /**
      * @OA\Post(
@@ -59,9 +60,20 @@ class administrateurController extends Controller
      *             enum={"available", "pending", "sold"},
      *         )
      *     ),
+     *      @OA\RequestBody(
+     *         description="Book data that needs to be added to the store",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="mail", type="string", example="test@abc.com"),
+     *             @OA\Property(property="nom", type="string", example=""),
+     *             @OA\Property(property="prenom", type="string", example=""),
+     *             @OA\Property(property="mot_de_passe", type="string", example="")
+     *         )
+     *     ),
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
+     *         @OA\JsonContent() 
      *     ),
      *     @OA\Response(
      *         response=400,
@@ -93,26 +105,34 @@ class administrateurController extends Controller
     }
     /**
      * @OA\Put(
-     *     path="/api/administateur/edit/{id_administateur}",
+     *     path="/api/administateur/edit/{administrateur}",
      *     tags={"Admin"},
      *     summary="update all admins for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="update",
-     *     @OA\Parameter(
-     *         name="status",
-     *         in="query",
-     *         description="Status values that needed to be considered for filter",
+     *    @OA\Parameter(
+     *          name="administrateur",
+     *          description="administrateur id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *         description="Book data that needs to be added to the store",
      *         required=true,
-     *         explode=true,
-     *         @OA\Schema(
-     *             default="available",
-     *             type="string",
-     *             enum={"available", "pending", "sold"},
+     *         @OA\JsonContent(
+     *             @OA\Property(property="mail", type="string", example="test@abc.com"),
+     *             @OA\Property(property="nom", type="string", example=""),
+     *             @OA\Property(property="prenom", type="string", example=""),
+     *             @OA\Property(property="mot_de_passe", type="string", example="")
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
+     *         @OA\JsonContent() 
      *     ),
      *     @OA\Response(
      *         response=400,
@@ -160,20 +180,18 @@ class administrateurController extends Controller
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="delete",
      *     @OA\Parameter(
-     *         name="status",
-     *         in="query",
-     *         description="Status values that needed to be considered for filter",
-     *         required=true,
-     *         explode=true,
-     *         @OA\Schema(
-     *             default="available",
-     *             type="string",
-     *             enum={"available", "pending", "sold"},
-     *         )
-     *     ),
+     *          name="administrateur",
+     *          description="administrateur id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
      *     @OA\Response(
      *         response=200,
      *         description="successful operation",
+     *         @OA\JsonContent() 
      *     ),
      *     @OA\Response(
      *         response=400,
