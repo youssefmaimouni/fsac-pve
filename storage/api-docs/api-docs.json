@@ -75,9 +75,43 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string",
+                                        "example": "test@abc.com"
+                                    },
+                                    "nom": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "prenom": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "mot_de_passe": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "400": {
                         "description": "Invalid status value"
@@ -85,7 +119,7 @@
                 }
             }
         },
-        "/api/administateur/edit/{id_administateur}": {
+        "/api/administateur/edit/{administrateur}": {
             "put": {
                 "tags": [
                     "Admin"
@@ -95,25 +129,52 @@
                 "operationId": "update",
                 "parameters": [
                     {
-                        "name": "status",
-                        "in": "query",
-                        "description": "Status values that needed to be considered for filter",
+                        "name": "administrateur",
+                        "in": "path",
+                        "description": "administrateur id",
                         "required": true,
-                        "explode": true,
                         "schema": {
-                            "type": "string",
-                            "default": "available",
-                            "enum": [
-                                "available",
-                                "pending",
-                                "sold"
-                            ]
+                            "type": "integer"
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string",
+                                        "example": "test@abc.com"
+                                    },
+                                    "nom": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "prenom": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "mot_de_passe": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "400": {
                         "description": "Invalid status value"
@@ -131,25 +192,23 @@
                 "operationId": "delete",
                 "parameters": [
                     {
-                        "name": "status",
-                        "in": "query",
-                        "description": "Status values that needed to be considered for filter",
+                        "name": "administrateur",
+                        "in": "path",
+                        "description": "administrateur id",
                         "required": true,
-                        "explode": true,
                         "schema": {
-                            "type": "string",
-                            "default": "available",
-                            "enum": [
-                                "available",
-                                "pending",
-                                "sold"
-                            ]
+                            "type": "integer"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "400": {
                         "description": "Invalid status value"
