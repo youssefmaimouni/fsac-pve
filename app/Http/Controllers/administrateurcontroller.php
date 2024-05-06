@@ -38,7 +38,8 @@ class administrateurController extends Controller
      * )
      */
     public function index(){
-        return 'Liste des Administrateurs';
+        $administrateurs = Administrateur::all();
+        return $administrateurs;
     }
     /**
      * @OA\Post(
