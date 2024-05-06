@@ -126,11 +126,25 @@ class administrateurController extends Controller
             $administrateur->mail=$request->mail;
         $administrateur->nom=$request->nom;
         $administrateur->prenom=$request->prenom;
-        $administrateur->mot_de_passe = bcrypt($request->mot_de_passe);
         $administrateur->save();
         return response()->json([
             'status_code'=>200,
             'status_message'=>'l\'administrateur a été modifier',
+            'data'=>$administrateur
+        ]);
+        }catch(Exception $exception){
+            return response()->json($exception);
+        }
+        
+    }
+    public function update_mot_de_passe(administrateurRequest $request,administrateur $administrateur )
+    {
+        try{
+        $administrateur->mot_de_passe = bcrypt($request->mot_de_passe);
+        $administrateur->save();
+        return response()->json([
+            'status_code'=>200,
+            'status_message'=>'le mot de passe de l\'admin a été modifier',
             'data'=>$administrateur
         ]);
         }catch(Exception $exception){
