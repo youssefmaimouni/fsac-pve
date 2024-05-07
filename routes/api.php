@@ -13,6 +13,7 @@ use App\Http\Controllers\RapportController;
 use App\Http\Controllers\signerController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdministrateurController;
+use App\Http\Controllers\api\auth\authcontroller;
 use App\Http\Controllers\associerController;
 use App\Http\Controllers\controlercontroller;
 use App\Http\Controllers\tabletteController;
@@ -142,6 +143,7 @@ Route::post('associer/create',[associerController::class,'store']);
 Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController::class,'update']);
 Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
 
+Route::post('auth/login',[authcontroller::class,'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
