@@ -10,9 +10,77 @@ use Illuminate\Support\Facades\DB;
 class gererController extends Controller
 {
     
+    /**
+     * @OA\Get(
+     *     path="/api/gerer",
+     *     tags={"gerer"},
+     *     summary="Get gerer for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="indGerer",
+     *     @OA\Parameter(
+     *         name="status",
+     *         in="query",
+     *         description="Status values that needed to be considered for filter",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             default="available",
+     *             type="string",
+     *             enum={"available", "pending", "sold"},
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
         public function index(){
-            return 'Liste des sessions gerees';
+            $gerer = Gerer::all();
+            return response()->json($gerer);
         }
+           /**
+     * @OA\Post(
+     *     path="/api/gerer/create",
+     *     tags={"gerer"},
+     *     summary="create all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="storegerer",
+     *     @OA\Parameter(
+     *         name="status",
+     *         in="query",
+     *         description="Status values that needed to be considered for filter",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             default="available",
+     *             type="string",
+     *             enum={"available", "pending", "sold"},
+     *         )
+     *     ),
+     *      @OA\RequestBody(
+     *         description="Book data that needs to be added to the store",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id_session", type="intiger", example="test@abc.com"),
+     *             @OA\Property(property="id_administrateur", type="intiger", example=""),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent() 
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
         public function store(gererRequest $request){
     
             try{
@@ -33,13 +101,58 @@ class gererController extends Controller
             }
     
         }
+        
+    /**
+     * @OA\Put(
+     *     path="/api/gerer/edit/{id_administrateur}/{id_session}",
+     *     tags={"gerer"},
+     *     summary="update all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="updategerer",
+     *    @OA\Parameter(
+     *          name="gerer",
+     *          description="administrateur id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Parameter(
+     *          name="gerer",
+     *          description="session id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *       @OA\RequestBody(
+     *         description="Book data that needs to be added to the store",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id_session", type="intiger", example="test@abc.com"),
+     *             @OA\Property(property="id_administrateur", type="intiger", example=""),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent() 
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
     
         public function update(gererRequest $request,  $id_administrateur,$id_session) {
             try {
-                
-                $gerer=DB::table('gerers')->where('id_administrateur',$id_administrateur)
+                DB::table('gerers')->where('id_administrateur',$id_administrateur)
                 ->where('id_session',$id_session)
                 ->update(['id_administrateur'=>$request->id_administrateur,'id_session'=>$request->id_session]);
+                $gerer = DB::table('gerers')->where('id_administrateur',$id_administrateur)->where('id_session',$id_session);
                 
                 return response()->json([
                     'status_code' => 201,
@@ -51,9 +164,47 @@ class gererController extends Controller
                 return response()->json($exception);
             }
         }
+        
+    /**
+     * @OA\Delete(
+     *     path="/api/gerer/{id_administrateur}/{id_session}",
+     *     tags={"gerer"},
+     *     summary="suprimer la gestion for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="deletegerer",
+     *     @OA\Parameter(
+     *          name="gerer",
+     *          description="administrateur id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *    @OA\Parameter(
+     *          name="gerer",
+     *          description="session id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent() 
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
             public function delete(  $id_administrateur,$id_session) {
                 try{
-                    $gerer = DB::table('gerers')->where('id_administrateur',$id_administrateur)->where('id_session',$id_session)->delete();
+                    $gerer = DB::table('gerers')->where('id_administrateur',$id_administrateur)->where('id_session',$id_session);
+                    DB::table('gerers')->where('id_administrateur',$id_administrateur)->where('id_session',$id_session)->delete();
        
                    return response()->json([
                        'status_code'=>200,

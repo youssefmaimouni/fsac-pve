@@ -3,19 +3,87 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-//use App\Http\Controllers\CreateDepartementRequest;
-use App\Http\Requests\CreateDepartementRequest;
-use App\Http\Requests\editDepartementRequest;
+//use App\Http\Controllers\CreatedepartementRequest;
+use App\Http\Requests\CreatedepartementRequest;
+use App\Http\Requests\editdepartementRequest;
 use App\Models\departement;
 use Exception;
 use Illuminate\Http\Request;
 
 class departementController extends Controller
 {
+        /**
+     * @OA\Get(
+     *     path="/api/departement",
+     *     tags={"departement"},
+     *     summary="Get all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="indept",
+     *     @OA\Parameter(
+     *         name="status",
+     *         in="query",
+     *         description="Status values that needed to be considered for filter",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             default="available",
+     *             type="string",
+     *             enum={"available", "pending", "sold"},
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
     public function index(){
-        return 'Liste des departements';
+        $departement=departement::all();
+        return response()->json($departement);
     }
-    public function store(CreateDepartementRequest $request){
+        /**
+     * @OA\Post(
+     *     path="/api/departement/create",
+     *     tags={"departement"},
+     *     summary="create all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="storedept",
+     *     @OA\Parameter(
+     *         name="status",
+     *         in="query",
+     *         description="Status values that needed to be considered for filter",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             default="available",
+     *             type="string",
+     *             enum={"available", "pending", "sold"},
+     *         )
+     *     ),
+     *      @OA\RequestBody(
+     *         description="Book data that needs to be added to the store",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="nom_departement", type="string", example=""),
+     *             @OA\Property(property="code_departement", type="string", example="")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent() 
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
+    public function store(CreatedepartementRequest $request){
 
         try{
         $departement = new departement();
@@ -36,8 +104,43 @@ class departementController extends Controller
         }
         
     }
+     /**
+     * @OA\Put(
+     *     path="/api/departement/edit/{departement}",
+     *     tags={"departement"},
+     *     summary="update all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="updatedept",
+     *    @OA\Parameter(
+     *          name="departement",
+     *          description="departement id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *         description="Book data that needs to be added to the store",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="nom_departement", type="string", example=""),
+     *             @OA\Property(property="code_departement", type="string", example="")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent() 
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
 
-    public function update(EditDepartementRequest $request,departement $departement) {
+    public function update(EditdepartementRequest $request,departement $departement) {
         
         // $filiere=$filiere::find($id);
 
@@ -60,6 +163,33 @@ class departementController extends Controller
         }
        
     }
+    /**
+     * @OA\Delete(
+     *     path="/api/departement/{departement}",
+     *     tags={"departement"},
+     *     summary="delete all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="deletedept",
+     *     @OA\Parameter(
+     *          name="departement",
+     *          description="departement id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent() 
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
 
     public function delete(departement $departement) {
          try{

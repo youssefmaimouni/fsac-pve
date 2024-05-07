@@ -105,7 +105,7 @@ class administrateurController extends Controller
     }
     /**
      * @OA\Put(
-     *     path="/api/administateur/edit/{administrateur}",
+     *     path="/api/administrateur/edit/{administrateur}",
      *     tags={"Admin"},
      *     summary="update all admins for REST API",
      *     description="Multiple status values can be provided with comma separated string",
