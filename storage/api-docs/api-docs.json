@@ -13,6 +13,388 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/pv": {
+            "get": {
+                "tags": [
+                    "Pv"
+                ],
+                "summary": "Get all Pvs for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "pvindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/pv/create": {
+            "post": {
+                "tags": [
+                    "Pv"
+                ],
+                "summary": "create all pvs for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "pvstore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_tablette": {
+                                        "type": "integer",
+                                        "example": "144488"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/pv/edit/{pv}": {
+            "put": {
+                "tags": [
+                    "Pv"
+                ],
+                "summary": "update all pvs for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "pvupdate",
+                "parameters": [
+                    {
+                        "name": "pv",
+                        "in": "path",
+                        "description": "pv id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_tablette": {
+                                        "type": "integer",
+                                        "example": "144488"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/pv/{pv}": {
+            "delete": {
+                "tags": [
+                    "Pv"
+                ],
+                "summary": "delete all pvs for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "pvdelete",
+                "parameters": [
+                    {
+                        "name": "pv",
+                        "in": "path",
+                        "description": "pv id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/rapport": {
+            "get": {
+                "tags": [
+                    "rapport"
+                ],
+                "summary": "Get all rapports for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "rapportindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/rapport/create": {
+            "post": {
+                "tags": [
+                    "rapport"
+                ],
+                "summary": "create all rapports for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "rapportstore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "titre_rapport": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "contenu": {
+                                        "type": "text",
+                                        "example": ""
+                                    },
+                                    "id_pv": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "codeApogee": {
+                                        "type": "integer",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/rapport/edit/{rapport}": {
+            "put": {
+                "tags": [
+                    "rapport"
+                ],
+                "summary": "update all rapports for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "rapportupdate",
+                "parameters": [
+                    {
+                        "name": "rapport",
+                        "in": "path",
+                        "description": "rapport id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "titre_rapport": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "contenu": {
+                                        "type": "text",
+                                        "example": ""
+                                    },
+                                    "id_pv": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "codeApogee": {
+                                        "type": "integer",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/rapport/{rapport}": {
+            "delete": {
+                "tags": [
+                    "rapport"
+                ],
+                "summary": "delete all rapports for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "rapportdelete",
+                "parameters": [
+                    {
+                        "name": "rapport",
+                        "in": "path",
+                        "description": "rapport id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
         "/api/administrateur": {
             "get": {
                 "tags": [
@@ -119,7 +501,7 @@
                 }
             }
         },
-        "/api/administateur/edit/{administrateur}": {
+        "/api/administrateur/edit/{administrateur}": {
             "put": {
                 "tags": [
                     "Admin"
@@ -195,6 +577,1023 @@
                         "name": "administrateur",
                         "in": "path",
                         "description": "administrateur id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/etudiant": {
+            "get": {
+                "tags": [
+                    "etudiant"
+                ],
+                "summary": "Get all etudiants for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "etudiantindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/etudiant/create": {
+            "post": {
+                "tags": [
+                    "etudiant"
+                ],
+                "summary": "create all etudiants for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "etudiantstore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_rapport": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "nom_etudiant": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "prenom_etudiant": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "CNE": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "photo": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/etudiant/edit/{etudiant}": {
+            "put": {
+                "tags": [
+                    "etudiant"
+                ],
+                "summary": "update all etudiants for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "etudiantupdate",
+                "parameters": [
+                    {
+                        "name": "etudiant",
+                        "in": "path",
+                        "description": "codeApogee",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_rapport": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "nom_etudiant": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "prenom_etudiant": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "CNE": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "photo": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/etudiant/{etudiant}": {
+            "delete": {
+                "tags": [
+                    "etudiant"
+                ],
+                "summary": "delete all etudiants for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "etudiantdelete",
+                "parameters": [
+                    {
+                        "name": "etudiant",
+                        "in": "path",
+                        "description": "codeApogee",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/examen": {
+            "get": {
+                "tags": [
+                    "examen"
+                ],
+                "summary": "Get all examens for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "examenindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/examen/create": {
+            "post": {
+                "tags": [
+                    "examen"
+                ],
+                "summary": "create all examens for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "examenstore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_session": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "code_module": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "id_pv": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "date_examen": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
+                                    },
+                                    "demi_journee_examen": {
+                                        "type": "string",
+                                        "example": "144488"
+                                    },
+                                    "seance_examen": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/examen/edit/{examen}": {
+            "put": {
+                "tags": [
+                    "examen"
+                ],
+                "summary": "update all examens for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "examenupdate",
+                "parameters": [
+                    {
+                        "name": "examen",
+                        "in": "path",
+                        "description": "examen id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_session": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "code_module": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "id_pv": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "date_examen": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
+                                    },
+                                    "demi_journee_examen": {
+                                        "type": "string",
+                                        "example": "144488"
+                                    },
+                                    "seance_examen": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/examen/{examen}": {
+            "delete": {
+                "tags": [
+                    "examen"
+                ],
+                "summary": "delete all examens for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "examendelete",
+                "parameters": [
+                    {
+                        "name": "examen",
+                        "in": "path",
+                        "description": "examen id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/local": {
+            "get": {
+                "tags": [
+                    "local"
+                ],
+                "summary": "Get all locals for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "localindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/local/create": {
+            "post": {
+                "tags": [
+                    "local"
+                ],
+                "summary": "create all locals for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "localstore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "num_local": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "type_local": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/local/edit/{local}": {
+            "put": {
+                "tags": [
+                    "local"
+                ],
+                "summary": "update all locals for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "localupdate",
+                "parameters": [
+                    {
+                        "name": "local",
+                        "in": "path",
+                        "description": "local id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "num_local": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "type_local": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/local/{local}": {
+            "delete": {
+                "tags": [
+                    "local"
+                ],
+                "summary": "delete all locals for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "localdelete",
+                "parameters": [
+                    {
+                        "name": "local",
+                        "in": "path",
+                        "description": "local id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/passer": {
+            "get": {
+                "tags": [
+                    "passer"
+                ],
+                "summary": "Get all passers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "passerindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/passer/create": {
+            "post": {
+                "tags": [
+                    "passer"
+                ],
+                "summary": "create all passers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "passerstore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_examen": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "codeApogee": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "id_local": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "num_exam": {
+                                        "type": "integer",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/passer/edit/{passer}": {
+            "put": {
+                "tags": [
+                    "passer"
+                ],
+                "summary": "update all passers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "passerupdate",
+                "parameters": [
+                    {
+                        "name": "passer",
+                        "in": "path",
+                        "description": "passer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_examen": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "codeApogee": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "id_local": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "num_exam": {
+                                        "type": "integer",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/passer/{passer}": {
+            "delete": {
+                "tags": [
+                    "passer"
+                ],
+                "summary": "delete all passers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "passerdelete",
+                "parameters": [
+                    {
+                        "name": "passer",
+                        "in": "path",
+                        "description": "passer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/signer": {
+            "get": {
+                "tags": [
+                    "signer"
+                ],
+                "summary": "Get all signers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "signerindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/signer/create": {
+            "post": {
+                "tags": [
+                    "signer"
+                ],
+                "summary": "create all signers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "signerstore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_surveillant": {
+                                        "type": "integer",
+                                        "example": "144488"
+                                    },
+                                    "id_pv": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "signature": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/signer/edit/{signer}": {
+            "put": {
+                "tags": [
+                    "signer"
+                ],
+                "summary": "update all signers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "signerupdate",
+                "parameters": [
+                    {
+                        "name": "signer",
+                        "in": "path",
+                        "description": "signer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_surveillant": {
+                                        "type": "integer",
+                                        "example": "144488"
+                                    },
+                                    "id_pv": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "signature": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/signer/{signer}": {
+            "delete": {
+                "tags": [
+                    "signer"
+                ],
+                "summary": "delete all signers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "signerdelete",
+                "parameters": [
+                    {
+                        "name": "signer",
+                        "in": "path",
+                        "description": "signer id",
                         "required": true,
                         "schema": {
                             "type": "integer"

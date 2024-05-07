@@ -58,10 +58,13 @@ Route::post('surveillant/create',[surveillantController::class,'store']);
 Route::put('surveillant/edit/{surveillant}',[surveillantController::class,'update']);
 Route::delete('surveillant/{surveillant}',[surveillantController::class,'delete']);
 
+Route::get('pv',[pvController::class,'index']);
 
 Route::post('pv/create',[PVController::class,'store']);
 Route::put('pv/edit/{pv}',[PVController::class,'update']);
 Route::delete('pv/{pv}',[PVController::class,'delete']);
+
+Route::get('rapport',[rapportController::class,'index']);
 
 Route::post('rapport/create',[RapportController::class,'store']);
 Route::put('rapport/edit/{rapport}',[RapportController::class,'update']);
@@ -77,7 +80,7 @@ Route::delete('departement/{departement}',[departementController::class,'delete'
  
 Route::get('administrateur',[AdministrateurController::class,'index']);
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
-Route::put('administateur/edit/{administrateur}',[AdministrateurController::class,'update']);
+Route::put('administrateur/edit/{administrateur}',[AdministrateurController::class,'update']);
 Route::delete('administrateur/{administrateur}',[AdministrateurController::class,'delete']);
 
 Route::get('tablette',[tabletteController::class,'index']);
