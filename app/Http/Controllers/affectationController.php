@@ -12,9 +12,9 @@ class affectationController extends Controller
 {
      /**
      * @OA\Get(
-     *     path="/api/affectaion",
-     *     tags={"affectaion"},
-     *     summary="Get affectaion for REST API",
+     *     path="/api/affectation",
+     *     tags={"affectation"},
+     *     summary="Get affectation for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="indaffectaion",
      *     @OA\Parameter(
@@ -45,8 +45,8 @@ class affectationController extends Controller
     }
     /**
      * @OA\Post(
-     *     path="/api/affectaion/create",
-     *     tags={"affectaion"},
+     *     path="/api/affectation/create",
+     *     tags={"affectation"},
      *     summary="create all affectaions for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="storeaffectaion",
@@ -108,7 +108,7 @@ class affectationController extends Controller
     /**
      * @OA\Put(
      *     path="/api/affectation/edit/{affectation}",
-     *     tags={"affectaion"},
+     *     tags={"affectation"},
      *     summary="update all affectaions for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="updateaffectation",
@@ -168,7 +168,7 @@ class affectationController extends Controller
 /**
      * @OA\Delete(
      *     path="/api/affectaion/{affectaion}",
-     *     tags={"affectaion"},
+     *     tags={"affectation"},
      *     summary="delete all affectaions for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="deleteaffectation",

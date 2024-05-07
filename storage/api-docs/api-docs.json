@@ -964,12 +964,12 @@
                 }
             }
         },
-        "/api/affectaion": {
+        "/api/affectation": {
             "get": {
                 "tags": [
-                    "affectaion"
+                    "affectation"
                 ],
-                "summary": "Get affectaion for REST API",
+                "summary": "Get affectation for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
                 "operationId": "indaffectaion",
                 "parameters": [
@@ -1000,10 +1000,10 @@
                 }
             }
         },
-        "/api/affectaion/create": {
+        "/api/affectation/create": {
             "post": {
                 "tags": [
-                    "affectaion"
+                    "affectation"
                 ],
                 "summary": "create all affectaions for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
@@ -1074,7 +1074,7 @@
         "/api/affectation/edit/{affectation}": {
             "put": {
                 "tags": [
-                    "affectaion"
+                    "affectation"
                 ],
                 "summary": "update all affectaions for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
@@ -1138,7 +1138,7 @@
         "/api/affectaion/{affectaion}": {
             "delete": {
                 "tags": [
-                    "affectaion"
+                    "affectation"
                 ],
                 "summary": "delete all affectaions for REST API",
                 "description": "Multiple status values can be provided with comma separated string",

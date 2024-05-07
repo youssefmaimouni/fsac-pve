@@ -11,7 +11,7 @@ class administrateurController extends Controller
     /**
      * @OA\Get(
      *     path="/api/administrateur",
-     *     tags={"Admin"},
+     *     tags={"administrateur"},
      *     summary="Get all admins for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="index",
@@ -44,7 +44,7 @@ class administrateurController extends Controller
     /**
      * @OA\Post(
      *     path="/api/administrateur/create",
-     *     tags={"Admin"},
+     *     tags={"administrateur"},
      *     summary="create all admins for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="store",
@@ -106,7 +106,7 @@ class administrateurController extends Controller
     /**
      * @OA\Put(
      *     path="/api/administrateur/edit/{administrateur}",
-     *     tags={"Admin"},
+     *     tags={"administrateur"},
      *     summary="update all admins for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="update",
@@ -175,7 +175,7 @@ class administrateurController extends Controller
 /**
      * @OA\Delete(
      *     path="/api/administrateur/{administrateur}",
-     *     tags={"Admin"},
+     *     tags={"administrateur"},
      *     summary="delete all admins for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="delete",
