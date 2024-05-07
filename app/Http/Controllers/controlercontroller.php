@@ -67,8 +67,8 @@ class ControlerController extends Controller
      *         description="les donnee de controler",
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="id_tablettet", type="intiger", example=""),
-     *             @OA\Property(property="id_administrateur", type="intiger", example=""),
+     *             @OA\Property(property="id_tablette", type="integer", example=""),
+     *             @OA\Property(property="id_administrateur", type="integer", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -119,7 +119,7 @@ class ControlerController extends Controller
      *          )
      *      ),
      *     @OA\Parameter(
-     *          name="gerid_tabletteter",
+     *          name="id_tablette",
      *          description="tablette id",
      *          required=true,
      *          in="path",
@@ -131,8 +131,8 @@ class ControlerController extends Controller
      *         description="les donnee de controler",
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="id_administrateur", type="intiger", example=""),
-     *             @OA\Property(property="id_tablettet", type="intiger", example="")
+     *             @OA\Property(property="id_administrateur", type="integer", example=""),
+     *             @OA\Property(property="id_tablette", type="integer", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -152,10 +152,13 @@ class ControlerController extends Controller
 
         try{
         
-            $controler=DB::table('controlers')->where('id_administrateur',$id_administrateur)
-                ->where('id_tablette',$id_tablette)
-                ->update(['id_administrateur'=>$request->id_administrateur,'id_tablette'=>$request->id_tablette]);
-
+            DB::table('controlers')->where('id_administrateur',$id_administrateur)
+            ->where('id_tablette',$id_tablette)
+            ->update(['id_administrateur'=>$request->id_administrateur,'id_tablette'=>$request->id_tablette]);
+            $controler = Controler::where('id_administrateur', $request->id_administrateur)
+            ->where('id_tablette', $request->id_tablette)
+            ->first();
+            
         return response()->json([
             'status_code'=>201,
             'status_message'=>'Controler a été modifié',
@@ -184,7 +187,7 @@ class ControlerController extends Controller
      *          )
      *      ),
      *    @OA\Parameter(
-     *          name="id_tablettet",
+     *          name="id_tablette",
      *          description="tablette id",
      *          required=true,
      *          in="path",
@@ -205,7 +208,11 @@ class ControlerController extends Controller
      */
     public function delete(  $id_administrateur,$id_tablette) {
         try{
-            $controler = DB::table('controlers')->where('id_administrateur',$id_administrateur)->where('id_tablette',$id_tablette)->delete();
+
+            $controler = Controler::where('id_administrateur', $id_administrateur)
+            ->where('id_tablette', $id_tablette)
+            ->first();
+            DB::table('controlers')->where('id_administrateur',$id_administrateur)->where('id_tablette',$id_tablette)->delete();
 
            return response()->json([
                'status_code'=>200,

@@ -285,12 +285,12 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "id_tablettet": {
-                                        "type": "intiger",
+                                    "id_tablette": {
+                                        "type": "integer",
                                         "example": ""
                                     },
                                     "id_administrateur": {
-                                        "type": "intiger",
+                                        "type": "integer",
                                         "example": ""
                                     }
                                 },
@@ -333,7 +333,7 @@
                         }
                     },
                     {
-                        "name": "gerid_tabletteter",
+                        "name": "id_tablette",
                         "in": "path",
                         "description": "tablette id",
                         "required": true,
@@ -350,11 +350,11 @@
                             "schema": {
                                 "properties": {
                                     "id_administrateur": {
-                                        "type": "intiger",
+                                        "type": "integer",
                                         "example": ""
                                     },
-                                    "id_tablettet": {
-                                        "type": "intiger",
+                                    "id_tablette": {
+                                        "type": "integer",
                                         "example": ""
                                     }
                                 },
@@ -397,7 +397,7 @@
                         }
                     },
                     {
-                        "name": "id_tablettet",
+                        "name": "id_tablette",
                         "in": "path",
                         "description": "tablette id",
                         "required": true,

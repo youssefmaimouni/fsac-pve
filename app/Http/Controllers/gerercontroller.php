@@ -152,8 +152,8 @@ class gererController extends Controller
                 DB::table('gerers')->where('id_administrateur',$id_administrateur)
                 ->where('id_session',$id_session)
                 ->update(['id_administrateur'=>$request->id_administrateur,'id_session'=>$request->id_session]);
-                $gerer = DB::table('gerers')->where('id_administrateur',$id_administrateur)->where('id_session',$id_session);
                 
+                $gerer = DB::table('gerers')->where('id_administrateur',$request->id_administrateur)->where('id_session',$request->id_session);
                 return response()->json([
                     'status_code' => 201,
                     'status_message' => 'La gestion a été modifiée',
