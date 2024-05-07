@@ -156,7 +156,9 @@ class signerController extends Controller
         // $pv=$pv::find($id);
 
         try{
-            $signer=DB::table('signers')->where('id_surveillant',$id_surveillant)
+            $signer=signer::where('id_surveillant',$id_surveillant)->where('id_pv',$id_pv)->first();
+            if ($signer != null) {
+               DB::table('signers')->where('id_surveillant',$id_surveillant)
             ->where('id_pv',$id_pv)
             ->update(['id_surveillant'=>$request->id_surveillant,'id_pv'=>$request->id_pv,'signature'=>$request->signature]);
 
@@ -165,6 +167,15 @@ class signerController extends Controller
             'status_message'=>'la signature  a été modifié',
             'data'=>$signer
         ]);
+            } else {
+                return response()->json([
+                    'status_code' => 201,
+                    'status_message' => 'la signature du id_surveillant et id_pv saisier n`existe pas',
+                    'data' => $signer
+                ]);
+            }
+            
+           
 
         }catch(Exception $exeption){
             return response()->json($exeption);
@@ -200,6 +211,8 @@ class signerController extends Controller
      */
     public function delete(signer $signer,$id_surveillant,$id_pv) {
          try{
+            $signer=signer::where('id_surveillant',$id_surveillant)->where('id_pv',$id_pv)->first();
+            if ($signer != null) {
             $signer=DB::table('signers')->where('id_surveillant',$id_surveillant)
             ->where('id_pv',$id_pv)->delete();
 
@@ -208,7 +221,14 @@ class signerController extends Controller
                 'status_message'=>'la signature a été supprimer',
                 'data'=>$signer
             ]);
-            
+        } else {
+            return response()->json([
+                'status_code' => 201,
+                'status_message' => 'la signature du id_surveillant et id_pv saisier n`existe pas',
+                'data' => $signer
+            ]);
+        }
+        
             
          }catch(Exception $exeption){
             return response()->json($exeption);

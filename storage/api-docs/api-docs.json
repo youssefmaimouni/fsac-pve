@@ -764,7 +764,7 @@
         "/api/administrateur": {
             "get": {
                 "tags": [
-                    "Admin"
+                    "administrateur"
                 ],
                 "summary": "Get all admins for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
@@ -800,7 +800,7 @@
         "/api/administrateur/create": {
             "post": {
                 "tags": [
-                    "Admin"
+                    "administrateur"
                 ],
                 "summary": "create all admins for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
@@ -870,7 +870,7 @@
         "/api/administrateur/edit/{administrateur}": {
             "put": {
                 "tags": [
-                    "Admin"
+                    "administrateur"
                 ],
                 "summary": "update all admins for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
@@ -933,7 +933,7 @@
         "/api/administrateur/{administrateur}": {
             "delete": {
                 "tags": [
-                    "Admin"
+                    "administrateur"
                 ],
                 "summary": "delete all admins for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
