@@ -13,6 +13,372 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/filiere": {
+            "get": {
+                "tags": [
+                    "filiere"
+                ],
+                "summary": "Get all filieres for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "filiereindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/filiere/create": {
+            "post": {
+                "tags": [
+                    "filiere"
+                ],
+                "summary": "create all filieres for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "filierestore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nom_filiere": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/filiere/edit/{filiere}": {
+            "put": {
+                "tags": [
+                    "filiere"
+                ],
+                "summary": "update all filieres for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "filiereupdate",
+                "parameters": [
+                    {
+                        "name": "filiere",
+                        "in": "path",
+                        "description": "filiere id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nom_filiere": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/filiere/{filiere}": {
+            "delete": {
+                "tags": [
+                    "filiere"
+                ],
+                "summary": "delete all filieres for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "filieredelete",
+                "parameters": [
+                    {
+                        "name": "filiere",
+                        "in": "path",
+                        "description": "filiere id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/module": {
+            "get": {
+                "tags": [
+                    "module"
+                ],
+                "summary": "Get all modules for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "moduleindex",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/module/create": {
+            "post": {
+                "tags": [
+                    "module"
+                ],
+                "summary": "create all modules for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "modulestore",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_filiere": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "intitule_module": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/module/edit/{module}": {
+            "put": {
+                "tags": [
+                    "module"
+                ],
+                "summary": "update all modules for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "moduleupdate",
+                "parameters": [
+                    {
+                        "name": "module",
+                        "in": "path",
+                        "description": "module id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_filiere": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "intitule_module": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/module/{module}": {
+            "delete": {
+                "tags": [
+                    "module"
+                ],
+                "summary": "delete all modules for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "moduledelete",
+                "parameters": [
+                    {
+                        "name": "module",
+                        "in": "path",
+                        "description": "module id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
         "/api/pv": {
             "get": {
                 "tags": [
