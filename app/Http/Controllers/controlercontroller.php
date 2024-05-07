@@ -151,8 +151,11 @@ class ControlerController extends Controller
         
 
         try{
-        
-            DB::table('controlers')->where('id_administrateur',$id_administrateur)
+            $controler = Controler::where('id_administrateur', $id_administrateur)
+            ->where('id_tablette', $id_tablette)
+            ->first();
+        if ($controler != null ) {
+             DB::table('controlers')->where('id_administrateur',$id_administrateur)
             ->where('id_tablette',$id_tablette)
             ->update(['id_administrateur'=>$request->id_administrateur,'id_tablette'=>$request->id_tablette]);
             $controler = Controler::where('id_administrateur', $request->id_administrateur)
@@ -164,6 +167,15 @@ class ControlerController extends Controller
             'status_message'=>'Controler a été modifié',
             'data'=>$controler
         ]);
+        } else {
+            return response()->json([
+                'status_code' => 201,
+                'status_message' => 'la controler du id_administrateur id_session saisier n`existe pas',
+                'data' => $controler
+            ]);
+        }
+        
+           
 
         }catch(Exception $exeption){
             return response()->json($exeption);
@@ -212,13 +224,23 @@ class ControlerController extends Controller
             $controler = Controler::where('id_administrateur', $id_administrateur)
             ->where('id_tablette', $id_tablette)
             ->first();
-            DB::table('controlers')->where('id_administrateur',$id_administrateur)->where('id_tablette',$id_tablette)->delete();
+            if ($controler != null) {
+                DB::table('controlers')->where('id_administrateur',$id_administrateur)->where('id_tablette',$id_tablette)->delete();
 
            return response()->json([
                'status_code'=>200,
                'status_message'=>'la gestion  a été supprimer',
                'data'=>$controler
            ]);
+            } else {
+                return response()->json([
+                    'status_code' => 201,
+                    'status_message' => 'la controler du id_administrateur id_session saisier n`existe pas',
+                    'data' => $controler
+                ]);
+            }
+            
+            
            
            
         }catch(Exception $exception){

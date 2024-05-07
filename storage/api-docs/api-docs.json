@@ -216,6 +216,416 @@
                 }
             }
         },
+        "/api/affectaion": {
+            "get": {
+                "tags": [
+                    "affectaion"
+                ],
+                "summary": "Get affectaion for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "indaffectaion",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/affectaion/create": {
+            "post": {
+                "tags": [
+                    "affectaion"
+                ],
+                "summary": "create all affectaions for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "storeaffectaion",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_tablette": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "id_local": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "date_affectation": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
+                                    },
+                                    "demi_journee_affectation": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/affectation/edit/{affectation}": {
+            "put": {
+                "tags": [
+                    "affectaion"
+                ],
+                "summary": "update all affectaions for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "updateaffectation",
+                "parameters": [
+                    {
+                        "name": "affectation",
+                        "in": "path",
+                        "description": "affectation id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_tablette": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "id_local": {
+                                        "type": "integer",
+                                        "example": ""
+                                    },
+                                    "date_affectation": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
+                                    },
+                                    "demi_journee_affectation": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/affectaion/{affectaion}": {
+            "delete": {
+                "tags": [
+                    "affectaion"
+                ],
+                "summary": "delete all affectaions for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "deleteaffectation",
+                "parameters": [
+                    {
+                        "name": "affectaion",
+                        "in": "path",
+                        "description": "affectaion id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/associer": {
+            "get": {
+                "tags": [
+                    "associer"
+                ],
+                "summary": "Get associer for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "indexassocier",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/associer/create": {
+            "post": {
+                "tags": [
+                    "associer"
+                ],
+                "summary": "create all admins for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "storeassocier",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_surveillant": {
+                                        "type": "integer",
+                                        "example": "test@abc.com"
+                                    },
+                                    "id_affectation": {
+                                        "type": "integer",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/associer/edit/{id_surveillant}/{id_affectation}": {
+            "put": {
+                "tags": [
+                    "associer"
+                ],
+                "summary": "update all admins for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "updateassocier",
+                "parameters": [
+                    {
+                        "name": "id_surveillant",
+                        "in": "path",
+                        "description": "surveillant id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "id_affectation",
+                        "in": "path",
+                        "description": "affectation id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id_surveillant": {
+                                        "type": "integer",
+                                        "example": "test@abc.com"
+                                    },
+                                    "id_affectation": {
+                                        "type": "integer",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/associer/{id_surveillant}/{id_affectation}": {
+            "delete": {
+                "tags": [
+                    "associer"
+                ],
+                "summary": "suprimer la gestion for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "deleteassocier",
+                "parameters": [
+                    {
+                        "name": "id_surveillant",
+                        "in": "path",
+                        "description": "surveillant id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "id_affectation",
+                        "in": "path",
+                        "description": "affectation id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
         "/api/controler": {
             "get": {
                 "tags": [
@@ -678,11 +1088,11 @@
                             "schema": {
                                 "properties": {
                                     "id_session": {
-                                        "type": "intiger",
+                                        "type": "integer",
                                         "example": "test@abc.com"
                                     },
                                     "id_administrateur": {
-                                        "type": "intiger",
+                                        "type": "integer",
                                         "example": ""
                                     }
                                 },
@@ -716,7 +1126,7 @@
                 "operationId": "updategerer",
                 "parameters": [
                     {
-                        "name": "gerer",
+                        "name": "id_administrateur",
                         "in": "path",
                         "description": "administrateur id",
                         "required": true,
@@ -725,7 +1135,7 @@
                         }
                     },
                     {
-                        "name": "gerer",
+                        "name": "id_session",
                         "in": "path",
                         "description": "session id",
                         "required": true,
@@ -742,11 +1152,11 @@
                             "schema": {
                                 "properties": {
                                     "id_session": {
-                                        "type": "intiger",
+                                        "type": "integer",
                                         "example": "test@abc.com"
                                     },
                                     "id_administrateur": {
-                                        "type": "intiger",
+                                        "type": "integer",
                                         "example": ""
                                     }
                                 },
@@ -780,7 +1190,7 @@
                 "operationId": "deletegerer",
                 "parameters": [
                     {
-                        "name": "gerer",
+                        "name": "id_administrateur",
                         "in": "path",
                         "description": "administrateur id",
                         "required": true,
@@ -789,7 +1199,7 @@
                         }
                     },
                     {
-                        "name": "gerer",
+                        "name": "id_session",
                         "in": "path",
                         "description": "session id",
                         "required": true,

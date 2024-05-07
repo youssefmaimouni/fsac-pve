@@ -146,7 +146,7 @@ class departementController extends Controller
 
         try{
         
-        $departement->id_departement=$request->id_departement;
+        
         $departement->nom_departement=$request->nom_departement;
         $departement->code_departement=$request->code_departement;
       
