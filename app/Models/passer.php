@@ -7,13 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class passer extends Model
 {
-    protected $primaryKey = [
-       ' id_examen',
-       'codeApogee',
-       'id_local'
-    ];
-    public $incrementing = false;
-    protected $fillable ='num_exam';
+
     public function examen()
     {
         return $this->belongsTo(examen::class, 'id_examen');

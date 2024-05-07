@@ -111,14 +111,32 @@ class passerController extends Controller
     }
 /**
      * @OA\Put(
-     *     path="/api/passer/edit/{passer}",
+     *     path="/api/passer/edit/{id_examen}/{id_local}/{codeApogee}",
      *     tags={"passer"},
      *     summary="update all passers for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="passerupdate",
      *    @OA\Parameter(
-     *          name="passer",
-     *          description="passer id",
+     *          name="id_examen",
+     *          description="examen id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Parameter(
+     *          name="id_local",
+     *          description="local id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     * @OA\Parameter(
+     *          name="codeApogee",
+     *          description="codeApogee",
      *          required=true,
      *          in="path",
      *          @OA\Schema(

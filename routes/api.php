@@ -131,27 +131,16 @@ Route::delete('signer/{id_surveillant}/{id_pv}',[signerController::class,'delete
 Route::get('passer',[passerController::class,'index']);
 
 Route::post('passer/create',[passerController::class,'store']);
-Route::put('passer/edit/{passer}',[passerController::class,'update']);
-Route::delete('passer/{passer}',[passerController::class,'delete']);
+Route::put('passer/edit/{id_examen}/{id_local}/{codeApogee}',[passerController::class,'update']);
+Route::delete('passer/{id_examen}/{id_local}/{codeApogee}',[passerController::class,'delete']);
 
 
 Route::get('associer',[associerController::class,'index']);
 
 Route::post('associer/create',[associerController::class,'store']);
-Route::put('associer/edit/{associer}',[associerController::class,'update']);
-Route::delete('associer/{associer}',[associerController::class,'delete']);
-
-Route::get('passer',[examenController::class,'index']);
-
-Route::post('passer/create',[passerController::class,'store']);
-Route::put('passer/edit/{exam}/{local}/{code}',[passerController::class,'update']);
-Route::delete('passer/{exam}/{local}/{code}',[passerController::class,'delete']);
-
-Route::get('associer',[examenController::class,'index']);
-
-Route::post('associer/create',[associerController::class,'store']);
 Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController::class,'update']);
 Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 

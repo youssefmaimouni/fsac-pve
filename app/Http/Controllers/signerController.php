@@ -107,14 +107,23 @@ class signerController extends Controller
     }
     /**
      * @OA\Put(
-     *     path="/api/signer/edit/{signer}",
+     *     path="/api/signer/edit/{id_surveillant}/{id_pv}",
      *     tags={"signer"},
      *     summary="update all signers for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="signerupdate",
      *    @OA\Parameter(
-     *          name="signer",
-     *          description="signer id",
+     *          name="id_surveillant",
+     *          description="surveillant id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     * @OA\Parameter(
+     *          name="id_pv",
+     *          description="pv id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -149,7 +158,7 @@ class signerController extends Controller
         try{
             $signer=DB::table('signers')->where('id_surveillant',$id_surveillant)
             ->where('id_pv',$id_pv)
-            ->update(['id_surveillant'=>$request->id_surveillant,'id_pv'=>$request->id_pv]);
+            ->update(['id_surveillant'=>$request->id_surveillant,'id_pv'=>$request->id_pv,'signature'=>$request->signature]);
 
         return response()->json([
             'status_code'=>201,
@@ -164,7 +173,7 @@ class signerController extends Controller
     }
 /**
      * @OA\Delete(
-     *     path="/api/signer/{signer}",
+     *     path="/api/signer/{id_surveillant}/{id_pv}",
      *     tags={"signer"},
      *     summary="delete all signers for REST API",
      *     description="Multiple status values can be provided with comma separated string",
