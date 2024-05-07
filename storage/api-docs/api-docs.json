@@ -914,7 +914,7 @@
         "/api/session/edit/{session}": {
             "put": {
                 "tags": [
-                    "Admin"
+                    "session"
                 ],
                 "summary": "update all admins for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
@@ -969,7 +969,7 @@
         "/api/session/{session}": {
             "delete": {
                 "tags": [
-                    "Admin"
+                    "session"
                 ],
                 "summary": "delete all admins for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
@@ -1003,7 +1003,7 @@
         "/api/surveillant": {
             "get": {
                 "tags": [
-                    "suveillant"
+                    "surveillant"
                 ],
                 "summary": "Get all admins for REST API",
                 "description": "Multiple status values can be provided with comma separated string",

@@ -13,7 +13,7 @@ class surveillantController extends Controller
     /**
      * @OA\Get(
      *     path="/api/surveillant",
-     *     tags={"suveillant"},
+     *     tags={"surveillant"},
      *     summary="Get all admins for REST API",
      *     description="Multiple status values can be provided with comma separated string",
      *     operationId="indSurv",
