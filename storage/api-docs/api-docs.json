@@ -904,7 +904,54 @@
                                     "prenom": {
                                         "type": "string",
                                         "example": ""
-                                    },
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/administrateur/editpasswd/{administrateur}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "update all admins for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "adminupdate",
+                "parameters": [
+                    {
+                        "name": "administrateur",
+                        "in": "path",
+                        "description": "administrateur id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
                                     "mot_de_passe": {
                                         "type": "string",
                                         "example": ""

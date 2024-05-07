@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\administrateurRequest;
+use App\Http\Requests\adminRequest;
 use App\Models\administrateur;
 use Exception;
 use PhpParser\Node\Stmt\TryCatch;
@@ -125,8 +126,7 @@ class administrateurController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="mail", type="string", example="test@abc.com"),
      *             @OA\Property(property="nom", type="string", example=""),
-     *             @OA\Property(property="prenom", type="string", example=""),
-     *             @OA\Property(property="mot_de_passe", type="string", example="")
+     *             @OA\Property(property="prenom", type="string", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -157,7 +157,41 @@ class administrateurController extends Controller
         }
         
     }
-    public function update_mot_de_passe(administrateurRequest $request,administrateur $administrateur )
+     /**
+     * @OA\Put(
+     *     path="/api/administrateur/editpasswd/{administrateur}",
+     *     tags={"Admin"},
+     *     summary="update all admins for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="adminupdate",
+     *    @OA\Parameter(
+     *          name="administrateur",
+     *          description="administrateur id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *         description="Book data that needs to be added to the store",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="mot_de_passe", type="string", example="")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent() 
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
+    public function update_mot_de_passe(adminRequest $request,administrateur $administrateur )
     {
         try{
         $administrateur->mot_de_passe = bcrypt($request->mot_de_passe);

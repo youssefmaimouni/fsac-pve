@@ -81,6 +81,7 @@ Route::delete('departement/{departement}',[departementController::class,'delete'
 Route::get('administrateur',[AdministrateurController::class,'index']);
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
 Route::put('administrateur/edit/{administrateur}',[AdministrateurController::class,'update']);
+Route::put('administrateur/editpasswd/{administrateur}',[AdministrateurController::class,'update_mot_de_passe']);
 Route::delete('administrateur/{administrateur}',[AdministrateurController::class,'delete']);
 
 Route::get('tablette',[tabletteController::class,'index']);
