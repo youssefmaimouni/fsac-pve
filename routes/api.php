@@ -13,6 +13,7 @@ use App\Http\Controllers\RapportController;
 use App\Http\Controllers\signerController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdministrateurController;
+use App\Http\Controllers\api\auth\authcontroller;
 use App\Http\Controllers\associerController;
 use App\Http\Controllers\controlercontroller;
 use App\Http\Controllers\tabletteController;
@@ -58,10 +59,13 @@ Route::post('surveillant/create',[surveillantController::class,'store']);
 Route::put('surveillant/edit/{surveillant}',[surveillantController::class,'update']);
 Route::delete('surveillant/{surveillant}',[surveillantController::class,'delete']);
 
+Route::get('pv',[pvController::class,'index']);
 
 Route::post('pv/create',[PVController::class,'store']);
 Route::put('pv/edit/{pv}',[PVController::class,'update']);
 Route::delete('pv/{pv}',[PVController::class,'delete']);
+
+Route::get('rapport',[rapportController::class,'index']);
 
 Route::post('rapport/create',[RapportController::class,'store']);
 Route::put('rapport/edit/{rapport}',[RapportController::class,'update']);
@@ -77,7 +81,8 @@ Route::delete('departement/{departement}',[departementController::class,'delete'
  
 Route::get('administrateur',[AdministrateurController::class,'index']);
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
-Route::put('administateur/edit/{administrateur}',[AdministrateurController::class,'update']);
+Route::put('administrateur/edit/{administrateur}',[AdministrateurController::class,'update']);
+Route::put('administrateur/editpasswd/{administrateur}',[AdministrateurController::class,'update_mot_de_passe']);
 Route::delete('administrateur/{administrateur}',[AdministrateurController::class,'delete']);
 
 Route::get('tablette',[tabletteController::class,'index']);
@@ -128,27 +133,17 @@ Route::delete('signer/{id_surveillant}/{id_pv}',[signerController::class,'delete
 Route::get('passer',[passerController::class,'index']);
 
 Route::post('passer/create',[passerController::class,'store']);
-Route::put('passer/edit/{passer}',[passerController::class,'update']);
-Route::delete('passer/{passer}',[passerController::class,'delete']);
+Route::put('passer/edit/{id_examen}/{id_local}/{codeApogee}',[passerController::class,'update']);
+Route::delete('passer/{id_examen}/{id_local}/{codeApogee}',[passerController::class,'delete']);
 
 
 Route::get('associer',[associerController::class,'index']);
 
 Route::post('associer/create',[associerController::class,'store']);
-Route::put('associer/edit/{associer}',[associerController::class,'update']);
-Route::delete('associer/{associer}',[associerController::class,'delete']);
-
-Route::get('passer',[examenController::class,'index']);
-
-Route::post('passer/create',[passerController::class,'store']);
-Route::put('passer/edit/{exam}/{local}/{code}',[passerController::class,'update']);
-Route::delete('passer/{exam}/{local}/{code}',[passerController::class,'delete']);
-
-Route::get('associer',[examenController::class,'index']);
-
-Route::post('associer/create',[associerController::class,'store']);
 Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController::class,'update']);
 Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
+
+Route::post('auth/login',[authcontroller::class,'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
