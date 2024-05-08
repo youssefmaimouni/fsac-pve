@@ -13,6 +13,7 @@ class authcontroller extends Controller
      */
     public function login(loginrequest $request){
           $token=auth()->attempt($request->validated());
+          //dd($token);
           if($token){
             return $this->responseWithToken($token, auth()->user());
           }

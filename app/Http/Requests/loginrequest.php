@@ -23,7 +23,7 @@ class loginrequest extends FormRequest
     {
         return [
             'mail'=>['required','email:filter'],
-            'mot_de_passe'=>['required',' string']
+            'password'=>['required',' string']
         ];
     }
 }

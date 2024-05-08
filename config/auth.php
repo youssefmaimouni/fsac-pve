@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'api',
-        'passwords' => 'users',
+        'passwords' => 'administrateurs',
     ],
 
     /*
@@ -100,8 +100,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'administrateurs' => [
+            'provider' => 'administrateurs',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

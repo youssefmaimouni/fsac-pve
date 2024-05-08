@@ -842,7 +842,7 @@
                                         "type": "string",
                                         "example": ""
                                     },
-                                    "mot_de_passe": {
+                                    "password": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -929,7 +929,7 @@
         "/api/administrateur/editpasswd/{administrateur}": {
             "put": {
                 "tags": [
-                    "Admin"
+                    "administrateur"
                 ],
                 "summary": "update all admins for REST API",
                 "description": "Multiple status values can be provided with comma separated string",
@@ -952,7 +952,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "mot_de_passe": {
+                                    "password": {
                                         "type": "string",
                                         "example": ""
                                     }

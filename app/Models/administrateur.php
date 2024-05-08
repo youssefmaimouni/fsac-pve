@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class administrateur extends Model implements JWTSubject
+
+class administrateur extends Authenticatable  implements JWTSubject
 {
-    
     protected $hidden=[
-        'mot_de_passe',
+        'password',
     
     ];
 
@@ -20,7 +21,7 @@ class administrateur extends Model implements JWTSubject
         'mail' ,
         'nom',
         'prenom',
-        'Mot_de_passe'
+        'password'
     ];
 
 // Rest omitted for brevity

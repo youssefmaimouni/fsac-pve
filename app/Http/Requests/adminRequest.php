@@ -24,7 +24,7 @@ class adminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mot_de_passe'=>'required | max:30 | min:8 ',
+            'password'=>'required | max:30 | min:8 ',
         ];
     }
     public function failedValidation(Validator $validator){
@@ -42,9 +42,9 @@ public function messages()
     {
         return[
 
-            'mot_de_passe.required '=>'le mot de passe doit etre fourni',
-            'mot_de_passe.max'=>'votre mot de passe ne doit pas depasser 30 characters',
-            'mot_de_passe.min'=>'votre mot de passe doit étre au moin 8 characters'
+            'password.required '=>'le mot de passe doit etre fourni',
+            'password.max'=>'votre mot de passe ne doit pas depasser 30 characters',
+            'password.min'=>'votre mot de passe doit étre au moin 8 characters'
 
         ];
     }
