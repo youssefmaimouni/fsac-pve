@@ -1882,10 +1882,6 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "id_rapport": {
-                                        "type": "integer",
-                                        "example": ""
-                                    },
                                     "nom_etudiant": {
                                         "type": "string",
                                         "example": ""
@@ -1900,6 +1896,10 @@
                                     },
                                     "photo": {
                                         "type": "string",
+                                        "example": ""
+                                    },
+                                    "codeApogee": {
+                                        "type": "integer",
                                         "example": ""
                                     }
                                 },
@@ -1949,7 +1949,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "id_rapport": {
+                                    "codeApogee": {
                                         "type": "integer",
                                         "example": ""
                                     },
@@ -1967,6 +1967,10 @@
                                     },
                                     "photo": {
                                         "type": "string",
+                                        "example": ""
+                                    },
+                                    "id_rapport": {
+                                        "type": "integer",
                                         "example": ""
                                     }
                                 },

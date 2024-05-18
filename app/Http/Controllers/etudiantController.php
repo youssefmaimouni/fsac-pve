@@ -66,11 +66,11 @@ class etudiantController extends Controller
      *         description="Book data that needs to be added to the store",
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="id_rapport", type="integer", example=""),
      *             @OA\Property(property="nom_etudiant", type="string", example=""),
      *             @OA\Property(property="prenom_etudiant", type="string", example=""),
      *             @OA\Property(property="CNE", type="string", example=""),
-     *             @OA\Property(property="photo", type="string", example="")
+     *             @OA\Property(property="photo", type="string", example=""),
+     *             @OA\Property(property="codeApogee", type="integer", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -93,6 +93,7 @@ class etudiantController extends Controller
         $etudiant->nom_etudiant=$request->nom_etudiant;
         $etudiant->prenom_etudiant=$request->prenom_etudiant;
         $etudiant->CNE=$request->CNE;
+        $etudiant->codeApogee=$request->codeApogee;
         $etudiant->photo=$request->photo;
         $etudiant->save();
 
@@ -128,11 +129,12 @@ class etudiantController extends Controller
      *         description="Book data that needs to be added to the store",
      *         required=true,
      *         @OA\JsonContent(
-     *              @OA\Property(property="id_rapport", type="integer", example=""),
+     *              @OA\Property(property="codeApogee", type="integer", example=""),
      *             @OA\Property(property="nom_etudiant", type="string", example=""),
      *             @OA\Property(property="prenom_etudiant", type="string", example=""),
      *             @OA\Property(property="CNE", type="string", example=""),
-     *             @OA\Property(property="photo", type="string", example="")
+     *             @OA\Property(property="photo", type="string", example=""),
+     *              @OA\Property(property="id_rapport", type="integer", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -155,6 +157,7 @@ class etudiantController extends Controller
             $etudiant->prenom_etudiant=$request->prenom_etudiant;
             $etudiant->CNE=$request->CNE;
             $etudiant->photo=$request->photo;
+            $etudiant->codeApogee=$request->codeApogee;
       
         $etudiant->save();
 
