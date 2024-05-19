@@ -33,4 +33,11 @@ class authcontroller extends Controller
         'type' => 'bearer'
     ]);
 }
+public function logout()
+    {
+        auth()->logout();  // Invalide le token
+
+        return response()->json(['message' => 'Successfully logged out']);
+    }
+
 }
