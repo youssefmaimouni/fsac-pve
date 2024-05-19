@@ -144,6 +144,7 @@ Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController
 Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
 
 Route::post('auth/login',[authcontroller::class,'login']);
+Route::post('auth/logout',[authcontroller::class,'logout']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
