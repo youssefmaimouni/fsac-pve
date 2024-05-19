@@ -17,7 +17,7 @@ return new class extends Migration
         });
     
         Schema::table('rapports' ,function (Blueprint $table) {
-            $table->unsignedBigInteger('codeApogee');
+            $table->integer('codeApogee');
             $table->foreign('codeApogee')->references('codeApogee')->on('etudiants')->onDelete('cascade');
         });
     }
