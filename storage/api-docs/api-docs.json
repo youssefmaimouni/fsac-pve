@@ -2938,6 +2938,16 @@
                                     "type_session": {
                                         "type": "string",
                                         "example": ""
+                                    },
+                                    "datedebut": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
+                                    },
+                                    "datefin": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
                                     }
                                 },
                                 "type": "object"
