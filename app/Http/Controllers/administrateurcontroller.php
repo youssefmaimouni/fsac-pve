@@ -7,6 +7,7 @@ use App\Models\administrateur;
 use Exception;
 use PhpParser\Node\Stmt\TryCatch;
 
+
 class administrateurController extends Controller
 {
     /**
