@@ -10,6 +10,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class administrateur extends Authenticatable  implements JWTSubject
 {
+    public function isAdmin()
+    {
+        return $this->role === 'admin';  // Assuming there is a 'role' attribute
+    }
     protected $hidden=[
         'password',
     

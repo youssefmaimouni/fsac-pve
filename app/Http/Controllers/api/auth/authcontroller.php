@@ -36,17 +36,13 @@ class authcontroller extends Controller
         'user' => $administrateur,
         "access_token" => $token,
         'type' => 'bearer'
-      ]);
-    }
-    public function logout(){
-      try{
-        auth()->logout();
-        return response()->json([
-          'message'=>'administrateur est logged out'
-        ],201);
+    ]);
+}
+public function logout()
+    {
+        auth()->logout();  // Invalide le token
 
-      }catch(Exception $exception){
-        return response()->json($exception);
+        return response()->json(['message' => 'Successfully logged out']);
     }
-    }
+
 }

@@ -18,3 +18,4 @@ class surveillant extends Model
         return $this->belongsTo(departement::class, 'id_departement');
     }
 }
+   
