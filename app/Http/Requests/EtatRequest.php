@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator ;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator ;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class tabletteRequest extends FormRequest
+class EtatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -41,9 +41,7 @@ class tabletteRequest extends FormRequest
         return[
             'adresse_mac.string'=>"ladresse  doit être un string",
             'adresse_mac.max:12'=>"ladresse ne doit pas depasser 12 characteres",
-            'adresse_mac.required'=>"ladresse est obligatoire",
-            "code_association.required"=>"Le code d'association est obligatoire",
-            "statut.required"=>"Le champ statut est obligatoire"
+            'adresse_mac.required'=>"ladresse est obligatoire"
         ];
     }
 }
