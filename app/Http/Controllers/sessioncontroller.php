@@ -68,6 +68,8 @@ class sessionController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="nom_session", type="string", example=""),
      *             @OA\Property(property="type_session", type="string", example=""),
+     *             @OA\Property(property="datedebut", type="date", example=""),
+     *             @OA\Property(property="datefin", type="date", example=""),
      *         )
      *     ),
      *     @OA\Response(
@@ -86,6 +88,8 @@ class sessionController extends Controller
         $session = new session();
         $session->nom_session=$request->nom_session;
         $session->type_session=$request->type_session;
+        $session->datedebut=$request->datedebut;
+        $session->datefin=$request->datefin;
         $session->save();
 
 
@@ -145,6 +149,8 @@ class sessionController extends Controller
         
         $session->nom_session=$request->nom_session;
         $session->type_session=$request->type_session;
+        $session->datedebut=$request->datedebut;
+        $session->datefin=$request->datefin;
         $session->save();
 
         return response()->json([
