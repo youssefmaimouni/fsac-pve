@@ -68,6 +68,7 @@ class sessionController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="nom_session", type="string", example=""),
      *             @OA\Property(property="type_session", type="string", example=""),
+     *             @OA\Property(property="Annee_universitaire", type="string", example=""),
      *             @OA\Property(property="datedebut", type="date", example=""),
      *             @OA\Property(property="datefin", type="date", example=""),
      *         )
@@ -90,6 +91,7 @@ class sessionController extends Controller
         $session->type_session=$request->type_session;
         $session->datedebut=$request->datedebut;
         $session->datefin=$request->datefin;
+        $session->Annee_universitaire=$request->Annee_universitaire;
         $session->save();
 
 

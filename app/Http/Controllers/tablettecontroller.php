@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EtatRequest;
+use App\Http\Requests\getPVRequest;
 use App\Http\Requests\tabletteRequest;
+use App\Models\affectation;
+use App\Models\etudiant;
+use App\Models\session;
+use App\Models\surveillant;
 use App\Models\tablette;
 use Exception;
 use Illuminate\Http\Request;
@@ -269,6 +274,126 @@ class tabletteController extends RoutingController
         }catch(Exception $exception){
             return response()->json($exception);
         }
+        }
+    /**
+     * @OA\POST(
+     *     path="/api/tablette/getPV",
+     *     tags={"Tablette"},
+     *     summary="delete all tablettes for REST API",
+     *     description="Multiple status values can be provided with comma separated string",
+     *     operationId="get PV du tablette",
+     *    @OA\Parameter(
+     *         name="status",
+     *         in="query",
+     *         description="Status values that needed to be considered for filter",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             default="available",
+     *             type="string",
+     *             enum={"available", "pending", "sold"},
+     *         )
+     *     ),
+     *     @OA\RequestBody(
+     *         description="les donnees de tablette",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="adresse_mac", type="string", example=""),
+     *             @OA\Property(property="demi_journee", type="string", example="AM/PM"),
+     *             @OA\Property(property="date", type="date", example="yyyy-mm-dd")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent() 
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     * )
+     */
+        public function getPV(getPVRequest $request){
+            try{
+
+                $exists = DB::table('tablettes')
+                    ->where('adresse_mac', $request->adresse_mac)
+                    ->exists();
+                if ($exists) {
+                   $etat= DB::table('tablettes')
+                   ->where('adresse_mac',$request->adresse_mac)
+                   ->value('statut');
+                   if($etat=='associer'){
+                    $surveillants = tablette::select('surveillants.nomComplet_s', 'surveillants.id_surveillant','surveillants.id_departement')
+                               ->join('affectations', 'affectations.id_tablette', '=', 'tablettes.id_tablette')
+                               ->join('associers', 'affectations.id_affectation', '=', 'associers.id_affectation')
+                               ->join('surveillants', 'surveillants.id_surveillant', '=', 'associers.id_surveillant')
+                               ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
+                               ->where('affectations.date_affectation', '=', $request->date)
+                               ->where('tablettes.adresse_mac','=',$request->adresse_mac)
+                               ->get();
+                    $reserviste = surveillant::select('surveillants.nomComplet_s', 'surveillants.id_surveillant','surveillants.id_departement')
+                               ->join('associers', 'surveillants.id_surveillant', '=', 'associers.id_surveillant')
+                               ->join('affectations', 'affectations.id_affectation', '=', 'associers.id_affectation')
+                               ->join('locals', 'locals.id_local', '=', 'affectations.id_local')
+                               ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
+                               ->where('affectations.date_affectation', '=', $request->date)
+                               ->where('locals.type_local','=','R')
+                               ->get();
+                    $local = tablette::select('locals.id_local', 'locals.num_local','locals.type_local')
+                               ->join('affectations', 'affectations.id_tablette', '=', 'tablettes.id_tablette')
+                               ->join('locals', 'locals.id_local', '=', 'affectations.id_local')
+                               ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
+                               ->where('affectations.date_affectation', '=', $request->date)
+                               ->where('tablettes.adresse_mac','=',$request->adresse_mac)
+                               ->get();
+                    $etudiants = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
+                               ->join('passers', 'etudiants.codeApogee', '=', 'passers.codeApogee')
+                               ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
+                               ->where('examens.demi_journee_examen', '=', $request->demi_journee)
+                               ->where('examens.date_examen', '=', $request->date)
+                               ->where('passers.id_local','=',$local[0]->id_local)
+                               ->get();
+                    $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module')
+                               ->distinct()
+                                ->join('examens', 'examens.id_session', '=', 'sessions.id_session')
+                               ->join('passers', 'examens.id_examen', '=', 'passers.id_examen')
+                               ->join('modules','examens.code_module','=','modules.code_module')
+                               ->where('examens.demi_journee_examen', '=', $request->demi_journee)
+                               ->where('examens.date_examen', '=', $request->date)
+                               ->where('passers.id_local','=',$local[0]->id_local)
+                               ->get();
+                               $PV = [
+                                   'local' => $local,
+                                   'surveillants' => $surveillants,
+                                   'reserviste' => $reserviste,
+                                   'etudiants' => $etudiants,
+                                   'session' => $session
+                                ];
+                        
+                    return response()->json([
+                                'status_code'=>201,
+                                'status_message'=>'tablette  associer',
+                                'PV'=>$PV
+                               ]); 
+                   }else {
+                    return response()->json([
+                        'status_code'=>400,
+                        'status_message'=>'tablette non associer',
+                        'PV'=>null
+                       ]); 
+                   }
+                }else {
+                    return response()->json([
+                        'status_code'=>400,
+                        'status_message'=>'tablette n`existe pas dans la base de donnée',
+                        'PV'=>null
+                       ]); 
+                }
+            }catch(Exception $exception){
+                return response()->json($exception);
+            }
         }
 }  
 
