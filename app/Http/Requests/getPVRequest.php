@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class sessionRequest extends FormRequest
+class getPVRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,9 @@ class sessionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom_session'=>' string | max:20 |required',
-            'type_session'=>' string | max:20 | required ',
-            'Annee_universitaire'=>'required',
-            'datedebut'=>'required | date',
-            'datefin'=>'required | date'
-            
+            'adresse_mac'=>'string | max:50 | required',
+            'demi_journee'=>'required | string ',
+            'date'=>'required | date',
         ];
     }
     public function failedValidation(Validator $validator){
@@ -44,10 +41,10 @@ class sessionRequest extends FormRequest
     public function messages()
     {
         return[
-            'nom_session.string'=>"le nom de la session  doit être un string",
-            'nom_session.max:20'=>"le nom ne doit pas depasser 20 characteres",
-            'type_session.string'=>"le type de la session  doit être un string",
-            'type_session.max:20'=>"le type ne doit pas depasser 20 characteres",
+            'date.required'=>"la date d\'affectation doit être fourni",
+            'demi_journee.required'=>"la demi journee d\'affectation doit être fourni",
+            'date.date'=>"la date d\'affectation doit être date",
+            'demi_journee.char'=>"la demi journee d\'affectation doit être une chaine de charactere",
         ];
     }
 }

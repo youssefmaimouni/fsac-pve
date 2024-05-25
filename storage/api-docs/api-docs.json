@@ -2939,6 +2939,10 @@
                                         "type": "string",
                                         "example": ""
                                     },
+                                    "Annee_universitaire": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
                                     "datedebut": {
                                         "type": "string",
                                         "format": "date",
@@ -3673,6 +3677,73 @@
                                     "adresse_mac": {
                                         "type": "string",
                                         "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/tablette/getPV": {
+            "post": {
+                "tags": [
+                    "Tablette"
+                ],
+                "summary": "delete all tablettes for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "get PV du tablette",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "les donnees de tablette",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "adresse_mac": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "demi_journee": {
+                                        "type": "string",
+                                        "example": "AM/PM"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "yyyy-mm-dd"
                                     }
                                 },
                                 "type": "object"

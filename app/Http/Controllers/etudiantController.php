@@ -88,7 +88,6 @@ class etudiantController extends Controller
 
         try{
         $etudiant = new etudiant();
-        //$etudiant->codeApogee=$request->codeApogee;
         $etudiant->id_rapport=$request->id_rapport;
         $etudiant->nom_etudiant=$request->nom_etudiant;
         $etudiant->prenom_etudiant=$request->prenom_etudiant;
@@ -96,7 +95,6 @@ class etudiantController extends Controller
         $etudiant->codeApogee=$request->codeApogee;
         $etudiant->photo=$request->photo;
         $etudiant->save();
-
 
         return response()->json([
             'status_code'=>201,

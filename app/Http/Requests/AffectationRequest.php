@@ -28,7 +28,7 @@ class AffectationRequest extends FormRequest
             'id_tablette'=>'required | integer | exists:tablettes,id_tablette',
             'id_local'=>'required | integer | exists:locals,id_local',
             'date_affectation'=>'required | date ',
-            'demi_journee_affectation'=>'required | char ',
+            'demi_journee_affectation'=>'required | string ',
         ];
     }
     public function failedValidation(Validator $validator){
