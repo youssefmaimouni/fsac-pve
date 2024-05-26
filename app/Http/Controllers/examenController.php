@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ExamenRequest;
-use App\Models\examen;
+use App\Http\Requests\repartitionRequest;
+use App\Models\Examen;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class examenController extends Controller
+class ExamenController extends Controller
 {
-     /**
+    /**
      * @OA\Get(
      *     path="/api/examen",
      *     tags={"examen"},
@@ -39,11 +41,50 @@ class examenController extends Controller
      *     ),
      * )
      */
-    public function index(){
-        $examen=examen::all();
-        return $examen;
+    public function getEtudiants(Request $request)
+    {
+        $validated = $request->validate([
+            'id_local' => 'required|integer',
+            'date_examen' => 'required|date',
+            'demi_journee' => 'required|string'
+        ]);
+
+        $etudiants = DB::table('examen')
+            ->join('passer', 'examen.id_examen', '=', 'passer.id_examen')
+            ->join('etudiant', 'passer.codeApogee', '=', 'etudiant.codeApogee')
+            ->where('examen.id_local', $validated['id_local'])
+            ->where('examen.date_examen', $validated['date_examen'])
+            ->where('examen.demi_journee_examen', $validated['demi_journee'])
+            ->select('etudiant.nom_etudiant', 'etudiant.prenom_etudiant', 'etudiant.codeApogee', 'passer.num_exam', 'examen.code_module')
+            ->get();
+
+        return response()->json($etudiants);
     }
-     /**
+
+    // Méthode pour récupérer les surveillants d'un examen spécifique
+    public function getSurveillants(repartitionRequest $request)
+    {
+       
+
+        $surveillants = DB::table('affectation')
+            ->join('surveillant', 'affectation.id_surveillant', '=', 'surveillant.id_surveillant')
+            ->join('local', 'affectation.id_local', '=', 'local.id_local')
+            ->where('local.id_local',$request->id_local)
+            ->where('affectation.date_affectation', $request->date_examen)
+            ->where('affectation.demi_journee_affectation',$request->demi_journee)
+            ->select('surveillant.nomComplet_s')
+            ->get();
+
+        return response()->json($surveillants);
+    }
+
+    public function index()
+    {
+        $examens = Examen::all();
+        return $examens;
+    }
+
+    /**
      * @OA\Post(
      *     path="/api/examen/create",
      *     tags={"examen"},
@@ -63,16 +104,15 @@ class examenController extends Controller
      *         )
      *     ),
      *      @OA\RequestBody(
-     *         description="Book data that needs to be added to the store",
+     *         description="Examen data that needs to be added to the store",
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="id_session", type="integer", example=""),
-     *             @OA\Property(property="code_module", type="integer", example=""),
-     *             @OA\Property(property="id_pv", type="integer", example=""),
-     *             @OA\Property(property="date_examen", type="date", example=""),
-     *            @OA\Property(property="demi_journee_examen", type="string", example="144488"),
-     *             @OA\Property(property="seance_examen", type="string", example="")
-     *             
+     *             @OA\Property(property="id_session", type="integer", example="1"),
+     *             @OA\Property(property="code_module", type="integer", example="101"),
+     *             @OA\Property(property="id_pv", type="integer", example="2"),
+     *             @OA\Property(property="date_examen", type="string", format="date", example="2024-06-01"),
+     *             @OA\Property(property="demi_journee_examen", type="string", example="AM"),
+     *             @OA\Property(property="seance_examen", type="string", example="1")
      *         )
      *     ),
      *     @OA\Response(
@@ -86,31 +126,29 @@ class examenController extends Controller
      *     ),
      * )
      */
-    public function store(ExamenRequest $request){
+    public function store(ExamenRequest $request)
+    {
+        try {
+            $examen = new Examen();
+            $examen->id_session = $request->id_session;
+            $examen->code_module = $request->code_module;
+            $examen->id_pv = $request->id_pv;
+            $examen->date_examen = $request->date_examen;
+            $examen->demi_journee_examen = $request->demi_journee_examen;
+            $examen->seance_examen = $request->seance_examen;
+            $examen->save();
 
-        try{
-        $examen = new examen();
-        $examen->id_session=$request->id_session;
-        $examen->code_module=$request->code_module;
-        $examen->id_pv=$request->id_pv;
-        $examen->date_examen=$request->date_examen;
-        $examen->demi_journee_examen=$request->demi_journee_examen;
-        $examen->seance_examen=$request->seance_examen;
-        $examen->save();
-
-
-        return response()->json([
-            'status_code'=>201,
-            'status_message'=>'l examen a été ajouté',
-            'data'=>$examen
-        ]);
-        
-        }catch(Exception $exception){
+            return response()->json([
+                'status_code' => 201,
+                'status_message' => 'L examen a été ajouté',
+                'data' => $examen
+            ]);
+        } catch (Exception $exception) {
             return response()->json($exception);
         }
-        
     }
-/**
+
+    /**
      * @OA\Put(
      *     path="/api/examen/edit/{examen}",
      *     tags={"examen"},
@@ -127,15 +165,15 @@ class examenController extends Controller
      *          )
      *      ),
      *      @OA\RequestBody(
-     *         description="Book data that needs to be added to the store",
+     *         description="Examen data that needs to be updated",
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="id_session", type="integer", example=""),
-     *             @OA\Property(property="code_module", type="integer", example=""),
-     *             @OA\Property(property="id_pv", type="integer", example=""),
-     *             @OA\Property(property="date_examen", type="date", example=""),
-     *            @OA\Property(property="demi_journee_examen", type="string", example="144488"),
-     *             @OA\Property(property="seance_examen", type="string", example="")
+     *             @OA\Property(property="id_session", type="integer", example="1"),
+     *             @OA\Property(property="code_module", type="integer", example="101"),
+     *             @OA\Property(property="id_pv", type="integer", example="2"),
+     *             @OA\Property(property="date_examen", type="string", format="date", example="2024-06-01"),
+     *             @OA\Property(property="demi_journee_examen", type="string", example="AM"),
+     *             @OA\Property(property="seance_examen", type="string", example="1")
      *         )
      *     ),
      *     @OA\Response(
@@ -149,33 +187,28 @@ class examenController extends Controller
      *     ),
      * )
      */
-    public function update(examenRequest $request,examen $examen) {
-        
-        // $examen=$examen::find($id);
+    public function update(ExamenRequest $request, Examen $examen)
+    {
+        try {
+            $examen->id_session = $request->id_session;
+            $examen->code_module = $request->code_module;
+            $examen->id_pv = $request->id_pv;
+            $examen->date_examen = $request->date_examen;
+            $examen->demi_journee_examen = $request->demi_journee_examen;
+            $examen->seance_examen = $request->seance_examen;
+            $examen->save();
 
-        try{
-        
-            $examen->id_session=$request->id_session;
-            $examen->code_module=$request->code_module;
-            $examen->id_pv=$request->id_pv;
-            $examen->date_examen=$request->date_examen;
-            $examen->demi_journee_examen=$request->demi_journee_examen;
-            $examen->seance_examen=$request->seance_examen;
-      
-        $examen->save();
-
-        return response()->json([
-            'status_code'=>201,
-            'status_message'=>'la examen  a été modifié',
-            'data'=>$examen
-        ]);
-
-        }catch(Exception $exception){
+            return response()->json([
+                'status_code' => 200,
+                'status_message' => 'L examen a été modifié',
+                'data' => $examen
+            ]);
+        } catch (Exception $exception) {
             return response()->json($exception);
         }
-       
     }
-/**
+
+    /**
      * @OA\Delete(
      *     path="/api/examen/{examen}",
      *     tags={"examen"},
@@ -202,18 +235,17 @@ class examenController extends Controller
      *     ),
      * )
      */
-    public function delete(examen $examen) {
-         try{
-                $examen->delete();
+    public function delete(Examen $examen)
+    {
+        try {
+            $examen->delete();
 
             return response()->json([
-                'status_code'=>200,
-                'status_message'=>'la examen  a été supprimer',
-                'data'=>$examen
+                'status_code' => 200,
+                'status_message' => 'L examen a été supprimé',
+                'data' => $examen
             ]);
-            
-            
-         }catch(Exception $exception){
+        } catch (Exception $exception) {
             return response()->json($exception);
         }
     }

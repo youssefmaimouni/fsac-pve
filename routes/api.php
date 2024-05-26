@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::group(['middleware' => ['auth:api', 'admin']], function () {
+//Route::group(['middleware' => ['auth:api', 'admin']], function () {
 Route::get('filiere',[FiliereController::class,'index']);
 
 Route::post('filiere/create',[FiliereController::class,'store']);
@@ -142,7 +142,7 @@ Route::get('associer',[associerController::class,'index']);
 Route::post('associer/create',[associerController::class,'store']);
 Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController::class,'update']);
 Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
-});
+//});
 
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
 Route::post('auth/login',[authcontroller::class,'login']);
@@ -152,3 +152,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     return $request->user();
 });
+Route::options('/{any}', function() {
+    return response()->json([]);
+})->where('any', '.*');
+
+Route::get('surveillants/session/{id}', [SurveillantController::class, 'getSurveillantsBySession']);
+Route::get('etudiants/session/{id}', [EtudiantController::class, 'getEtudiantsBySession']);
+
+
+Route::get('/etudiants-examen', 'examenController@getEtudiants');
+Route::get('/surveillants-examen', 'examenController@getSurveillants');
