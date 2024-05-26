@@ -24,14 +24,12 @@ class EtudiantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //'codeApogee'=>'required | unique|integer',
-            //'id_rapport'=>'required | integer | exists:rapports,id_rapport',
+            'id_rapport' => 'nullable|integer|exists:rapports,id_rapport',
             'nom_etudiant'=>'required | string ',
             'prenom_etudiant'=>'required | string',
             'CNE'=>'required | string',
             'photo'=>'required | string',
-            'codeApogee'=>'required | integer',
-            'id_rapport'=>'exists:rapports,id_rapport | integer',
+            'codeApogee'=>'required|integer',
         ];
     }
     public function failedValidation(Validator $validator){
@@ -59,8 +57,7 @@ class EtudiantRequest extends FormRequest
             'CNE.string'=>"la CNE d'etudiant doit être un string",
             'photo.required'=>"la photo d'etudiant doit être fourni",
             'photo.string'=>"la photo d'etudiant doit être un string",
-            'codeApogee.required'=>"le code apogee d'etudiant doit être fourni",
-            'codeApogee.integer'=>"le code apogee d'etudiant doit être un entier",
+            
 
             
         ];

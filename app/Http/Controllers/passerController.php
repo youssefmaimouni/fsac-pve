@@ -72,6 +72,7 @@ class passerController extends Controller
      *             @OA\Property(property="codeApogee", type="integer", example=""),
      *             @OA\Property(property="id_local", type="integer", example=""),
      *             @OA\Property(property="num_exam", type="integer", example="")
+     *             @OA\Property(property="isPresent", type="boolean", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -93,7 +94,7 @@ class passerController extends Controller
         $passer->codeApogee=$request->codeApogee;
         $passer->id_local=$request->id_local;
         $passer->num_exam=$request->num_exam;
-        
+        $passer->isPresent=$request->isPresent;
 
         $passer->save();
 
@@ -151,6 +152,7 @@ class passerController extends Controller
      *             @OA\Property(property="codeApogee", type="integer", example=""),
      *             @OA\Property(property="id_local", type="integer", example=""),
      *             @OA\Property(property="num_exam", type="integer", example="")
+     *            @OA\Property(property="isPresent", type="boolean", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -172,7 +174,8 @@ class passerController extends Controller
         ->update([ 'num_exam'=>$request->num_exam,
                'id_examen'=>$request->id_examen,
                'id_local'=>$request->id_local,
-               'codeApogee'=>$request->codeApogee
+               'codeApogee'=>$request->codeApogee,
+               'isPresent'=>$request->isPresent
     ]);
 
         return response()->json([
