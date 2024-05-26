@@ -8,6 +8,7 @@ class Kernel extends HttpKernel
 {
     protected $routeMiddleware = [
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'verify.tablet.uuid' => \App\Http\Middleware\VerifyTabletUUID::class,
     ];
     /**
      * The application's global HTTP middleware stack.

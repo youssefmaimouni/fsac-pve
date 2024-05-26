@@ -57,6 +57,7 @@ class EtudiantRequest extends FormRequest
             'CNE.string'=>"la CNE d'etudiant doit être un string",
             'photo.required'=>"la photo d'etudiant doit être fourni",
             'photo.string'=>"la photo d'etudiant doit être un string",
+            
 
             
         ];
