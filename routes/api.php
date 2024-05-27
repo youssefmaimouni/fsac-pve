@@ -20,6 +20,8 @@ use App\Http\Controllers\tabletteController;
 use App\Http\Controllers\gererController;
 use App\Http\Controllers\passerController;
 use App\Http\Controllers\sessionController;
+use App\Http\Controllers\activityController;
+use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +40,8 @@ Route::get('filiere',[FiliereController::class,'index']);
 Route::post('filiere/create',[FiliereController::class,'store']);
 Route::put('filiere/edit/{filiere}',[FiliereController::class,'update']);
 Route::delete('filiere/{filiere}',[FiliereController::class,'delete']);
+
+Route::get('logs',[activityController::class,'index']);
 
 
 Route::get('module',[ModuleController::class,'index']);
