@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator ;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class tabletteRequest extends FormRequest
+class getPVRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class tabletteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'adresse_mac'=>' string | max:50 | required'
+            'adresse_mac'=>'string | max:50 | required',
+            'demi_journee'=>'required | string ',
+            'date'=>'required | date',
         ];
     }
     public function failedValidation(Validator $validator){
@@ -39,11 +41,10 @@ class tabletteRequest extends FormRequest
     public function messages()
     {
         return[
-            'adresse_mac.string'=>"ladresse  doit être un string",
-            'adresse_mac.max:12'=>"ladresse ne doit pas depasser 12 characteres",
-            'adresse_mac.required'=>"ladresse est obligatoire",
-            "code_association.required"=>"Le code d'association est obligatoire",
-            "statut.required"=>"Le champ statut est obligatoire"
+            'date.required'=>"la date d\'affectation doit être fourni",
+            'demi_journee.required'=>"la demi journee d\'affectation doit être fourni",
+            'date.date'=>"la date d\'affectation doit être date",
+            'demi_journee.char'=>"la demi journee d\'affectation doit être une chaine de charactere",
         ];
     }
 }

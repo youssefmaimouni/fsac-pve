@@ -24,8 +24,11 @@ class sessionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nom_session'=>' string | max:20 ',
-            'type_session'=>' string | max:20 '
+            'nom_session'=>' string | max:20 |required',
+            'type_session'=>' string | max:20 | required ',
+            'Annee_universitaire'=>'required',
+            'datedebut'=>'required | date',
+            'datefin'=>'required | date'
             
         ];
     }

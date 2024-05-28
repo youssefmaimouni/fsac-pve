@@ -20,6 +20,8 @@ use App\Http\Controllers\tabletteController;
 use App\Http\Controllers\gererController;
 use App\Http\Controllers\passerController;
 use App\Http\Controllers\sessionController;
+use App\Http\Controllers\activityController;
+use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +40,8 @@ Route::get('filiere',[FiliereController::class,'index']);
 Route::post('filiere/create',[FiliereController::class,'store']);
 Route::put('filiere/edit/{filiere}',[FiliereController::class,'update']);
 Route::delete('filiere/{filiere}',[FiliereController::class,'delete']);
+
+Route::get('logs',[activityController::class,'index']);
 
 
 Route::get('module',[ModuleController::class,'index']);
@@ -86,7 +90,6 @@ Route::put('administrateur/editpasswd/{administrateur}',[AdministrateurControlle
 Route::delete('administrateur/{administrateur}',[AdministrateurController::class,'delete']);
 
 Route::get('tablette',[tabletteController::class,'index']);
-Route::post('tablette/create',[tabletteController::class,'store']);
 Route::put('tablette/edit/{tablette}',[tabletteController::class,'update']);
 Route::delete('tablette/{tablette}',[tabletteController::class,'delete']) ;
 
@@ -143,6 +146,9 @@ Route::post('associer/create',[associerController::class,'store']);
 Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController::class,'update']);
 Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
 //});
+Route::post('tablette/create',[tabletteController::class,'store']);
+Route::post('tablette/getEtat',[tabletteController::class,'getEtat']);
+Route::post('tablette/getPV',[tabletteController::class,'getPV']);
 
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
 Route::post('auth/login',[authcontroller::class,'login']);

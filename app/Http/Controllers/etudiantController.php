@@ -88,7 +88,6 @@ class etudiantController extends Controller
 
         try{
         $etudiant = new etudiant();
-        //$etudiant->codeApogee=$request->codeApogee;
         $etudiant->id_rapport=$request->id_rapport;
         $etudiant->nom_etudiant=$request->nom_etudiant;
         $etudiant->prenom_etudiant=$request->prenom_etudiant;
@@ -96,7 +95,7 @@ class etudiantController extends Controller
         $etudiant->codeApogee=$request->codeApogee;
         $etudiant->photo=$request->photo;
         $etudiant->save();
-
+        activity()->log("dudiant ajoute");
 
         return response()->json([
             'status_code'=>201,
@@ -202,10 +201,10 @@ class etudiantController extends Controller
     public function delete(etudiant $etudiant) {
          try{
                 $etudiant->delete();
-
+                activity()->log("etudiant supprime");
             return response()->json([
                 'status_code'=>200,
-                'status_message'=>"l'etudiant  a été supprimer",
+                'status_message'=>"l'etudiant  a été supprime",
                 'data'=>$etudiant
             ]);
             
