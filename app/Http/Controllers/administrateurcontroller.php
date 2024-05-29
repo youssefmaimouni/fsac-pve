@@ -37,6 +37,7 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -81,6 +82,7 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(administrateurRequest $request){
@@ -139,6 +141,7 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(administrateurRequest $request,administrateur $administrateur )
@@ -190,6 +193,7 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update_mot_de_passe(adminRequest $request,administrateur $administrateur )
@@ -232,6 +236,7 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
 public function delete(administrateur  $administrateur) {

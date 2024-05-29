@@ -38,6 +38,7 @@ class associerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -80,6 +81,7 @@ class associerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(AssocierRequest $request){
@@ -146,6 +148,7 @@ class associerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(AssocierRequest $request,$id_surveillant,$id_affectation) {
@@ -217,6 +220,7 @@ class associerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function delete($id_surveillant,$id_affectation) {

@@ -39,6 +39,7 @@ class passerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -71,7 +72,7 @@ class passerController extends Controller
      *            @OA\Property(property="id_examen", type="integer", example=""),
      *             @OA\Property(property="codeApogee", type="integer", example=""),
      *             @OA\Property(property="id_local", type="integer", example=""),
-     *             @OA\Property(property="num_exam", type="integer", example="")
+     *             @OA\Property(property="num_exam", type="integer", example=""),
      *             @OA\Property(property="isPresent", type="boolean", example="")
      *         )
      *     ),
@@ -84,6 +85,7 @@ class passerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(passerRequest $request){
@@ -148,11 +150,11 @@ class passerController extends Controller
      *         description="Book data that needs to be added to the store",
      *         required=true,
      *         @OA\JsonContent(
-     *              @OA\Property(property="id_examen", type="integer", example=""),
+     *             @OA\Property(property="id_examen", type="integer", example=""),
      *             @OA\Property(property="codeApogee", type="integer", example=""),
      *             @OA\Property(property="id_local", type="integer", example=""),
-     *             @OA\Property(property="num_exam", type="integer", example="")
-     *            @OA\Property(property="isPresent", type="boolean", example="")
+     *             @OA\Property(property="num_exam", type="integer", example=""),
+     *             @OA\Property(property="isPresent", type="boolean", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -164,6 +166,7 @@ class passerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(editpasserRequest $request,$exam,$local,$code) {
@@ -215,6 +218,7 @@ class passerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
 public function delete($exam,$local,$code) {

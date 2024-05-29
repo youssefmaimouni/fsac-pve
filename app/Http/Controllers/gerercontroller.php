@@ -37,6 +37,7 @@ class gererController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
         public function index(){
@@ -79,6 +80,7 @@ class gererController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
         public function store(gererRequest $request){
@@ -144,6 +146,7 @@ class gererController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     
@@ -214,6 +217,7 @@ class gererController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
             public function delete(  $id_administrateur,$id_session) {

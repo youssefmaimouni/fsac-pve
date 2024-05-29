@@ -86,6 +86,7 @@ class tabletteController extends RoutingController
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(tabletteRequest $request){
@@ -153,6 +154,7 @@ class tabletteController extends RoutingController
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(tabletteRequest $request,tablette $tablette) {
@@ -198,6 +200,7 @@ class tabletteController extends RoutingController
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function delete(tablette $tablette) {
@@ -251,6 +254,7 @@ class tabletteController extends RoutingController
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function getEtat(EtatRequest $request){
@@ -312,6 +316,7 @@ class tabletteController extends RoutingController
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
         public function getPV(getPVRequest $request){

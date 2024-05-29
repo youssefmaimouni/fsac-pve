@@ -37,6 +37,7 @@ class PVController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -79,6 +80,7 @@ class PVController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(PVRequest $request){
@@ -132,6 +134,7 @@ class PVController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(PVRequest $request,pv $pv) {
@@ -180,6 +183,7 @@ class PVController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function delete(pv $pv) {

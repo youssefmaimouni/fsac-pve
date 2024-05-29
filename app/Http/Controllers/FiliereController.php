@@ -38,6 +38,7 @@ class FiliereController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -82,6 +83,7 @@ class FiliereController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(CreateFiliereRequest $request){
@@ -135,6 +137,7 @@ class FiliereController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(EditFiliereRequest $request,filiere $filiere) {
@@ -183,6 +186,7 @@ class FiliereController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function delete(filiere $filiere) {

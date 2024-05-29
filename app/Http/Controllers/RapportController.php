@@ -37,6 +37,7 @@ class RapportController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -81,6 +82,7 @@ class RapportController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(RapportRequest $request){
@@ -140,6 +142,7 @@ class RapportController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(RapportRequest $request,Rapport $rapport) {
@@ -189,6 +192,7 @@ class RapportController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function delete(Rapport $rapport) {

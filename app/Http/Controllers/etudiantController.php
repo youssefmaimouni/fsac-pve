@@ -8,6 +8,15 @@ use App\Models\etudiant;
 use Exception;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT",
+ *     description="Input your Bearer token in the following format - Bearer {your_token_here}"
+ * )
+ */
 class etudiantController extends Controller
 {
      /**
@@ -37,6 +46,7 @@ class etudiantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -82,6 +92,7 @@ class etudiantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(EtudiantRequest $request){
@@ -145,6 +156,7 @@ class etudiantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(EtudiantRequest $request,etudiant $etudiant) {
@@ -196,6 +208,7 @@ class etudiantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function delete(etudiant $etudiant) {
