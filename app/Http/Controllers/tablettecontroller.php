@@ -361,7 +361,7 @@ class tabletteController extends RoutingController
                                ->where('passers.id_local','=',$local[0]->id_local)
                                ->get();
                     $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module')
-                               ->distinct()
+                               ->distinct() 
                                 ->join('examens', 'examens.id_session', '=', 'sessions.id_session')
                                ->join('passers', 'examens.id_examen', '=', 'passers.id_examen')
                                ->join('modules','examens.code_module','=','modules.code_module')
