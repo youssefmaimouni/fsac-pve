@@ -99,7 +99,6 @@ class etudiantController extends Controller
 
         try{
         $etudiant = new etudiant();
-        $etudiant->id_rapport=$request->id_rapport;
         $etudiant->nom_etudiant=$request->nom_etudiant;
         $etudiant->prenom_etudiant=$request->prenom_etudiant;
         $etudiant->CNE=$request->CNE;
@@ -144,7 +143,6 @@ class etudiantController extends Controller
      *             @OA\Property(property="prenom_etudiant", type="string", example=""),
      *             @OA\Property(property="CNE", type="string", example=""),
      *             @OA\Property(property="photo", type="string", example=""),
-     *              @OA\Property(property="id_rapport", type="integer", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -163,7 +161,6 @@ class etudiantController extends Controller
 
         try{
         
-            $etudiant->id_rapport=$request->id_rapport;
             $etudiant->nom_etudiant=$request->nom_etudiant;
             $etudiant->prenom_etudiant=$request->prenom_etudiant;
             $etudiant->CNE=$request->CNE;

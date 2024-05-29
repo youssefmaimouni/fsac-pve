@@ -2204,10 +2204,6 @@
                                     "photo": {
                                         "type": "string",
                                         "example": ""
-                                    },
-                                    "id_rapport": {
-                                        "type": "integer",
-                                        "example": ""
                                     }
                                 },
                                 "type": "object"
