@@ -358,10 +358,10 @@ class tabletteController extends RoutingController
                                ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
                                ->where('examens.demi_journee_examen', '=', $request->demi_journee)
                                ->where('examens.date_examen', '=', $request->date)
-                               ->where('passers.id_local','=',$local[0]->id_local)
-                               ->get();
+                               ->where('passers.id_local','=',$local[0]->id_local) 
+                               ->get(); 
                     $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module')
-                               ->distinct() 
+                               ->distinct()
                                 ->join('examens', 'examens.id_session', '=', 'sessions.id_session')
                                ->join('passers', 'examens.id_examen', '=', 'passers.id_examen')
                                ->join('modules','examens.code_module','=','modules.code_module')
@@ -392,7 +392,7 @@ class tabletteController extends RoutingController
                 }else {
                     return response()->json([
                         'status_code'=>400,
-                        'status_message'=>'tablette n`existe pas dans la base de donnée',
+                        'status_message'=>'tablette  n`existe pas dans la base de donnée',
                         'PV'=>null
                        ]); 
                 }
