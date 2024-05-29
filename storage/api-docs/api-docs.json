@@ -874,7 +874,12 @@
                     "400": {
                         "description": "Invalid status value"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/administrateur": {
