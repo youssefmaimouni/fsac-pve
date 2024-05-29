@@ -89,7 +89,7 @@ class surveillantController extends Controller
         $surveillant->id_departement=$request->id_departement;
         $surveillant->nomComplet_s=$request->nomComplet_s;
         $surveillant->save();
-
+        activity()->log("surveillant ajoute");
 
         return response()->json([
             'status_code'=>201,
@@ -189,7 +189,7 @@ class surveillantController extends Controller
     public function delete(surveillant $surveillant) {
          try{
                 $surveillant->delete();
-
+                activity()->log("surveillant supprime");
             return response()->json([
                 'status_code'=>200,
                 'status_message'=>"le surveillant a été supprimer",
