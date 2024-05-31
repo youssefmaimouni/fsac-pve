@@ -151,9 +151,8 @@ Route::post('tablette/getEtat',[tabletteController::class,'getEtat']);
 Route::post('tablette/getPV',[tabletteController::class,'getPV']);
 
 
-Route::post('tablette/getEtat',[tabletteController::class,'getEtat']);
+Route::post('tablette/setPV',[tabletteController::class,'setPV']);
 
-Route::post('tablette/create',[tabletteController::class,'store']);
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
 Route::post('auth/login',[authcontroller::class,'login']);
 Route::post('auth/logout', [AuthController::class, 'logout'])->middleware('auth:api');

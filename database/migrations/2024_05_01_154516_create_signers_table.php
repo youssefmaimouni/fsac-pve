@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreign('id_surveillant')->references('id_surveillant')->on('surveillants')->onDelete('cascade');
             $table->unsignedBigInteger('id_pv');
             $table->foreign('id_pv')->references('id_pv')->on('pvs')->onDelete('cascade');
-            $table->string('signature',50);
+            $table->boolean('signer')->nullable();
             $table->primary(['id_surveillant', 'id_pv']);
             $table->timestamps();
         });

@@ -24,7 +24,7 @@ class tabletteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'adresse_mac'=>' string | max:50 | required'
+            'device_id'=>' string | max:50 | required'
         ];
     }
     public function failedValidation(Validator $validator){
@@ -39,9 +39,9 @@ class tabletteRequest extends FormRequest
     public function messages()
     {
         return[
-            'adresse_mac.string'=>"ladresse  doit être un string",
-            'adresse_mac.max:12'=>"ladresse ne doit pas depasser 12 characteres",
-            'adresse_mac.required'=>"ladresse est obligatoire",
+            'device_id.string'=>"ladresse  doit être un string",
+            'device_id.max:12'=>"ladresse ne doit pas depasser 12 characteres",
+            'device_id.required'=>"ladresse est obligatoire",
             "code_association.required"=>"Le code d'association est obligatoire",
             "statut.required"=>"Le champ statut est obligatoire"
         ];

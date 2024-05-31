@@ -38,6 +38,10 @@ class signerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
      *      security={{"bearerAuth":{}}}
      * )
      */
@@ -68,9 +72,9 @@ class signerController extends Controller
      *         description="Book data that needs to be added to the store",
      *         required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="id_surveillant", type="integer", example="144488"),
+     *             @OA\Property(property="id_surveillant", type="integer", example=""),
      *             @OA\Property(property="id_pv", type="integer", example=""),
-     *             @OA\Property(property="signature", type="string", example=""),
+     *             @OA\Property(property="signer", type="string", example=""),
      *             
      *         )
      *     ),
@@ -83,6 +87,10 @@ class signerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
      *      security={{"bearerAuth":{}}}
      * )
      */
@@ -92,13 +100,13 @@ class signerController extends Controller
         $signer = new signer();
         $signer->id_surveillant=$request->id_surveillant;
         $signer->id_pv=$request->id_pv;
-        $signer->signature= $request->signature;
+        $signer->signer= $request->signer;
         $signer->save();
 
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'la signature a été ajouté',
+            'status_message'=>'la signer a été ajouté',
             'data'=>$signer
         ]);
         
@@ -138,7 +146,7 @@ class signerController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="id_surveillant", type="integer", example="144488"),
      *             @OA\Property(property="id_pv", type="integer", example=""),
-     *             @OA\Property(property="signature", type="string", example=""),
+     *             @OA\Property(property="signer", type="string", example=""),
      *         )
      *     ),
      *     @OA\Response(
@@ -149,6 +157,10 @@ class signerController extends Controller
      *     @OA\Response(
      *         response=400,
      *         description="Invalid status value"
+     *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
      *     ),
      *      security={{"bearerAuth":{}}}
      * )
@@ -163,17 +175,17 @@ class signerController extends Controller
             if ($signer != null) {
                DB::table('signers')->where('id_surveillant',$id_surveillant)
             ->where('id_pv',$id_pv)
-            ->update(['id_surveillant'=>$request->id_surveillant,'id_pv'=>$request->id_pv,'signature'=>$request->signature]);
+            ->update(['id_surveillant'=>$request->id_surveillant,'id_pv'=>$request->id_pv,'signer'=>$request->signer]);
 
         return response()->json([
             'status_code'=>201,
-            'status_message'=>'la signature  a été modifié',
+            'status_message'=>'la signer  a été modifié',
             'data'=>$signer
         ]);
             } else {
                 return response()->json([
                     'status_code' => 201,
-                    'status_message' => 'la signature du id_surveillant et id_pv saisier n`existe pas',
+                    'status_message' => 'la signer du id_surveillant et id_pv saisier n`existe pas',
                     'data' => $signer
                 ]);
             }
@@ -210,6 +222,10 @@ class signerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
      *      security={{"bearerAuth":{}}}
      * )
      */
@@ -222,13 +238,13 @@ class signerController extends Controller
 
             return response()->json([
                 'status_code'=>200,
-                'status_message'=>'la signature a été supprimer',
+                'status_message'=>'la signer a été supprimer',
                 'data'=>$signer
             ]);
         } else {
             return response()->json([
                 'status_code' => 201,
-                'status_message' => 'la signature du id_surveillant et id_pv saisier n`existe pas',
+                'status_message' => 'la signer du id_surveillant et id_pv saisier n`existe pas',
                 'data' => $signer
             ]);
         }

@@ -24,7 +24,7 @@ class getPVRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'adresse_mac'=>'string | max:50 | required',
+            'device_id'=>'string | max:50 | required',
             'demi_journee'=>'required | string ',
             'date'=>'required | date',
         ];
@@ -41,6 +41,9 @@ class getPVRequest extends FormRequest
     public function messages()
     {
         return[
+            'device_id.required'=>'Le champ device_id est obligatoire',
+            'device_id.string'=>'Le champ device_id doit être une chaine de caractère',
+            'device_id.max'=>'Le champ device_id ne doit pas dépasser 50 caractères',
             'date.required'=>"la date d\'affectation doit être fourni",
             'demi_journee.required'=>"la demi journee d\'affectation doit être fourni",
             'date.date'=>"la date d\'affectation doit être date",

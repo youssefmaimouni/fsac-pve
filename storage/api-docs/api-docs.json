@@ -45,6 +45,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -108,6 +111,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -164,6 +170,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -203,6 +212,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -244,6 +256,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -311,6 +326,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -371,6 +389,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -410,6 +431,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -451,6 +475,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -514,6 +541,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -570,6 +600,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -609,6 +642,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -650,6 +686,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -725,6 +764,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -793,6 +835,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -832,6 +877,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -873,6 +921,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -914,6 +965,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1053,6 +1107,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1109,6 +1166,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1148,6 +1208,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1189,6 +1252,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1265,6 +1331,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1334,6 +1403,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1373,6 +1445,79 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "create all signers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1414,6 +1559,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1481,6 +1629,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1550,6 +1701,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1598,6 +1752,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1639,6 +1796,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1706,6 +1866,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1775,6 +1938,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1823,6 +1989,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1864,6 +2033,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1931,6 +2103,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -1991,6 +2166,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2030,6 +2208,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2071,6 +2252,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2150,6 +2334,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2222,6 +2409,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2261,6 +2451,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2302,6 +2495,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2386,6 +2582,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2463,6 +2662,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2502,6 +2704,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2543,6 +2748,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2610,6 +2818,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2679,6 +2890,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2727,6 +2941,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2768,6 +2985,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2835,6 +3055,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2895,6 +3118,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2934,6 +3160,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -2975,6 +3204,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3054,6 +3286,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3144,6 +3379,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3183,6 +3421,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3224,6 +3465,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3305,6 +3549,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3347,6 +3594,20 @@
                                     "type_session": {
                                         "type": "string",
                                         "example": ""
+                                    },
+                                    "Annee_universitaire": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "datedebut": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
+                                    },
+                                    "datefin": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
                                     }
                                 },
                                 "type": "object"
@@ -3365,6 +3626,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3404,6 +3668,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3445,6 +3712,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3489,13 +3759,13 @@
                                 "properties": {
                                     "id_surveillant": {
                                         "type": "integer",
-                                        "example": "144488"
+                                        "example": ""
                                     },
                                     "id_pv": {
                                         "type": "integer",
                                         "example": ""
                                     },
-                                    "signature": {
+                                    "signer": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -3516,6 +3786,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3568,7 +3841,7 @@
                                         "type": "integer",
                                         "example": ""
                                     },
-                                    "signature": {
+                                    "signer": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -3589,6 +3862,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3628,6 +3904,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3669,6 +3948,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3736,6 +4018,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3796,6 +4081,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3835,6 +4123,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -3876,8 +4167,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/tablette/create": {
@@ -3913,7 +4212,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "adresse_mac": {
+                                    "device_id": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -3969,7 +4268,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "adresse_mac": {
+                                    "device_id": {
                                         "type": "string",
                                         "example": ""
                                     },
@@ -3998,6 +4297,12 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "404": {
+                        "description": "Data not found"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -4037,6 +4342,9 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
                 },
                 "security": [
@@ -4079,7 +4387,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "adresse_mac": {
+                                    "device_id": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -4142,7 +4450,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "adresse_mac": {
+                                    "device_id": {
                                         "type": "string",
                                         "example": ""
                                     },
