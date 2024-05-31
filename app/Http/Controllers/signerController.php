@@ -94,27 +94,38 @@ class signerController extends Controller
      *      security={{"bearerAuth":{}}}
      * )
      */
-    public function store(signerRaquest $request){
-
-        try{
-        $signer = new signer();
-        $signer->id_surveillant=$request->id_surveillant;
-        $signer->id_pv=$request->id_pv;
-        $signer->signer= $request->signer;
-        $signer->save();
-
-
-        return response()->json([
-            'status_code'=>201,
-            'status_message'=>'la signer a été ajouté',
-            'data'=>$signer
-        ]);
-        
-        }catch(Exception $exception){
-            return response()->json($exception);
+    public function store(signerRaquest $request)
+    {
+        try {
+            $exists = DB::table('signers')
+                ->where('id_surveillant', $request->id_surveillant)
+                ->where('id_pv', $request->id_pv)
+                ->exists();
+    
+            if ($exists) {
+                return $this->update($request, $request->id_surveillant, $request->id_pv);
+            } else {
+                $signer = new Signer([
+                    'id_surveillant' => $request->id_surveillant,
+                    'id_pv' => $request->id_pv,
+                    'signer' => $request->signer
+                ]);
+                $signer->save();
+    
+                return response()->json([
+                    'status_code' => 201,
+                    'status_message' => 'La signer a été ajouté avec succès.',
+                    'data' => $signer
+                ], 201);
+            }
+        } catch (Exception $exception) {
+            return response()->json([
+                'status_code' => 500,
+                'status_message' => 'Erreur lors de l\'ajout du signer.'
+            ], 500);
         }
-        
     }
+    
     /**
      * @OA\Put(
      *     path="/api/signer/edit/{id_surveillant}/{id_pv}",
