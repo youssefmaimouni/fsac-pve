@@ -27,7 +27,7 @@ class EtudiantRequest extends FormRequest
             'nom_etudiant'=>'required | string ',
             'prenom_etudiant'=>'required | string',
             'CNE'=>'required | string',
-            'photo'=>'required | string',
+            'photo'=>'string',
             'codeApogee'=>'required| integer',
         ];
     }
@@ -48,7 +48,6 @@ class EtudiantRequest extends FormRequest
             'codeApogee.integer' =>"le code apogee doit être un  nombre entier",
             'nom_etudiant.required'=>"le nom d'etudiant doit être fourni",
             'nom_etudiant.string'=>"la nom d'etudiant doit être un string",
-            'prenom_etudiant.required'=>"le prenom d'etudiant doit être fourni",
             'prenom_etudiant.string'=>"la prenom d'etudiant doit être un string",
             'CNE.required'=>"le CNE d'etudiant doit être fourni",
             'CNE.string'=>"la CNE d'etudiant doit être un string",

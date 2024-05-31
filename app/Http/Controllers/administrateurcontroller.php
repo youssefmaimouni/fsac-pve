@@ -37,6 +37,10 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
      *      security={{"bearerAuth":{}}}
      * )
      */
@@ -82,7 +86,8 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
-     *      security={{"bearerAuth":{}}}
+     *  security={{"bearerAuth":{}}}
+     *     
      * )
      */
     public function store(administrateurRequest $request){
@@ -141,6 +146,10 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
      *      security={{"bearerAuth":{}}}
      * )
      */
@@ -193,6 +202,10 @@ class administrateurController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
      *      security={{"bearerAuth":{}}}
      * )
      */
@@ -235,6 +248,10 @@ class administrateurController extends Controller
      *     @OA\Response(
      *         response=400,
      *         description="Invalid status value"
+     *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
      *     ),
      *      security={{"bearerAuth":{}}}
      * )

@@ -26,7 +26,7 @@ class signerRaquest extends FormRequest
         return [
             'id_surveillant'=>'required | integer | exists:surveillants,id_surveillant',
             'id_pv'=>'required | integer | exists:pvs,id_pv',
-            'signature'=>'required | string',
+            'signer'=>'required | bool',
         ];
     }
 
@@ -48,8 +48,8 @@ class signerRaquest extends FormRequest
             'id_pv.required'=>'le id de pv est obligatoire',
             'id_pv.integer'=>'le id de pv dois étre entier ',
             'id_pv.exists:pvs,id_pv'=>'le id de pv n\'existe pas',
-            'signature.required'=>'la signature est obligatoire',
-            'signature.string'=>'la signature dois étre une chaine de caractere',
+            'signer.required'=>'la signer est obligatoire',
+            'signer.bool'=>'la signer dois étre boolean',
             
         ];
     }

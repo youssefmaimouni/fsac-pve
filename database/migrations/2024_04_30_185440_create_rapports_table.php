@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('rapports', function (Blueprint $table) {
             $table->bigIncrements('id_rapport');
+            $table->integer('codeApogee');
+            $table->foreign('codeApogee')->references('codeApogee')->on('etudiants')->onDelete('cascade');
             $table->string('titre_rapport', 20);
             $table->text('contenu');
             $table->unsignedBigInteger('id_pv');

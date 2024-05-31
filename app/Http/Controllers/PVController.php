@@ -37,6 +37,10 @@ class PVController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
      *      security={{"bearerAuth":{}}}
      * )
      */
@@ -79,6 +83,10 @@ class PVController extends Controller
      *     @OA\Response(
      *         response=400,
      *         description="Invalid status value"
+     *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
      *     ),
      *      security={{"bearerAuth":{}}}
      * )
@@ -134,6 +142,10 @@ class PVController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
      *      security={{"bearerAuth":{}}}
      * )
      */
@@ -182,6 +194,10 @@ class PVController extends Controller
      *     @OA\Response(
      *         response=400,
      *         description="Invalid status value"
+     *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
      *     ),
      *      security={{"bearerAuth":{}}}
      * )
