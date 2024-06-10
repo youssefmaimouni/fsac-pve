@@ -32,10 +32,15 @@ class sessionController extends Controller
      *         response=200,
      *         description="successful operation",
      *     ),
-     *     @OA\Response(
+     *           @OA\Response(
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *     security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -82,6 +87,11 @@ class sessionController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *     security={{"bearerAuth":{}}}
      * )
      */
     public function store(sessionRequest $request){
@@ -129,6 +139,9 @@ class sessionController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="nom_session", type="string", example=""),
      *             @OA\Property(property="type_session", type="string", example=""),
+     *             @OA\Property(property="Annee_universitaire", type="string", example=""),
+     *             @OA\Property(property="datedebut", type="date", example=""),
+     *             @OA\Property(property="datefin", type="date", example=""),
      *         )
      *     ),
      *     @OA\Response(
@@ -140,6 +153,11 @@ class sessionController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *     security={{"bearerAuth":{}}}
      * )
      */
 
@@ -151,6 +169,7 @@ class sessionController extends Controller
         
         $session->nom_session=$request->nom_session;
         $session->type_session=$request->type_session;
+        $session->Annee_universitaire=$request->Annee_universitaire;
         $session->datedebut=$request->datedebut;
         $session->datefin=$request->datefin;
         $session->save();
@@ -192,6 +211,11 @@ class sessionController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     *      @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *     security={{"bearerAuth":{}}}
      * )
      */
     public function delete(session $session) {

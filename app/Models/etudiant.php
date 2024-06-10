@@ -10,7 +10,6 @@ class etudiant extends Model
     protected $primaryKey = 'codeApogee';
 
     protected $fillable =[
-        'id_rapport',
         'nom_etudiant',
         'prenom_etudiant',
         'CNE',

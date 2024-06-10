@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreign('id_local')->references('id_local')->on('locals')->onDelete('cascade');
             $table->integer('codeApogee');
             $table->foreign('codeApogee')->references('codeApogee')->on('etudiants')->onDelete('cascade');
-            
+            $table->boolean('isPresent')->nullable();
             $table->bigInteger('num_exam');
             
             $table->timestamps();

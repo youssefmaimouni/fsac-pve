@@ -24,14 +24,11 @@ class EtudiantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //'codeApogee'=>'required | unique|integer',
-            //'id_rapport'=>'required | integer | exists:rapports,id_rapport',
             'nom_etudiant'=>'required | string ',
             'prenom_etudiant'=>'required | string',
             'CNE'=>'required | string',
-            'photo'=>'required | string',
-            'codeApogee'=>'required | integer',
-            'id_rapport'=>'exists:rapports,id_rapport | integer',
+            'photo'=>'string',
+            'codeApogee'=>'required| integer',
         ];
     }
     public function failedValidation(Validator $validator){
@@ -49,18 +46,14 @@ class EtudiantRequest extends FormRequest
             'codeApogee.required'=>"le code apogee de l'etudiant doit etre fourni",
             'codeApogee.unique' =>"le code apogee de l'etudiant doit être unique",
             'codeApogee.integer' =>"le code apogee doit être un  nombre entier",
-            'id_rapport.integer'=>'le id du rapport doit etre entier',
-            'id_rapport.exists'=>'le id du rapport doit etre existe',
             'nom_etudiant.required'=>"le nom d'etudiant doit être fourni",
             'nom_etudiant.string'=>"la nom d'etudiant doit être un string",
-            'prenom_etudiant.required'=>"le prenom d'etudiant doit être fourni",
             'prenom_etudiant.string'=>"la prenom d'etudiant doit être un string",
             'CNE.required'=>"le CNE d'etudiant doit être fourni",
             'CNE.string'=>"la CNE d'etudiant doit être un string",
             'photo.required'=>"la photo d'etudiant doit être fourni",
             'photo.string'=>"la photo d'etudiant doit être un string",
-            'codeApogee.required'=>"le code apogee d'etudiant doit être fourni",
-            'codeApogee.integer'=>"le code apogee d'etudiant doit être un entier",
+            
 
             
         ];

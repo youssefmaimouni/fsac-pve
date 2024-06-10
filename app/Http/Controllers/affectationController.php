@@ -37,6 +37,11 @@ class affectationController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -81,6 +86,11 @@ class affectationController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(AffectationRequest $request){
@@ -140,6 +150,11 @@ class affectationController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
 
@@ -190,6 +205,11 @@ class affectationController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function delete(affectation $affectation) {

@@ -38,6 +38,11 @@ class ModuleController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -83,6 +88,11 @@ class ModuleController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
 
@@ -140,6 +150,11 @@ class ModuleController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(EditModuleRequest $request,module $module) {
@@ -188,6 +203,11 @@ class ModuleController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
 

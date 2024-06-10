@@ -45,8 +45,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/filiere/create": {
@@ -103,8 +111,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/filiere/edit/{filiere}": {
@@ -154,8 +170,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/filiere/{filiere}": {
@@ -188,8 +212,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/module": {
@@ -224,8 +256,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/module/create": {
@@ -286,8 +326,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/module/edit/{module}": {
@@ -341,8 +389,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/module/{module}": {
@@ -375,8 +431,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/pv": {
@@ -411,8 +475,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/pv/create": {
@@ -469,8 +541,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/pv/edit/{pv}": {
@@ -520,8 +600,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/pv/{pv}": {
@@ -554,8 +642,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/rapport": {
@@ -590,8 +686,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/rapport/create": {
@@ -660,8 +764,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/rapport/edit/{rapport}": {
@@ -723,8 +835,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/rapport/{rapport}": {
@@ -757,8 +877,60 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/logs": {
+            "get": {
+                "tags": [
+                    "Activity"
+                ],
+                "summary": "Get all admins for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "activity",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/administrateur": {
@@ -793,8 +965,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/administrateur/create": {
@@ -864,7 +1044,12 @@
                     "400": {
                         "description": "Invalid status value"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/administrateur/edit/{administrateur}": {
@@ -922,8 +1107,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/administrateur/editpasswd/{administrateur}": {
@@ -973,8 +1166,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/administrateur/{administrateur}": {
@@ -1007,8 +1208,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/affectation": {
@@ -1043,8 +1252,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/affectation/create": {
@@ -1114,8 +1331,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/affectation/edit/{affectation}": {
@@ -1178,8 +1403,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/affectaion/{affectaion}": {
@@ -1212,8 +1445,135 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "authentification"
+                ],
+                "summary": "create all signers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book data that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "authentification"
+                ],
+                "summary": "create all signers for REST API",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "logout",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that needed to be considered for filter",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/associer": {
@@ -1248,8 +1608,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/associer/create": {
@@ -1310,8 +1678,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/associer/edit/{id_surveillant}/{id_affectation}": {
@@ -1374,8 +1750,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/associer/{id_surveillant}/{id_affectation}": {
@@ -1417,8 +1801,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/controler": {
@@ -1453,8 +1845,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/controler/create": {
@@ -1515,8 +1915,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/controler/edit/{id_administrateur}/{id_tablette}": {
@@ -1579,8 +1987,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/controler/{id_administrateur}/{id_tablette}": {
@@ -1622,8 +2038,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/departement": {
@@ -1658,8 +2082,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/departement/create": {
@@ -1720,8 +2152,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/departement/edit/{departement}": {
@@ -1775,8 +2215,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/departement/{departement}": {
@@ -1809,8 +2257,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/etudiant": {
@@ -1845,8 +2301,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/etudiant/create": {
@@ -1919,8 +2383,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/etudiant/edit/{etudiant}": {
@@ -1968,10 +2440,6 @@
                                     "photo": {
                                         "type": "string",
                                         "example": ""
-                                    },
-                                    "id_rapport": {
-                                        "type": "integer",
-                                        "example": ""
                                     }
                                 },
                                 "type": "object"
@@ -1990,8 +2458,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/etudiant/{etudiant}": {
@@ -2024,8 +2500,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/examen": {
@@ -2060,8 +2544,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/examen/create": {
@@ -2139,8 +2631,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/examen/edit/{examen}": {
@@ -2211,8 +2711,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/examen/{examen}": {
@@ -2245,8 +2753,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/gerer": {
@@ -2281,8 +2797,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/gerer/create": {
@@ -2343,8 +2867,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/gerer/edit/{id_administrateur}/{id_session}": {
@@ -2407,8 +2939,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/gerer/{id_administrateur}/{id_session}": {
@@ -2450,8 +2990,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/local": {
@@ -2486,8 +3034,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/local/create": {
@@ -2548,8 +3104,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/local/edit/{local}": {
@@ -2603,8 +3167,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/local/{local}": {
@@ -2637,8 +3209,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/passer": {
@@ -2673,8 +3253,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/passer/create": {
@@ -2725,6 +3313,10 @@
                                     "num_exam": {
                                         "type": "integer",
                                         "example": ""
+                                    },
+                                    "isPresent": {
+                                        "type": "boolean",
+                                        "example": ""
                                     }
                                 },
                                 "type": "object"
@@ -2743,8 +3335,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/passer/edit/{id_examen}/{id_local}/{codeApogee}": {
@@ -2806,6 +3406,10 @@
                                     "num_exam": {
                                         "type": "integer",
                                         "example": ""
+                                    },
+                                    "isPresent": {
+                                        "type": "boolean",
+                                        "example": ""
                                     }
                                 },
                                 "type": "object"
@@ -2824,8 +3428,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/passer/{passer}": {
@@ -2858,8 +3470,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/session": {
@@ -2894,8 +3514,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/session/create": {
@@ -2970,8 +3598,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/session/edit/{session}": {
@@ -3007,6 +3643,20 @@
                                     "type_session": {
                                         "type": "string",
                                         "example": ""
+                                    },
+                                    "Annee_universitaire": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "datedebut": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
+                                    },
+                                    "datefin": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": ""
                                     }
                                 },
                                 "type": "object"
@@ -3025,8 +3675,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/session/{session}": {
@@ -3059,8 +3717,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/signer": {
@@ -3095,8 +3761,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/signer/create": {
@@ -3134,13 +3808,13 @@
                                 "properties": {
                                     "id_surveillant": {
                                         "type": "integer",
-                                        "example": "144488"
+                                        "example": ""
                                     },
                                     "id_pv": {
                                         "type": "integer",
                                         "example": ""
                                     },
-                                    "signature": {
+                                    "signer": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -3161,8 +3835,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/signer/edit/{id_surveillant}/{id_pv}": {
@@ -3208,7 +3890,7 @@
                                         "type": "integer",
                                         "example": ""
                                     },
-                                    "signature": {
+                                    "signer": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -3229,8 +3911,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/signer/{id_surveillant}/{id_pv}": {
@@ -3263,8 +3953,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/surveillant": {
@@ -3299,8 +3997,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/surveillant/create": {
@@ -3361,8 +4067,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/surveillant/edit/{surveillant}": {
@@ -3416,8 +4130,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/surveillant/{surveillant}": {
@@ -3450,8 +4172,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/tablette": {
@@ -3486,8 +4216,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/tablette/create": {
@@ -3523,7 +4261,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "adresse_mac": {
+                                    "device_id": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -3545,7 +4283,12 @@
                     "400": {
                         "description": "Invalid status value"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/tablette/edit/{tablette}": {
@@ -3574,7 +4317,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "adresse_mac": {
+                                    "device_id": {
                                         "type": "string",
                                         "example": ""
                                     },
@@ -3603,8 +4346,19 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "404": {
+                        "description": "Data not found"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/tablette/{tablette}": {
@@ -3637,8 +4391,16 @@
                     },
                     "400": {
                         "description": "Invalid status value"
+                    },
+                    "401": {
+                        "description": "Authentication information is missing or invalid"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/tablette/getEtat": {
@@ -3674,7 +4436,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "adresse_mac": {
+                                    "device_id": {
                                         "type": "string",
                                         "example": ""
                                     }
@@ -3696,7 +4458,12 @@
                     "400": {
                         "description": "Invalid status value"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/tablette/getPV": {
@@ -3732,7 +4499,7 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "adresse_mac": {
+                                    "device_id": {
                                         "type": "string",
                                         "example": ""
                                     },
@@ -3763,8 +4530,38 @@
                     "400": {
                         "description": "Invalid status value"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "Input your Bearer token in the following format - Bearer {your_token_here}",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": {
+        "securityDefinitions": {
+            "Bearer": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        },
+        "security": [
+            {
+                "Bearer": []
+            }
+        ]
     }
 }

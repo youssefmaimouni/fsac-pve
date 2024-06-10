@@ -8,6 +8,15 @@ use App\Models\etudiant;
 use Exception;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT",
+ *     description="Input your Bearer token in the following format - Bearer {your_token_here}"
+ * )
+ */
 class etudiantController extends Controller
 {
      /**
@@ -37,6 +46,11 @@ class etudiantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -82,13 +96,17 @@ class etudiantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(EtudiantRequest $request){
 
         try{
         $etudiant = new etudiant();
-        $etudiant->id_rapport=$request->id_rapport;
         $etudiant->nom_etudiant=$request->nom_etudiant;
         $etudiant->prenom_etudiant=$request->prenom_etudiant;
         $etudiant->CNE=$request->CNE;
@@ -133,7 +151,6 @@ class etudiantController extends Controller
      *             @OA\Property(property="prenom_etudiant", type="string", example=""),
      *             @OA\Property(property="CNE", type="string", example=""),
      *             @OA\Property(property="photo", type="string", example=""),
-     *              @OA\Property(property="id_rapport", type="integer", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -145,13 +162,17 @@ class etudiantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(EtudiantRequest $request,etudiant $etudiant) {
 
         try{
         
-            $etudiant->id_rapport=$request->id_rapport;
             $etudiant->nom_etudiant=$request->nom_etudiant;
             $etudiant->prenom_etudiant=$request->prenom_etudiant;
             $etudiant->CNE=$request->CNE;
@@ -196,6 +217,11 @@ class etudiantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function delete(etudiant $etudiant) {

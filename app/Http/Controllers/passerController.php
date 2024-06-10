@@ -39,6 +39,11 @@ class passerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -71,7 +76,8 @@ class passerController extends Controller
      *            @OA\Property(property="id_examen", type="integer", example=""),
      *             @OA\Property(property="codeApogee", type="integer", example=""),
      *             @OA\Property(property="id_local", type="integer", example=""),
-     *             @OA\Property(property="num_exam", type="integer", example="")
+     *             @OA\Property(property="num_exam", type="integer", example=""),
+     *             @OA\Property(property="isPresent", type="boolean", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -83,6 +89,11 @@ class passerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(passerRequest $request){
@@ -93,7 +104,7 @@ class passerController extends Controller
         $passer->codeApogee=$request->codeApogee;
         $passer->id_local=$request->id_local;
         $passer->num_exam=$request->num_exam;
-        
+        $passer->isPresent=$request->isPresent;
 
         $passer->save();
 
@@ -147,10 +158,11 @@ class passerController extends Controller
      *         description="Book data that needs to be added to the store",
      *         required=true,
      *         @OA\JsonContent(
-     *              @OA\Property(property="id_examen", type="integer", example=""),
+     *             @OA\Property(property="id_examen", type="integer", example=""),
      *             @OA\Property(property="codeApogee", type="integer", example=""),
      *             @OA\Property(property="id_local", type="integer", example=""),
-     *             @OA\Property(property="num_exam", type="integer", example="")
+     *             @OA\Property(property="num_exam", type="integer", example=""),
+     *             @OA\Property(property="isPresent", type="boolean", example="")
      *         )
      *     ),
      *     @OA\Response(
@@ -162,6 +174,11 @@ class passerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function update(editpasserRequest $request,$exam,$local,$code) {
@@ -172,7 +189,8 @@ class passerController extends Controller
         ->update([ 'num_exam'=>$request->num_exam,
                'id_examen'=>$request->id_examen,
                'id_local'=>$request->id_local,
-               'codeApogee'=>$request->codeApogee
+               'codeApogee'=>$request->codeApogee,
+               'isPresent'=>$request->isPresent
     ]);
 
         return response()->json([
@@ -212,6 +230,11 @@ class passerController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
 public function delete($exam,$local,$code) {

@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator ;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class EtatRequest extends FormRequest
+class setPVRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class EtatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'device_id'=>' string | max:50 | required'
+            'rapports'=>'required',
+            'passers'=>'required',
+            'signers'=>'required',
         ];
     }
     public function failedValidation(Validator $validator){
@@ -39,9 +41,9 @@ class EtatRequest extends FormRequest
     public function messages()
     {
         return[
-            'device_id.string'=>"ladresse  doit être un string",
-            'device_id.max:12'=>"ladresse ne doit pas depasser 12 characteres",
-            'device_id.required'=>"ladresse est obligatoire"
+           'rapports.required'=>'Le nombre de rapports est obligatoire',
+           'passers.required'=>'Le nombre de passers est obligatoire',
+           'signers.required'=>'Le nombre de signers est obligatoire',
         ];
     }
 }

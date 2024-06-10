@@ -11,6 +11,7 @@ class Kernel extends HttpKernel
           // Other middleware
         
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'verify.tablet.uuid' => \App\Http\Middleware\VerifyTabletUUID::class,
     ];
     /**
      * The application's global HTTP middleware stack.

@@ -45,9 +45,16 @@ class sessionRequest extends FormRequest
     {
         return[
             'nom_session.string'=>"le nom de la session  doit être un string",
-            'nom_session.max:20'=>"le nom ne doit pas depasser 20 characteres",
+            'nom_session.max:20'=>"le nom de la session ne doit pas depasser 20 characteres",
+            'nom_session.required'=>" le nom de la session doit etre fourni",
             'type_session.string'=>"le type de la session  doit être un string",
             'type_session.max:20'=>"le type ne doit pas depasser 20 characteres",
+            'type_session.required'=>" le type de la session doit etre fourni",
+            'Annee_universitaire.required'=>" l'annee universitaire doit etre fourni",
+            'datedebut.required'=>" la date de debut doit etre fourni",
+            'datefin.required'=>" la date de fin doit etre fourni",
+            'datedebut.date'=>" la date de debut doit etre une date de format yyyy-mm-dd",
+            'datefin.date'=>" la date de fin doit etre une date de format yyyy-mm-dd",
         ];
     }
 }

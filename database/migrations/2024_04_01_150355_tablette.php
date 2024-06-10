@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tablettes', function (Blueprint $table) {
             $table->bigIncrements('id_tablette');
-            $table->char('adresse_mac', 50);
+            $table->char('device_id',50);
             $table->char('statut',20);
             $table->integer('code_association')->nullable();
             $table->timestamps();

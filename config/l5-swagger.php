@@ -200,20 +200,37 @@ return [
                 */
             ],
             'security' => [
-                /*
-                 * Examples of Securities
-                */
-                [
-                    /*
-                    'oauth2_security_example' => [
-                        'read',
-                        'write'
+                // Define security definitions
+                'securityDefinitions' => [
+                    'Bearer' => [
+                        'type' => 'apiKey',
+                        'description' => 'Enter token in format (Bearer <token>)',
+                        'name' => 'Authorization',
+                        'in' => 'header',
                     ],
-
-                    'passport' => []
-                    */
+                ],
+                'security' => [
+                    [
+                        'Bearer' => []
+                    ]
                 ],
             ],
+            // 'security' => 
+            // [
+            //     /*
+            //      * Examples of Securities
+            //     */
+            //     [
+            //         /*
+            //         'oauth2_security_example' => [
+            //             'read',
+            //             'write'
+            //         ],
+
+            //         'passport' => []
+            //         */
+            //     ],
+            // ],
         ],
 
         /*

@@ -28,6 +28,7 @@ class passerRequest extends FormRequest
             'codeApogee'=>'required | integer | exists:etudiants,codeApogee',
             'id_local'=>'required | integer | exists:locals,id_local',
             'num_exam'=>'required | integer',
+            'isPresent'=>'boolean',
         ];
     }
     public function failedValidation(Validator $validator){
@@ -53,7 +54,7 @@ class passerRequest extends FormRequest
             'id_local.exists:locals,id_local'=>'le code du local doit etre existe',
             'num_exam.required'=>"le num_exam doit être fourni",
             'num_exam.string'=>"num_exam doit être un string",
-            
+            'isPresent.boolean'=>"isPresent doi etre un boolean"
                    
         ];
     }

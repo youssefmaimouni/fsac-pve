@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-//Route::group(['middleware' => ['auth:api', 'admin']], function () {
+Route::group(['middleware' => ['auth:api', 'admin']], function () {
 Route::get('filiere',[FiliereController::class,'index']);
 
 Route::post('filiere/create',[FiliereController::class,'store']);
@@ -145,10 +145,13 @@ Route::get('associer',[associerController::class,'index']);
 Route::post('associer/create',[associerController::class,'store']);
 Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController::class,'update']);
 Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
-//});
+});
 Route::post('tablette/create',[tabletteController::class,'store']);
 Route::post('tablette/getEtat',[tabletteController::class,'getEtat']);
 Route::post('tablette/getPV',[tabletteController::class,'getPV']);
+
+
+Route::post('tablette/setPV',[tabletteController::class,'setPV']);
 
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
 Route::post('auth/login',[authcontroller::class,'login']);

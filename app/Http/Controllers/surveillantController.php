@@ -37,6 +37,11 @@ class surveillantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function index(){
@@ -79,6 +84,11 @@ class surveillantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function store(SurveillantRequest $request){
@@ -135,6 +145,11 @@ class surveillantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
 
@@ -184,6 +199,11 @@ class surveillantController extends Controller
      *         response=400,
      *         description="Invalid status value"
      *     ),
+     * @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *      security={{"bearerAuth":{}}}
      * )
      */
     public function getSurveillantsBySession($id)
