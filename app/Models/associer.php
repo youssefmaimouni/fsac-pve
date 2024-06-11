@@ -11,6 +11,7 @@ class associer extends Model
     //    ' id_affectation',
     //    'id_surveillant',
     // ];
+    use HasFactory;
     public function surveillant()
     {
         return $this->belongsTo(examen::class, 'id_surveillant');

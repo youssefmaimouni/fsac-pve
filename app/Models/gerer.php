@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class gerer extends Model
 {
-
+    use HasFactory;
         
         // public $primaryKey = [
         //    ' id_session',
