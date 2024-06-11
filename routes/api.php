@@ -146,6 +146,10 @@ Route::post('associer/create',[associerController::class,'store']);
 Route::put('associer/edit/{id_surveillant}/{id_affectation}',[associerController::class,'update']);
 Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::class,'delete']);
 });
+
+
+
+
 Route::post('tablette/create',[tabletteController::class,'store']);
 Route::post('tablette/getEtat',[tabletteController::class,'getEtat']);
 Route::post('tablette/getPV',[tabletteController::class,'getPV']);
