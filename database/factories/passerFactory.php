@@ -43,7 +43,7 @@ class passerFactory extends Factory
             'id_local' => $id_local,
             'codeApogee' => $codeApogee,
             'isPresent' => $this->faker->boolean(80), // 80% chance to be present
-            'num_exam' => $this->faker->unique()->numberBetween(1000, 9999) // Generates a unique exam number
+            'num_exam' => $this->faker->unique()->numberBetween(1, 50) // Generates a unique exam number
         ];
     }
 }

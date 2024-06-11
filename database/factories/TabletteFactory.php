@@ -11,10 +11,12 @@ class TabletteFactory extends Factory
 
     public function definition()
     {
+        $statut = $this->faker->randomElement(['associer', 'non associer', 'refuser', 'bloquer']);
+
         return [
             'device_id' => $this->generateDeviceId(),
-            'statut' => $this->faker->randomElement(['asocier', 'non asocier','refuser','bloquer']),
-            'code_association' => $this->faker->optional()->randomNumber(),
+            'statut' => $statut,
+            'code_association' => $statut === 'associer' ? $this->faker->randomNumber() : null,
         ];
     }
 

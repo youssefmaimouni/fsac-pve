@@ -160,6 +160,12 @@ Route::post('tablette/setPV',[tabletteController::class,'setPV']);
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
 Route::post('auth/login',[authcontroller::class,'login']);
 Route::post('auth/logout', [AuthController::class, 'logout'])->middleware('auth:api');
+Route::get('surveillants/session/{id}', [SurveillantController::class, 'getSurveillantsBySession']);
+Route::get('etudiants/session/{id}', [EtudiantController::class, 'getEtudiantsBySession']);
+
+
+Route::post('/etudiants-examen',[examenController::class,'getEtudiants']);
+Route::post('/surveillants-examen',[examenController::class, 'getSurveillants']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
@@ -168,10 +174,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::options('/{any}', function() {
     return response()->json([]);
 })->where('any', '.*');
-
-Route::get('surveillants/session/{id}', [SurveillantController::class, 'getSurveillantsBySession']);
-Route::get('etudiants/session/{id}', [EtudiantController::class, 'getEtudiantsBySession']);
-
-
-Route::get('/etudiants-examen', 'examenController@getEtudiants');
-Route::get('/surveillants-examen', 'examenController@getSurveillants');

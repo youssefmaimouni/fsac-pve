@@ -17,7 +17,7 @@ class AdministrateurFactory extends Factory
             'mail' => $this->faker->unique()->safeEmail(), // Génère une adresse email unique
             'nom' => $this->faker->lastName(), // Génère un nom
             'prenom' => $this->faker->firstName(), // Génère un prénom
-            'password' => Hash::make('password123'), // Hash un mot de passe commun pour tous les utilisateurs générés
+            'password' => Hash::make('123456789'), // Hash un mot de passe commun pour tous les utilisateurs générés
         ];
     }
 }
