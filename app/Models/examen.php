@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class examen extends Model
 {
-    
+    use HasFactory;
     protected $primaryKey = 'id_examen';
     protected $fillable =[
         'id_session',

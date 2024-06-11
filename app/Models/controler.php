@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class controler extends Model
 {
 
-        
+    use HasFactory;
         public function administrateur()
         {
             return $this->belongsTo(administrateur::class, 'id_administrateur');

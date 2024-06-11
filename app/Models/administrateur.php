@@ -18,7 +18,7 @@ class administrateur extends Authenticatable  implements JWTSubject
         'password',
     
     ];
-
+    use HasFactory;
     protected $primaryKey = 'id_administrateur';
 
     protected $fillable =[
