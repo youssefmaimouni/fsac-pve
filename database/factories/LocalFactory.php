@@ -11,9 +11,17 @@ class LocalFactory extends Factory
 
     public function definition()
     {
+        $type_local = $this->faker->randomElement(['Salle', 'Amphi', 'R']);
+        if ($type_local === 'R') {
+            $num_local = '0';
+        } else {
+            $num_local_prefix = $type_local === 'Salle' ? 'S' : 'A';
+            $num_local = $this->faker->bothify($num_local_prefix . '##');
+        }
+
         return [
-            'num_local' => $this->faker->bothify('L##-###'),  // Génère un numéro de local aléatoire, e.g., L12-345
-            'type_local' => $this->faker->randomElement(['Salle de classe', 'Laboratoire', 'Bureau']),  // Sélectionne un type de local aléatoirement
+            'num_local' => $num_local,  // Generates a room number or sets it to 0
+            'type_local' => $type_local,  // Randomly selects a room type
         ];
     }
 }
