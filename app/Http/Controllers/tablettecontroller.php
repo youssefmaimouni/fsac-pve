@@ -114,7 +114,7 @@ class tabletteController extends RoutingController
                 $tablette = new tablette();
                 $tablette->id_tablette=$request->id_tablette;
                 $tablette->device_id=$request->device_id;
-                $tablette->statut='non assosier';
+                $tablette->statut='non associer';
                 $tablette->code_association=$request->code_association;
                 $tablette->save();
             }
