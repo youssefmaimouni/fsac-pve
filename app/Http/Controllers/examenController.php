@@ -55,7 +55,7 @@ class ExamenController extends Controller
                                    ->join('passers', 'etudiants.codeApogee', '=', 'passers.codeApogee')
                                    ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
                                    ->where('examens.demi_journee_examen', '=',  $request->demi_journee)
-                                   ->where('examens.date_examen', '=', $request->date_examen)
+                                   ->where('examens.date_examen', '=', $request->date)
                                    ->where('passers.id_local','=',$request->id_local) 
                                    ->get();
                                    return response()->json([
@@ -77,7 +77,7 @@ class ExamenController extends Controller
                         ->join('affectations', 'affectations.id_affectation', '=', 'associers.id_affectation')
                         ->join('locals', 'locals.id_local', '=', 'affectations.id_local')
                         ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
-                        ->where('affectations.date_affectation', '=', $request->date_affectation)
+                        ->where('affectations.date_affectation', '=', $request->date)
                         ->where('locals.id_local','=',$request->id_local)
                         ->get();
             
