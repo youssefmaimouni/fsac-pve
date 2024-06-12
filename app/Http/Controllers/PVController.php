@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\gPVRequest;
 use App\Http\Requests\PVRequest;
 use App\Models\etudiant;
+use App\Models\local;
 use App\Models\pv;
+use App\Models\Rapport;
 use App\Models\session;
 use App\Models\surveillant;
 use App\Models\Tablette;
@@ -223,63 +226,85 @@ class PVController extends Controller
         }
     }
 
-    public function getPV(Request $request){
+    public function getPV(gPVRequest $request){
         try{
-                $surveillants = Tablette::select('surveillants.nomComplet_s', 'surveillants.id_surveillant','surveillants.id_departement')
-                           ->join('affectations', 'affectations.id_tablette', '=', 'tablettes.id_tablette')
-                           ->join('associers', 'affectations.id_affectation', '=', 'associers.id_affectation')
-                           ->join('surveillants', 'surveillants.id_surveillant', '=', 'associers.id_surveillant')
-                           ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
-                           ->where('affectations.date_affectation', '=', $request->date)
-                           ->where('tablettes.device_id','=',$request->device_id)
-                           ->get();
-                $reserviste = surveillant::select('surveillants.nomComplet_s', 'surveillants.id_surveillant','surveillants.id_departement')
-                           ->join('associers', 'surveillants.id_surveillant', '=', 'associers.id_surveillant')
-                           ->join('affectations', 'affectations.id_affectation', '=', 'associers.id_affectation')
-                           ->join('locals', 'locals.id_local', '=', 'affectations.id_local')
-                           ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
-                           ->where('affectations.date_affectation', '=', $request->date)
-                           ->where('locals.type_local','=','R')
-                           ->get();
-                $local = tablette::select('locals.id_local', 'locals.num_local','locals.type_local')
-                           ->join('affectations', 'affectations.id_tablette', '=', 'tablettes.id_tablette')
-                           ->join('locals', 'locals.id_local', '=', 'affectations.id_local')
-                           ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
-                           ->where('affectations.date_affectation', '=', $request->date)
-                           ->where('tablettes.device_id','=',$request->device_id)
-                           ->get();
-                $etudiantsP = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
+            $exists = DB::table('locals')
+            ->where('id_local', $request->id_local)
+            ->exists();
+            if ($exists) {
+                $etudiantsPS1 = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
                            ->join('passers', 'etudiants.codeApogee', '=', 'passers.codeApogee')
                            ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
                            ->where('examens.demi_journee_examen', '=', $request->demi_journee)
                            ->where('examens.date_examen', '=', $request->date)
-                           ->where('passers.id_local','=',$local[0]->id_local) 
+                           ->where('examens.seance_examen', '=', 'S1')
+                           ->where('passers.id_local','=',$request->id_local)
+                           ->where('passers.isPresent','=',true) 
                            ->get(); 
-                $etudiantsA = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
+                $etudiantsAS1 = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
                            ->join('passers', 'etudiants.codeApogee', '=', 'passers.codeApogee')
                            ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
                            ->where('examens.demi_journee_examen', '=', $request->demi_journee)
                            ->where('examens.date_examen', '=', $request->date)
-                           ->where('passers.id_local','=',$local[0]->id_local) 
+                           ->where('examens.seance_examen', '=', 'S1')
+                           ->where('passers.id_local','=',$request->id_local)
+                           ->where('passers.isPresent','=',false) 
                            ->get(); 
-                $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module')
+                $etudiantsPS2 = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
+                           ->join('passers', 'etudiants.codeApogee', '=', 'passers.codeApogee')
+                           ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
+                           ->where('examens.demi_journee_examen', '=', $request->demi_journee)
+                           ->where('examens.date_examen', '=', $request->date)
+                           ->where('examens.seance_examen', '=', 'S2')
+                           ->where('passers.id_local','=',$request->id_local)
+                           ->where('passers.isPresent','=',true) 
+                           ->get(); 
+                $etudiantsAS2 = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
+                           ->join('passers', 'etudiants.codeApogee', '=', 'passers.codeApogee')
+                           ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
+                           ->where('examens.demi_journee_examen', '=', $request->demi_journee)
+                           ->where('examens.date_examen', '=', $request->date)
+                           ->where('examens.seance_examen', '=', 'S2')
+                           ->where('passers.id_local','=',$request->id_local) 
+                           ->where('passers.isPresent','=',false) 
+                           ->get(); 
+                $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','examens.id_pv','modules.intitule_module')
                         ->distinct()
                         ->join('examens', 'examens.id_session', '=', 'sessions.id_session')
                         ->join('passers', 'examens.id_examen', '=', 'passers.id_examen')
                         ->join('modules','examens.code_module','=','modules.code_module')
                         ->where('examens.demi_journee_examen', '=', $request->demi_journee)
                         ->where('examens.date_examen', '=', $request->date)
-                        ->where('passers.id_local','=',$local[0]->id_local)
+                        ->where('passers.id_local','=',$request->id_local)
                         ->get();
+                $surveillants = surveillant::select('surveillants.nomComplet_s', 'surveillants.id_surveillant','surveillants.id_departement')
+                        ->join('signers', 'signers.id_surveillant', '=', 'surveillants.id_surveillant')
+                        ->join('pvs', 'signers.id_pv', '=', 'pvs.id_pv')
+                        ->where('pvs.id_pv', '=', $session[0]->id_pv)
+                        ->where('signers.signer','=',true)
+                        ->get();
+                $rapportCodes = array_merge(
+                            $etudiantsPS1->pluck('codeApogee')->toArray(),
+                            $etudiantsAS1->pluck('codeApogee')->toArray(),
+                            $etudiantsPS2->pluck('codeApogee')->toArray(),
+                            $etudiantsAS2->pluck('codeApogee')->toArray()
+                        );
+                $rapport = Rapport::select('rapports.codeApogee','rapports.titre_rapport','rapports.contenu','etudiants.nom_etudiant')
+                            ->join('etudiants', 'etudiants.codeApogee', '=', 'rapports.codeApogee')
+                            ->whereIn('rapports.codeApogee', $rapportCodes) 
+                            ->where('rapports.id_pv', '=', $session[0]->id_pv)
+                            ->get();
                 return response()->json([
                             'status_code'=>201,
-                            'local' => $local,
                             'surveillants' => $surveillants,
-                            'reserviste' => $reserviste,
-                            'etudiantsP' => $etudiantsP,
-                            'etudiantsA' => $etudiantsA,
-                            'session' => $session
+                            'etudiantsPS1' => $etudiantsPS1,
+                            'etudiantsAS1' => $etudiantsAS1,
+                            'etudiantsPS2' => $etudiantsPS2,
+                            'etudiantsAS2' => $etudiantsAS2,
+                            'session' => $session,
+                            'rapport'=> $rapport
                            ]); 
+            }
         }catch(Exception $exception){
             return response()->json($exception);
         }
