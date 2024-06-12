@@ -14,7 +14,7 @@ class RapportFactory extends Factory
     public function definition()
     {
         return [
-            'codeApogee' => Etudiant::inRandomOrder()->first()->codeApogee ?? null, // Assurez-vous qu'il y a des étudiants dans la base
+            'codeApogee' => Etudiant::inRandomOrder()->first()->codeApogee , // Assurez-vous qu'il y a des étudiants dans la base
             'titre_rapport' => $this->faker->text(20),
             'contenu' => $this->faker->paragraphs(3, true),
             'id_pv' => Pv::inRandomOrder()->first()->id_pv ?? null // Assurez-vous qu'il y a des PVs dans la base
