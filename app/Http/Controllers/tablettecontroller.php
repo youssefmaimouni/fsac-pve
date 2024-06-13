@@ -114,7 +114,7 @@ class tabletteController extends RoutingController
                 $tablette = new tablette();
                 $tablette->id_tablette=$request->id_tablette;
                 $tablette->device_id=$request->device_id;
-                $tablette->statut='non assosier';
+                $tablette->statut='non associer';
                 $tablette->code_association=$request->code_association;
                 $tablette->save();
             }
@@ -375,11 +375,20 @@ class tabletteController extends RoutingController
                                ->where('affectations.date_affectation', '=', $request->date)
                                ->where('tablettes.device_id','=',$request->device_id)
                                ->get();
-                    $etudiants = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
+                    $etudiantsS1 = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
                                ->join('passers', 'etudiants.codeApogee', '=', 'passers.codeApogee')
                                ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
                                ->where('examens.demi_journee_examen', '=', $request->demi_journee)
                                ->where('examens.date_examen', '=', $request->date)
+                               ->where('examens.seance_examen', '=', 'S1')
+                               ->where('passers.id_local','=',$local[0]->id_local) 
+                               ->get(); 
+                    $etudiantsS2 = etudiant::select('etudiants.nom_etudiant', 'etudiants.prenom_etudiant', 'etudiants.CNE','etudiants.codeApogee','passers.num_exam')
+                               ->join('passers', 'etudiants.codeApogee', '=', 'passers.codeApogee')
+                               ->join('examens', 'examens.id_examen', '=', 'passers.id_examen')
+                               ->where('examens.demi_journee_examen', '=', $request->demi_journee)
+                               ->where('examens.date_examen', '=', $request->date)
+                               ->where('examens.seance_examen', '=', 'S2')
                                ->where('passers.id_local','=',$local[0]->id_local) 
                                ->get(); 
                     $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module')
@@ -395,7 +404,8 @@ class tabletteController extends RoutingController
                                    'local' => $local,
                                    'surveillants' => $surveillants,
                                    'reserviste' => $reserviste,
-                                   'etudiants' => $etudiants,
+                                   'etudiantsS1' => $etudiantsS1,
+                                   'etudiantsS2' => $etudiantsS2,
                                    'session' => $session
                                 ];
                         
