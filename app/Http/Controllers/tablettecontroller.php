@@ -357,9 +357,11 @@ class tabletteController extends RoutingController
                                ->join('affectations', 'affectations.id_tablette', '=', 'tablettes.id_tablette')
                                ->join('associers', 'affectations.id_affectation', '=', 'associers.id_affectation')
                                ->join('surveillants', 'surveillants.id_surveillant', '=', 'associers.id_surveillant')
+                               ->join('locals', 'locals.id_local', '=', 'affectations.id_local')
                                ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
                                ->where('affectations.date_affectation', '=', $request->date)
                                ->where('tablettes.device_id','=',$request->device_id)
+                               ->where('locals.type_local', '!=', 'R')
                                ->get();
                     $reserviste = surveillant::select('surveillants.nomComplet_s', 'surveillants.id_surveillant','surveillants.id_departement')
                                ->join('associers', 'surveillants.id_surveillant', '=', 'associers.id_surveillant')

@@ -11,7 +11,6 @@ use App\Models\pv;
 use App\Models\Rapport;
 use App\Models\session;
 use App\Models\surveillant;
-use App\Models\Tablette;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
