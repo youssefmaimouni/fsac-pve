@@ -108,6 +108,13 @@ class tabletteController extends RoutingController
                 ->exists();
             if ($exists) {
                 $tablette=tablette::where('device_id', $request->device_id)->first();
+                    if ($tablette->statut='bloquer') {
+                        return response()->json([
+                            'status_code'=>201,
+                            'status_message'=>"tablette a été bloquer",
+                            'data'=>$tablette
+                        ]);
+                    }
                 $tablette->device_id=$request->device_id;
                 $tablette->code_association=$request->code_association;
                 $tablette->save();
