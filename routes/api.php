@@ -69,6 +69,7 @@ Route::post('pv/create',[PVController::class,'store']);
 Route::put('pv/edit/{pv}',[PVController::class,'update']);
 Route::delete('pv/{pv}',[PVController::class,'delete']);
 
+
 Route::get('rapport',[rapportController::class,'index']);
 
 Route::post('rapport/create',[RapportController::class,'store']);
@@ -157,6 +158,8 @@ Route::post('pv/getPV',[PVController::class,'getPV']);
 
 
 Route::post('tablette/setPV',[tabletteController::class,'setPV']);
+
+Route::post('upload', [PVController::class, 'uploadPDF']);
 
 Route::post('administrateur/create',[AdministrateurController::class,'store']);
 Route::post('auth/login',[authcontroller::class,'login']);
