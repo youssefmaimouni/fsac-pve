@@ -10,9 +10,11 @@ class pv extends Model
     protected $primaryKey = 'id_pv';
 
     protected $fillable =[
-        'id_tablette'
+        'id_tablette',
+        'file_path'
     ];
-    // public function tablette(){
-    //     return $this->belongsTo(tablette::class,'id_tablette');
-    // }
+    public function pvs()
+    {
+        return $this->hasMany(PV::class, 'id_tablette');
+    }
 }
