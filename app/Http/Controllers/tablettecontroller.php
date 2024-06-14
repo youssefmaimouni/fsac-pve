@@ -20,6 +20,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as RoutingController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class tabletteController extends RoutingController
 {
@@ -356,9 +357,11 @@ class tabletteController extends RoutingController
                                ->join('affectations', 'affectations.id_tablette', '=', 'tablettes.id_tablette')
                                ->join('associers', 'affectations.id_affectation', '=', 'associers.id_affectation')
                                ->join('surveillants', 'surveillants.id_surveillant', '=', 'associers.id_surveillant')
+                               ->join('locals', 'locals.id_local', '=', 'affectations.id_local')
                                ->where('affectations.demi_journee_affectation', '=', $request->demi_journee)
                                ->where('affectations.date_affectation', '=', $request->date)
                                ->where('tablettes.device_id','=',$request->device_id)
+                               ->where('locals.type_local', '!=', 'R')
                                ->get();
                     $reserviste = surveillant::select('surveillants.nomComplet_s', 'surveillants.id_surveillant','surveillants.id_departement')
                                ->join('associers', 'surveillants.id_surveillant', '=', 'associers.id_surveillant')
@@ -391,7 +394,7 @@ class tabletteController extends RoutingController
                                ->where('examens.seance_examen', '=', 'S2')
                                ->where('passers.id_local','=',$local[0]->id_local) 
                                ->get(); 
-                    $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module')
+                    $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module','examens.id_pv')
                                ->distinct()
                                 ->join('examens', 'examens.id_session', '=', 'sessions.id_session')
                                ->join('passers', 'examens.id_examen', '=', 'passers.id_examen')
@@ -494,6 +497,21 @@ class tabletteController extends RoutingController
                 return response()->json($exception);
             }
         }
+        public function getPhoto($filename)
+{
+    $path = storage_path('app/public/photos/' . $filename.'.jpeg');
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $fileData = file_get_contents($path);
+    $base64 = base64_encode($fileData);
+    $type = File::mimeType($path);
+
+    return response()->json(['image' => 'data:' . $type . ';base64,' . $base64]);
+}
+
 }  
 
 

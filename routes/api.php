@@ -154,6 +154,7 @@ Route::delete('associer/{id_surveillant}/{id_affectation}',[associerController::
 Route::post('tablette/create',[tabletteController::class,'store']);
 Route::post('tablette/getEtat',[tabletteController::class,'getEtat']);
 Route::post('tablette/getPV',[tabletteController::class,'getPV']);
+Route::post('tablette/getPhoto/{filename}',[tabletteController::class,'getPhoto']);
 Route::post('pv/getPV',[PVController::class,'getPV']);
 
 
