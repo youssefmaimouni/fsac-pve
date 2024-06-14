@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class pv extends Model
 {
+    use HasFactory;
     protected $primaryKey = 'id_pv';
 
     protected $fillable =[

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\loginrequest;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class authcontroller extends Controller
 {
@@ -121,10 +122,14 @@ class authcontroller extends Controller
      * )
      */
 public function logout()
-    {
-        auth()->logout();  // Invalide le token
+{
+    try {
+        Auth::guard('api')->logout();  // Invalidate the token
 
         return response()->json(['message' => 'Successfully logged out']);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Something went wrong while logging out.'], 500);
     }
+}
 
 }

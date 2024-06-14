@@ -206,6 +206,11 @@ class surveillantController extends Controller
      *      security={{"bearerAuth":{}}}
      * )
      */
+    public function getSurveillantsBySession($id)
+{
+    $surveillants = Surveillant::where('session_id', $id)->get();
+    return response()->json($surveillants);
+}
     public function delete(surveillant $surveillant) {
          try{
                 $surveillant->delete();

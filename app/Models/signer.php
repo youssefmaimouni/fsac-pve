@@ -11,6 +11,7 @@ class signer extends Model
     //    ' id_surveillant',
     //    'id_pv'
     // ];
+    use HasFactory;
     protected $fillable =[
         'signature',
     ];

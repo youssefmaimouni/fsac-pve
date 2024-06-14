@@ -2583,7 +2583,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "Book data that needs to be added to the store",
+                    "description": "Examen data that needs to be added to the store",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -2591,28 +2591,28 @@
                                 "properties": {
                                     "id_session": {
                                         "type": "integer",
-                                        "example": ""
+                                        "example": "1"
                                     },
                                     "code_module": {
                                         "type": "integer",
-                                        "example": ""
+                                        "example": "101"
                                     },
                                     "id_pv": {
                                         "type": "integer",
-                                        "example": ""
+                                        "example": "2"
                                     },
                                     "date_examen": {
                                         "type": "string",
                                         "format": "date",
-                                        "example": ""
+                                        "example": "2024-06-01"
                                     },
                                     "demi_journee_examen": {
                                         "type": "string",
-                                        "example": "144488"
+                                        "example": "AM"
                                     },
                                     "seance_examen": {
                                         "type": "string",
-                                        "example": ""
+                                        "example": "1"
                                     }
                                 },
                                 "type": "object"
@@ -2663,7 +2663,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "Book data that needs to be added to the store",
+                    "description": "Examen data that needs to be updated",
                     "required": true,
                     "content": {
                         "application/json": {
@@ -2671,28 +2671,28 @@
                                 "properties": {
                                     "id_session": {
                                         "type": "integer",
-                                        "example": ""
+                                        "example": "1"
                                     },
                                     "code_module": {
                                         "type": "integer",
-                                        "example": ""
+                                        "example": "101"
                                     },
                                     "id_pv": {
                                         "type": "integer",
-                                        "example": ""
+                                        "example": "2"
                                     },
                                     "date_examen": {
                                         "type": "string",
                                         "format": "date",
-                                        "example": ""
+                                        "example": "2024-06-01"
                                     },
                                     "demi_journee_examen": {
                                         "type": "string",
-                                        "example": "144488"
+                                        "example": "AM"
                                     },
                                     "seance_examen": {
                                         "type": "string",
-                                        "example": ""
+                                        "example": "1"
                                     }
                                 },
                                 "type": "object"

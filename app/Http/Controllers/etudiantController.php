@@ -239,4 +239,9 @@ class etudiantController extends Controller
             return response()->json($exception);
         }
     }
+    public function getEtudiantsBySession($id)
+{
+    $etudiants = Etudiant::where('session_id', $id)->get();
+    return response()->json($etudiants);
+}
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rapport extends Model
 {
     protected $primaryKey = 'id_rapport';
-
+    use HasFactory;
     protected $fillable =[
         'titre_rapport',
         'contenu',
