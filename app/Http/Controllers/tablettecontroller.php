@@ -401,7 +401,7 @@ class tabletteController extends RoutingController
                                ->where('examens.seance_examen', '=', 'S2')
                                ->where('passers.id_local','=',$local[0]->id_local) 
                                ->get(); 
-                    $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module','examens.id_pv')
+                    $session=session::select('examens.id_examen','sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module','examens.id_pv')
                                ->distinct()
                                 ->join('examens', 'examens.id_session', '=', 'sessions.id_session')
                                ->join('passers', 'examens.id_examen', '=', 'passers.id_examen')
