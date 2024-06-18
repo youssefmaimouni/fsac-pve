@@ -108,6 +108,13 @@ class tabletteController extends RoutingController
                 ->exists();
             if ($exists) {
                 $tablette=tablette::where('device_id', $request->device_id)->first();
+                    if ($tablette->statut='bloquer') {
+                        return response()->json([
+                            'status_code'=>201,
+                            'status_message'=>"tablette a été bloquer",
+                            'data'=>$tablette
+                        ]);
+                    }
                 $tablette->device_id=$request->device_id;
                 $tablette->code_association=$request->code_association;
                 $tablette->save();
@@ -394,7 +401,7 @@ class tabletteController extends RoutingController
                                ->where('examens.seance_examen', '=', 'S2')
                                ->where('passers.id_local','=',$local[0]->id_local) 
                                ->get(); 
-                    $session=session::select('sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module','examens.id_pv')
+                    $session=session::select('examens.id_examen','sessions.nom_session','sessions.type_session','sessions.Annee_universitaire','examens.date_examen','examens.demi_journee_examen','examens.seance_examen','modules.intitule_module','examens.id_pv')
                                ->distinct()
                                 ->join('examens', 'examens.id_session', '=', 'sessions.id_session')
                                ->join('passers', 'examens.id_examen', '=', 'passers.id_examen')
@@ -456,7 +463,7 @@ class tabletteController extends RoutingController
                             throw new Exception('Unexpected response type');
                         }
                     }
-                    
+                
                     foreach ($passers as $passer) {
                         $passerRequest = new editpasserRequest();
                         $passerRequest->replace($passer); 
@@ -466,12 +473,13 @@ class tabletteController extends RoutingController
                             $responseData = json_decode($response->getContent(), true);
                             if ($responseData['status_code'] != 201) {
                                 throw new Exception($responseData['status_message'], $responseData['status_code']);
-                            }
-                        } else {
-                            throw new Exception('Unexpected response type');
-                        }
-                    }
-
+                                }
+                                } else {
+                                    throw new Exception('Unexpected response type');
+                                    }
+                                    }
+                                    
+                     
                     foreach ($signers as $signer) {
                         $signerRequest = new signerRaquest();
                         $signerRequest->replace($signer); 
@@ -494,7 +502,10 @@ class tabletteController extends RoutingController
                         ]);
                     
             }catch(Exception $exception){
-                return response()->json($exception);
+                return response()->json([
+                    'status_code' => $exception->getCode() ?: 400,
+                    'status_message' => $exception->getMessage()
+                ]);
             }
         }
         public function getPhoto($filename)
