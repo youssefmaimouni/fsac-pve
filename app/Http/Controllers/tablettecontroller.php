@@ -463,7 +463,7 @@ class tabletteController extends RoutingController
                             throw new Exception('Unexpected response type');
                         }
                     }
-                    
+                
                     foreach ($passers as $passer) {
                         $passerRequest = new editpasserRequest();
                         $passerRequest->replace($passer); 
@@ -473,12 +473,13 @@ class tabletteController extends RoutingController
                             $responseData = json_decode($response->getContent(), true);
                             if ($responseData['status_code'] != 201) {
                                 throw new Exception($responseData['status_message'], $responseData['status_code']);
-                            }
-                        } else {
-                            throw new Exception('Unexpected response type');
-                        }
-                    }
-
+                                }
+                                } else {
+                                    throw new Exception('Unexpected response type');
+                                    }
+                                    }
+                                    
+                     
                     foreach ($signers as $signer) {
                         $signerRequest = new signerRaquest();
                         $signerRequest->replace($signer); 
@@ -501,7 +502,10 @@ class tabletteController extends RoutingController
                         ]);
                     
             }catch(Exception $exception){
-                return response()->json($exception);
+                return response()->json([
+                    'status_code' => $exception->getCode() ?: 400,
+                    'status_message' => $exception->getMessage()
+                ]);
             }
         }
         public function getPhoto($filename)

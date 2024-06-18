@@ -105,11 +105,10 @@ class signerController extends Controller
             if ($exists) {
                 return $this->update($request, $request->id_surveillant, $request->id_pv);
             } else {
-                $signer = new Signer([
-                    'id_surveillant' => $request->id_surveillant,
-                    'id_pv' => $request->id_pv,
-                    'signer' => $request->signer
-                ]);
+                $signer = new signer();
+                $signer->id_surveillant = $request->id_surveillant;
+                $signer->id_pv = $request->id_pv;
+                $signer->signer = $request->signer;
                 $signer->save();
     
                 return response()->json([
