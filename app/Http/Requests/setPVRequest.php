@@ -24,7 +24,6 @@ class setPVRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'rapports'=>'required',
             'passers'=>'required',
             'signers'=>'required',
         ];

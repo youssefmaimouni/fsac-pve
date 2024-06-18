@@ -447,23 +447,26 @@ class tabletteController extends RoutingController
                     $rapports=$request->rapports;
                     $passers=$request->passers;
                     $signers=$request->signers;
-                    foreach ($rapports as $rapport) {
+                    if ($rapports != null) {
                         
-                        $rapportRequest = new RapportRequest();
-                        $rapportRequest->replace($rapport); 
-            
-                        $response = $rapportController->store($rapportRequest);
-            
-                        if ($response instanceof JsonResponse) {
-                            $responseData = json_decode($response->getContent(), true);
-                            if ($responseData['status_code'] != 201) {
-                                throw new Exception($responseData['status_message'], $responseData['status_code']);
-                            }
-                        } else {
-                            throw new Exception('Unexpected response type');
-                        }
-                    }
+                        foreach ($rapports as $rapport) {
+                            
+                            $rapportRequest = new RapportRequest();
+                            $rapportRequest->replace($rapport); 
                 
+                            $response = $rapportController->store($rapportRequest);
+                
+                            if ($response instanceof JsonResponse) {
+                                $responseData = json_decode($response->getContent(), true);
+                                if ($responseData['status_code'] != 201) {
+                                    throw new Exception($responseData['status_message'], $responseData['status_code']);
+                                }
+                            } else {
+                                throw new Exception('Unexpected response type');
+                            }
+                        }
+                    
+                    }
                     foreach ($passers as $passer) {
                         $passerRequest = new editpasserRequest();
                         $passerRequest->replace($passer); 
