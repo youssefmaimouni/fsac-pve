@@ -22,6 +22,11 @@ class AssocierFactory extends Factory
      */
     protected static $usedCombinations = [];
 
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
     public function definition()
     {
         $affectationIds = Affectation::pluck('id_affectation')->toArray();
@@ -39,5 +44,13 @@ class AssocierFactory extends Factory
             'id_affectation' => $id_affectation,
             'id_surveillant' => $id_surveillant,
         ];
+    }
+
+    /**
+     * Reset used combinations.
+     */
+    public static function resetUsedCombinations()
+    {
+        self::$usedCombinations = [];
     }
 }
