@@ -15,6 +15,8 @@ use App\Models\surveillant;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PVController extends Controller
 {
@@ -266,8 +268,7 @@ class PVController extends Controller
                     $pv = new PV();
                     $pv->file_path = $path;
                     $pv->id_tablette = $tablette->id_tablette;
-
-                $pv->save();
+                    $pv->save();
 
                 return response()->json(['message' => 'File uploaded and updated successfully', 'path' => $path], 200);
             } else {
@@ -396,4 +397,53 @@ class PVController extends Controller
         ]);
     }
 }
+
+
+public function getPdf(Request $request)  {
+    try {
+        
+       $pv = pv::select('pvs.file_path')
+       ->distinct()
+       ->join('examens', 'pvs.id_pv', '=', 'examens.id_pv')
+       ->where('examens.id_session', '=', $request->id_session)
+       ->get();
+       foreach ($pv as $key => $value) {
+           $p=explode('/',$value); 
+            $pdf[$key]=$p[1]; 
+       }
+       return response()->json([
+        'status_code' => 201,
+        'pv' => $pv->isEmpty() ? null : $pdf,
+    ]);
+    } catch (Exception $exception) {
+        return response()->json([
+            'status_code' => 500,
+            'message' => $exception->getMessage()
+        ]);
+    }
+}
+
+
+public function show($filename)
+{
+    $path = storage_path('app/pdfs/' . $filename);
+
+    if (!Storage::disk('local')->exists("pdfs/$filename")) {
+        return response()->json(['error' => 'File not found'], 404);
+    }
+
+    $headers = [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="' . $filename . '"', // or 'attachment' to force download
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers' => 'Content-Type, Authorization'
+    ];
+
+    return response()->file($path, $headers);
+}
+
+
+
+        
 }
