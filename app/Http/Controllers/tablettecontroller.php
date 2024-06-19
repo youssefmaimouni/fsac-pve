@@ -183,6 +183,7 @@ class tabletteController extends RoutingController
             $tablette->statut=$request->statut;
             $tablette->code_association=$request->code_association;
             $tablette->save();
+            activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."Statut tablette modifeé");
 
         return response()->json([
             'status_code'=>201,

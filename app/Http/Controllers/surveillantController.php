@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SurveillantRequest;
 use App\Models\surveillant;
+use DateTime;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -99,10 +100,11 @@ class surveillantController extends Controller
         $surveillant->id_departement=$request->id_departement;
         $surveillant->nomComplet_s=$request->nomComplet_s;
         $surveillant->save();
-        activity()->log("surveillant ajoute");
+        activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."Surveillant ajouté");
+
 
         return response()->json([
-            'status_code'=>201,
+            'status_code'=>201,  
             'status_message'=>"le surveillant a été ajouté",
             'data'=>$surveillant
         ]);
@@ -214,8 +216,9 @@ class surveillantController extends Controller
     public function delete(surveillant $surveillant) {
          try{
                 $surveillant->delete();
-                activity()->log("surveillant supprime");
-            return response()->json([
+                
+                activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."Surveillant supprimé");
+                return response()->json([
                 'status_code'=>200,
                 'status_message'=>"le surveillant a été supprimer",
                 'data'=>$surveillant

@@ -102,6 +102,7 @@ class affectationController extends Controller
         $affectation->date_affectation=$request->date_affectation;
         $affectation->demi_journee_affectation=$request->demi_journee_affectation;
         $affectation->save();
+        activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."Affecation effectueé");
 
 
         return response()->json([
