@@ -413,7 +413,7 @@ public function getPdf(Request $request)  {
        }
        return response()->json([
         'status_code' => 201,
-        'pv' => $pv->isEmpty() ? null : $pdf,
+        'pv' => $pv->isEmpty() ? null : $pv,
     ]);
     } catch (Exception $exception) {
         return response()->json([
