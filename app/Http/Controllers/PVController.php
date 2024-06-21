@@ -399,22 +399,24 @@ class PVController extends Controller
 }
 
 
-public function getPdf(Request $request)  {
+public function getPdf(Request $request) {
     try {
-        
-       $pv = pv::select('pvs.file_path')
-       ->distinct()
-       ->join('examens', 'pvs.id_pv', '=', 'examens.id_pv')
-       ->where('examens.id_session', '=', $request->id_session)
-       ->get();
-       foreach ($pv as $key => $value) {
-           $p=explode('/',$value); 
-            $pdf[$key]=$p[1]; 
-       }
-       return response()->json([
-        'status_code' => 201,
-        'pv' => $pv->isEmpty() ? null : $pv,
-    ]);
+        $pv = pv::select('pvs.file_path')
+                ->distinct()
+                ->join('examens', 'pvs.id_pv', '=', 'examens.id_pv')
+                ->where('examens.id_session', '=', $request->id_session)
+                ->get();
+
+        $pdfPaths = [];
+        foreach ($pv as $file) {
+            $pathComponents = explode('/', $file->file_path);
+            $pdfPaths[] = end($pathComponents); // Get the last part after split
+        }
+
+        return response()->json([
+            'status_code' => 200, // Changed to 200 as 201 is usually for resource creation
+            'pv' => empty($pdfPaths) ? null : $pdfPaths,
+        ]);
     } catch (Exception $exception) {
         return response()->json([
             'status_code' => 500,
@@ -422,6 +424,7 @@ public function getPdf(Request $request)  {
         ]);
     }
 }
+
 
 
 public function show($filename)
