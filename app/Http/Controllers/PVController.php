@@ -436,21 +436,30 @@ class PVController extends Controller
 
 public function getPdf(Request $request) {
     try {
-        $pv = pv::select('pvs.file_path')
+
+        $pvs = Pv::select('pvs.file_path', 'examens.date_examen', 'examens.demi_journee_examen', 'locals.num_local',
+        'locals.type_local')
                 ->distinct()
                 ->join('examens', 'pvs.id_pv', '=', 'examens.id_pv')
-                ->where('examens.id_session', '=', $request->id_session)
+                ->join('passers', 'passers.id_examen', '=', 'examens.id_examen')
+                ->join('locals', 'locals.id_local', '=', 'passers.id_local')
+                ->where('examens.id_session', $request->input('id_session'))
                 ->get();
 
-        $pdfPaths = [];
-        foreach ($pv as $file) {
-            $pathComponents = explode('/', $file->file_path);
-            $pdfPaths[] = end($pathComponents); // Get the last part after split
-        }
+       
+        $pvDetails = $pvs->map(function ($item) {
+            return [
+                'file_path' => basename($item->file_path), 
+                'date_examen' => $item->date_examen, 
+                'demi_journee_examen' => $item->demi_journee_examen, 
+                'type_local' => $item->type_local,
+                'num_local'=>$item->num_local
+            ];
+        });
 
         return response()->json([
-            'status_code' => 200, // Changed to 200 as 201 is usually for resource creation
-            'pv' => empty($pdfPaths) ? null : $pdfPaths,
+            'status_code' => 200,
+            'pv' => $pvDetails->isEmpty() ? null : $pvDetails,
         ]);
     } catch (Exception $exception) {
         return response()->json([
@@ -459,6 +468,7 @@ public function getPdf(Request $request) {
         ]);
     }
 }
+
 
 
 
