@@ -8,12 +8,15 @@ use App\Http\Requests\PVRequest;
 use App\Models\etudiant;
 use App\Models\local;
 use App\Models\pv;
+use App\Models\Tablette;
 use App\Models\Rapport;
 use App\Models\session;
 use App\Models\surveillant;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PVController extends Controller
 {
@@ -209,6 +212,74 @@ class PVController extends Controller
      *      security={{"bearerAuth":{}}}
      * )
      */
+    /**
+     * @OA\Post(
+     *     path="/api/pv/upload",
+     *     tags={"Pv"},
+     *     summary="Upload a PDF and update the corresponding PV entry",
+     *     description="Upload a PDF and associate it with a tablette using MAC address",
+     *     operationId="uploadPDF",
+     *     @OA\RequestBody(
+     *         description="PDF file to upload and device_id",
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(property="pdf", type="string", format="binary"),
+     *                 @OA\Property(property="device_id", type="string", example="00:0a:95:9d:68:16")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="File uploaded and updated successfully",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid input"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="No matching tablette entry found for the given device_id"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Authentication information is missing or invalid"
+     *     ),
+     *     security={{"bearerAuth":{}}}
+     * )
+     */
+    public function uploadPDF(Request $request)
+    {
+        $request->validate([
+            'pdf' => 'required|file|mimes:pdf',
+            'device_id' => 'required|string|exists:tablettes,device_id',
+        ]);
+
+        if ($request->hasFile('pdf')) {
+            $path = $request->file('pdf')->store('pdfs');
+
+
+            $tablette = Tablette::where('device_id', $request->input('device_id'))->first();
+
+            if ($tablette) {
+
+                    $pv = new PV();
+                    $pv->file_path = $path;
+                    $pv->id_tablette = $tablette->id_tablette;
+                    $pv->save();
+
+                return response()->json(['message' => 'File uploaded and updated successfully', 'path' => $path], 200);
+            } else {
+                return response()->json(['message' => 'No matching tablette entry found for the given device_id'], 404);
+            }
+        }
+
+        return response()->json(['message' => 'No file uploaded'], 400);
+    }
+
+
     public function delete(pv $pv) {
          try{
                 $pv->delete();
@@ -326,4 +397,53 @@ class PVController extends Controller
         ]);
     }
 }
+
+
+public function getPdf(Request $request)  {
+    try {
+        
+       $pv = pv::select('pvs.file_path')
+       ->distinct()
+       ->join('examens', 'pvs.id_pv', '=', 'examens.id_pv')
+       ->where('examens.id_session', '=', $request->id_session)
+       ->get();
+       foreach ($pv as $key => $value) {
+           $p=explode('/',$value); 
+            $pdf[$key]=$p[1]; 
+       }
+       return response()->json([
+        'status_code' => 201,
+        'pv' => $pv->isEmpty() ? null : $pv,
+    ]);
+    } catch (Exception $exception) {
+        return response()->json([
+            'status_code' => 500,
+            'message' => $exception->getMessage()
+        ]);
+    }
+}
+
+
+public function show($filename)
+{
+    $path = storage_path('app/pdfs/' . $filename);
+
+    if (!Storage::disk('local')->exists("pdfs/$filename")) {
+        return response()->json(['error' => 'File not found'], 404);
+    }
+
+    $headers = [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="' . $filename . '"', // or 'attachment' to force download
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers' => 'Content-Type, Authorization'
+    ];
+
+    return response()->file($path, $headers);
+}
+
+
+
+        
 }

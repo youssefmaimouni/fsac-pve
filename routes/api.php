@@ -23,6 +23,7 @@ use App\Http\Controllers\sessionController;
 use App\Http\Controllers\activityController;
 use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -171,6 +172,11 @@ Route::get('etudiants/session/{id}', [EtudiantController::class, 'getEtudiantsBy
 
 Route::post('/etudiants-examen',[examenController::class,'getEtudiants']);
 Route::post('/surveillants-examen',[examenController::class, 'getSurveillants']);
+Route::middleware(['cors'])->group(function () {
+Route::get('/pdf/{filename}',[PVController::class,'show']);
+});
+
+Route::get('getPdf',[PVController::class,'getPdf']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
