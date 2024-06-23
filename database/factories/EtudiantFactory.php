@@ -11,12 +11,19 @@ class EtudiantFactory extends Factory
 
     public function definition()
     {
+        // Randomly choose between 'men' or 'women' for the image category
+        $gender = $this->faker->randomElement(['men', 'women']);
+        
+        // Randomly choose a number between 1 and 99
+        $imageNumber = $this->faker->numberBetween(1, 99);
+
         return [
             'codeApogee' => $this->faker->unique()->numberBetween(100000, 999999),
             'nom_etudiant' => $this->faker->lastName(),
             'prenom_etudiant' => $this->faker->firstName(),
             'CNE' => $this->faker->bothify('??######'),
-            'photo' => $this->faker->optional()->lexify('https://imgur.com/??????')
+            // Construct the URL using the chosen gender and image number
+            'photo' => "https://randomuser.me/api/portraits/{$gender}/{$imageNumber}.jpg"
         ];
     }
 }

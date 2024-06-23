@@ -27,7 +27,6 @@ class EtudiantRequest extends FormRequest
             'nom_etudiant'=>'required | string ',
             'prenom_etudiant'=>'required | string',
             'CNE'=>'required | string',
-            'photo'=>'string',
             'codeApogee'=>'required| integer',
         ];
     }
