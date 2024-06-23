@@ -399,7 +399,7 @@ class PVController extends Controller
                     $etudiantsAS2->pluck('codeApogee')->toArray()
                 );
     
-                $rapport = Rapport::select('rapports.codeApogee', 'rapports.titre_rapport', 'rapports.contenu', 'etudiants.nom_etudiant')
+                $rapport = Rapport::select('rapports.codeApogee', 'rapports.titre_rapport', 'rapports.contenu', 'etudiants.nom_etudiant' , 'etudiants.prenom_etudiant' , 'etudiants.codeApogee')
                     ->join('etudiants', 'etudiants.codeApogee', '=', 'rapports.codeApogee')
                     ->whereIn('rapports.codeApogee', $rapportCodes)
                     ->where('rapports.id_pv', '=', $session->first()->id_pv ?? null)
