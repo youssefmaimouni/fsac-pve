@@ -49,3 +49,4 @@ class AssocierRequest extends FormRequest
         ];
     }
 }
+ 
