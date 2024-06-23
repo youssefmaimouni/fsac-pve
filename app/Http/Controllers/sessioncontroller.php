@@ -103,7 +103,7 @@ class sessionController extends Controller
         $session->datefin=$request->datefin;
         $session->Annee_universitaire=$request->Annee_universitaire;
         $session->save();
-        activity()->log("session crée");
+        activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."session crée");
 
         return response()->json([
             'status_code'=>201,
@@ -221,7 +221,7 @@ class sessionController extends Controller
     public function delete(session $session) {
          try{
                 $session->delete();
-                activity()->log("session cree");
+                activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."session cree");
             return response()->json([
                 'status_code'=>200,
                 'status_message'=>'la session  a été supprimer',
