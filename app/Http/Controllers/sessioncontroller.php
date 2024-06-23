@@ -103,7 +103,7 @@ class sessionController extends Controller
         $session->datefin=$request->datefin;
         $session->Annee_universitaire=$request->Annee_universitaire;
         $session->save();
-        activity()->log("session cree");
+        activity()->log("session crée");
 
         return response()->json([
             'status_code'=>201,
