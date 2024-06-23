@@ -25,7 +25,7 @@ class GetEtudiantsRequest extends FormRequest
     {
         return [
             'id_local' => 'required|integer',
-            'date_examen' => 'required|date',
+            'date' => 'required|date',
             'demi_journee' => 'required|string'
         ];
     }

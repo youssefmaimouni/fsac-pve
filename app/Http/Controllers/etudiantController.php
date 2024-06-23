@@ -113,7 +113,8 @@ class etudiantController extends Controller
         $etudiant->codeApogee=$request->codeApogee;
         $etudiant->photo=$request->photo;
         $etudiant->save();
-        activity()->log("étudiant ajouté");
+        activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."Etudiant ajouté");
+
 
         return response()->json([
             'status_code'=>201,
@@ -178,7 +179,8 @@ class etudiantController extends Controller
             $etudiant->CNE=$request->CNE;
             $etudiant->photo=$request->photo;
             $etudiant->codeApogee=$request->codeApogee;
-      
+            activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."Etudiant modifié");
+
         $etudiant->save();
 
         return response()->json([
@@ -227,7 +229,8 @@ class etudiantController extends Controller
     public function delete(etudiant $etudiant) {
          try{
                 $etudiant->delete();
-                activity()->log("étudiant supprimé");
+                activity()->log(date('Y-m-d H:i:s').str_repeat("\xC2\xA0", 50)."Etudiant supprimé");
+
             return response()->json([
                 'status_code'=>200,
                 'status_message'=>"l'etudiant  a été supprime",

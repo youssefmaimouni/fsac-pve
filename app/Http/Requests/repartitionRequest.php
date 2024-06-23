@@ -25,7 +25,7 @@ class repartitionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date_affectation'=>'required  ',
+            'date'=>'required  ',
             'demi_journee'=>'required ',
             'id_local'=>'required | integer ',
             
